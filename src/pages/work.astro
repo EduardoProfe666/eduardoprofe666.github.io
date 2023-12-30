@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+import ProjectCard from "../components/ProjectCard.astro";
+
+const p1 = {title:"🚀Api de Calculadora Simple con FastApi🚀", pageUrl:"/work/fastapi-calculadora", thumbnail:"/assets/p1.png", githubUrl:"https://github.com/EduardoProfe666/fastapi-calculadora", liveUrl:"https://fastapi-calculadora.onrender.com/"}
+const p2 = {title:"🌌Api Personalizada en Java🌌", pageUrl:"/work/api-personalizada", thumbnail:"/assets/p2.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Api-Personalizada", liveUrl:"https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/"}
+const p3 = {title:"🐱💻Jupyter Notebooks de Matemática Numérica🐱💻", pageUrl:"/work/mn-google-colab", thumbnail:"/assets/p3.png", githubUrl:"https://github.com/EduardoProfe666/Matematica-Numerica-Google-Colab"}
+const p4 = {title:"🤓Página Web de Teoría Política🤓", pageUrl:"/work/tp-web", thumbnail:"/assets/p4.png", githubUrl:"https://github.com/EduardoProfe666/teoria-politica-web", liveUrl:"https://eduardoprofe666.github.io/teoria-politica-web/"}
+const p5 = {title:"⛹Proyecto Final IP⛹", pageUrl:"/work/ip", thumbnail:"/assets/p5.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Final-C"}
+const p6 = {title:"🏥Proyecto Final DPOO🏥", pageUrl:"/work/dpoo", thumbnail:"/assets/p6.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Dpoo"}
+const p7 = {title:"🏋Cujae-13 | Proyecto Final ED🏋", pageUrl:"/work/ed", thumbnail:"/assets/p7.png", githubUrl:"https://github.com/EduardoProfe666/Cujae13-Proyecto"}
+const p8 = {title:"✨Conest | Proyecto Final BD✨", pageUrl:"/work/bd", thumbnail:"/assets/p8.png", githubUrl:"https://github.com/EduardoProfe666/bases-de-datos"}
+const p9 = {title:"📚Tarea 2 de JS📚", pageUrl:"/work/js", thumbnail:"/assets/p9.png", githubUrl:"https://github.com/EduardoProfe666/Tarea-2-JS", liveUrl:"https://eduardoprofe666.github.io/Tarea-2-JS/"}
+const p10 = {title:"🐈Tinger y el Estambre🐈", pageUrl:"/work/tinger", thumbnail:"/assets/p10.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Tinger-y-el-Estambre"}
+const p11 = {title:"📶Wifi-Repair📶", pageUrl:"/work/wifi", thumbnail:"https://cdn.mos.cms.futurecdn.net/kSRmHY5a98t7G5jMTgqhUi.jpg", githubUrl:"https://github.com/EduardoProfe666/Wifi-Repair"}
+
+const p12 = {title:"🤵Porfolio Personal🤵", pageUrl:"/work/portfolio", thumbnail:"/assets/p12.png", githubUrl:"https://github.com/EduardoProfe666/", liveUrl:"https://eduardoprofe666.github.io/"}
+
+---
+
+<BaseLayout
+	title="Proyectos | EduardoProfe666"
+	description="Conoce todo sobre mis proyectos más importantes"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Mis Proyectos"
+				tagline="Ve mis proyectos más destacados para que evalúes mi experiencia."
+				align="start"
+			/>
+			<Grid variant="offset">
+				<ProjectCard projectDetail={p1}/>
+				<ProjectCard projectDetail={p2}/>
+				<ProjectCard projectDetail={p3}/>
+				<ProjectCard projectDetail={p4}/>
+				<ProjectCard projectDetail={p5}/>
+				<ProjectCard projectDetail={p6}/>
+				<ProjectCard projectDetail={p7}/>
+				<ProjectCard projectDetail={p8}/>
+				<ProjectCard projectDetail={p9}/>
+				<ProjectCard projectDetail={p10}/>
+				<ProjectCard projectDetail={p11}/>
+				<ProjectCard projectDetail={p12}/>
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
