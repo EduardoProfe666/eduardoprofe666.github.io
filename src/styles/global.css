@@ -253,3 +253,11 @@ h5 {
 		gap: 12rem;
 	}
 }
+
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #fbfbfb;
+}
