@@ -8,7 +8,7 @@ description: |
 tags:
   - Java
   - PostgreSql
-  - JasperSoft
+  - JasperSoft 
 ---
 
 <h1 id="conest-proyecto-de-bases-de-datos">CONEST. Proyecto de Bases de Datos</h1>
