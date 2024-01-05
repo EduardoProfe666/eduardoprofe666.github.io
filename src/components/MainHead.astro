@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-	title = 'EduardoProfe666: Portfolio Personal',
-	description = 'El portfolio personal de Eduardo A. Gonzalez Martell',
+	title = 'Portfolio Personal | EduardoProfe666',
+	description = 'El portfolio personal de Eduardo A. González Martell',
 } = Astro.props;
 ---
 
@@ -16,6 +16,12 @@ const {
 <meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
+
+<meta property="og:title" content="Portfolio Personal | EduardoProfe666🎩">
+<meta property="og:description" content="El portfolio personal de Eduardo A. González Martell">
+<meta property="og:image" content="/assets/banner.png">
+<meta property="og:url" content="https://eduardoprofe666.github.io" />
+
 <title>{title}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

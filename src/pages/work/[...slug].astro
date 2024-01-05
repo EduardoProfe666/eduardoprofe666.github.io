@@ -45,7 +45,7 @@ const { Content } = await entry.render();
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					{entry.data.img && <img class="img123" src={entry.data.img} alt={entry.data.img_alt || ''} />}
 					<div class="content">
 						<Content />
 					</div>
@@ -86,8 +86,7 @@ const { Content } = await entry.render();
 	}
 
 	.content {
-		overflow: auto;
-		max-width: 90ch;
+		overflow: hidden;
 		margin-inline: auto;
 	}
 
@@ -144,7 +143,10 @@ const { Content } = await entry.render();
 			flex-direction: row;
 			gap: 2.5rem;
 		}
-
+		.content{
+			overflow: auto;
+			max-width: 85%;
+		}
 		.content :global(blockquote) {
 			font-size: var(--text-2xl);
 		}

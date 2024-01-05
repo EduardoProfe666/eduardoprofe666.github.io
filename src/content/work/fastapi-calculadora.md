@@ -11,36 +11,74 @@ tags:
   - FastApi
 ---
 
-<h1 id="-api-calculadora-simple">🚀 Api Calculadora Simple</h1>
-<p><a href="https://github.com/EduardoProfe666/fastapi-calculadora"><img src="https://img.shields.io/github/languages/top/EduardoProfe666/fastapi-calculadora?color=blue&amp;style=for-the-badge" alt="Languages"></a>
-<a href="https://tlo.mit.edu/learn-about-intellectual-property/software-and-open-source-licensing/open-source-licensing"><img src="https://img.shields.io/badge/license-MIT-purple.svg?style=for-the-badge" alt="license"></a></p>
-<p>Api de Calculadora Simple desarrollada con FastApi </p>
-<h2 id="-instalaci-n-del-proyecto">💻 Instalación del proyecto</h2>
-<li>Instalar los requerimientos necesarios con <code>pip install -r requirements.txt</code></li>
-<li>Usar el comando <code>uvicorn main:app --reload</code> para probar el proyecto</li>
-<li>Acceder a <code>localhost:8000/docs</code> para obtener la documentación de todos los endpoints y poder probarlos</li>
-<li>Puede probar los endpoints con los tests disponibles en el fichero <code>test_main.http</code></li>
-<h2 id="-listado-de-funcionalidades">⚓ Listado de Funcionalidades</h2>
-<li><strong>Sumar (<em>+</em>)</strong></li>
-<li><strong>Restar (<em>-</em>)</strong></li>
-<li><strong>Multiplicar (<em>*</em>)</strong></li>
-<li><strong>Dividir (<em>/</em>)</strong></li>
-<li><strong>Módulo (<em>%</em>)</strong></li>
-<li><strong>Raíz n-ésima (<em>√</em>)</strong></li>
-<li><strong>Potenciación (<em>n^m</em>)</strong></li>
-<li><strong>Logaritmo (<em>log(n)</em>)</strong></li>
-<li><strong>Seno (<em>sin(x)</em>)</strong></li>
-<li><strong>Coseno (<em>cos(x)</em>)</strong></li>
-<li><strong>Tangente (<em>tan(x)</em>)</strong></li>
-<li><strong>Cotangente (<em>cot(x)</em>)</strong></li>
-<li><strong>Secante (<em>sec(x)</em>)</strong></li>
-<li><strong>Cosecante (<em>cot(x)</em>)</strong></li>
-<li><strong>Constantes (<em>e,pi,...</em>)</strong></li>
-<li><strong>Evaluación y Cálculo de expresiones (<em>eval(str)</em>)</strong></li>
-<h2 id="-documentaci-n-de-la-api">🔥 Documentación de la api</h2>
-<p>Para acceder a la documentación de la api puede usar los siguientes enlaces:</p>
-<li><a href="https://fastapi-calculadora.onrender.com/docs">Swagger UI</a>. Esta permite probar los endpoints de la api de forma fácil.</li>
-<li><a href="https://fastapi-calculadora.onrender.com/redoc">Redocly</a></li>
-<h2 id="-despliegue-como-web-service-en-render-com-">🛫 Despliegue como Web-Service en <code>render.com</code></h2>
-<p>Acceda al <a href="https://fastapi-calculadora.onrender.com">siguiente enlace</a> para probar la api en vivo</p>
+# 🚀 Api Calculadora Simple
+[![Languages](https://img.shields.io/github/languages/top/EduardoProfe666/fastapi-calculadora?color=blue&style=for-the-badge)](https://github.com/EduardoProfe666/fastapi-calculadora)
+[![license](https://img.shields.io/badge/license-MIT-purple.svg?style=for-the-badge)](https://tlo.mit.edu/learn-about-intellectual-property/software-and-open-source-licensing/open-source-licensing)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 
+Api de Calculadora Simple desarrollada con FastApi
+
+## 💻 Instalación del proyecto
+1- Instalar los requerimientos necesarios con `pip install -r requirements.txt`
+2- Usar el comando `uvicorn main:app --reload` para probar el proyecto 
+3- Acceder a `localhost:8000/docs` para obtener la documentación de todos los endpoints y poder probarlos
+4- Puede probar los endpoints con los tests disponibles en el fichero `test_main.http`
+
+## ⚓ Listado de Funcionalidades
+### 🤓 Cálculo Básico
+- Sumar
+- Restar
+- Multiplicar
+- Dividir
+- Módulo
+- Raíz n-ésima
+- Potenciación
+- Logaritmo
+
+### 🤖 Conversión
+- Ángulo
+- Área
+- Datos
+- Longitud
+- Masa
+- Velocidad
+- Sistema Numérico (BIN, DEC, HEX, OCT)
+- Temperatura
+- Tiempo
+- Volumen
+- Divisas (+160 divisas en tiempo real la tasa de cambio)
+
+### 💥 Trigonometría
+- Seno
+- Coseno
+- Tangente
+- Cotangente
+- Secante
+- Cosecante
+
+### 🎓 Calculadora
+- Evaluación y Cálculo de expresiones
+- Descuento
+- IMC
+
+### 📈 Estadística
+- Media
+- Mediana
+- Multi-Moda
+- Desviación Estándar de la población
+- Desviación Estándar de la muestra
+- Varianza de la población
+- Varianza de la muestra
+- Correlación
+- Covarianza
+
+### 🎈 Otros
+- Constantes
+
+## 🔥 Documentación de la api
+Para acceder a la documentación de la api puede usar los siguientes enlaces:
+- [Swagger UI](https://fastapi-calculadora.onrender.com/docs). Esta permite probar los endpoints de la api de forma fácil.
+- [Redocly](https://fastapi-calculadora.onrender.com/redoc)
+
+## 🛫 Despliegue como Web-Service en `render.com`
+Acceda al [siguiente enlace](https://fastapi-calculadora.onrender.com) para probar la api en vivo
