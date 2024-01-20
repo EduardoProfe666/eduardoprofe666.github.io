@@ -1,7 +1,7 @@
 # Portfolio Personalizado
 [Deploy in Github Pages](https://eduardoprofe666.github.io)
 
-## 🧞 Commands
+## ✨ Commands
 
 All commands are run from the root of the project, from a terminal:
 
