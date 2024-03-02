@@ -19,10 +19,12 @@ import ProjectCard from "../components/ProjectCard.astro";
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 
+const p2 = {title:"📝Sistema de documentación de AICA+ en ASP.NET Core 8.0📝", pageUrl:"/work/aicadocs", thumbnail:"/assets/p14.png", githubUrl:"https://github.com/EduardoProfe666/AicaDocsApi", liveUrl:"https://aicadocs-ui.onrender.com"}
+const p3 = {title:"📸Editor simple de imágenes en Python📸 ", pageUrl:"/work/py-image-editor", thumbnail:"/assets/p15.png", githubUrl:"https://github.com/EduardoProfe666/PyImageEditor", liveUrl:"https://github.com/EduardoProfe666/PyImageEditor/releases/latest"}
 const p1 = {title:"🚀Api de Calculadora Simple con FastApi🚀", pageUrl:"/work/fastapi-calculadora", thumbnail:"/assets/p1.png", githubUrl:"https://github.com/EduardoProfe666/fastapi-calculadora", liveUrl:"https://fastapi-calculadora.onrender.com/"}
-const p2 = {title:"🌌Api Personalizada en Java🌌", pageUrl:"/work/api-personalizada", thumbnail:"/assets/p2.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Api-Personalizada", liveUrl:"https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/"}
-const p3 = {title:"🐱💻Jupyter Notebooks de Matemática Numérica🐱💻", pageUrl:"mn-google-colab", thumbnail:"/assets/p3.png", githubUrl:"https://github.com/EduardoProfe666/Matematica-Numerica-Google-Colab"}
-const p4 = {title:"🤓Página Web de Teoría Política🤓", pageUrl:"tp-web", thumbnail:"/assets/p4.png", githubUrl:"https://github.com/EduardoProfe666/teoria-politica-web", liveUrl:"https://eduardoprofe666.github.io/teoria-politica-web/"}
+const p4 = {title:"🌌Api Personalizada para Java | Java Swing🌌", pageUrl:"/work/api-personalizada", thumbnail:"/assets/p2.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Api-Personalizada", liveUrl:"https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/"}
+const p5 = {title:"🐍📦Python package con implementaciones de métodos numéricos📦🐍", pageUrl:"mn-api", thumbnail:"/assets/p16.png", githubUrl:"https://github.com/EduardoProfe666/mn-api", liveUrl:"https://pypi.org/project/mn-api/"}
+const p6 = {title:"💔Para los bros que necesitan el perdón💔", pageUrl:"/work/perdoname", thumbnail:"/assets/p18.png", githubUrl:"https://github.com/EduardoProfe666/Perdoname", liveUrl:"https://perdoname.onrender.com"}
 ---
 
 <BaseLayout>
@@ -65,6 +67,8 @@ const p4 = {title:"🤓Página Web de Teoría Política🤓", pageUrl:"tp-web", 
 						<ProjectCard projectDetail={p2}/>
 						<ProjectCard projectDetail={p3}/>
 						<ProjectCard projectDetail={p4}/>
+						<ProjectCard projectDetail={p5}/>
+						<ProjectCard projectDetail={p6}/>
 					</Grid>
 				</div>
 

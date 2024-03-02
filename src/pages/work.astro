@@ -9,19 +9,26 @@ import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 import ProjectCard from "../components/ProjectCard.astro";
 
-const p1 = {title:"🚀Api de Calculadora Simple con FastApi🚀", pageUrl:"/work/fastapi-calculadora", thumbnail:"/assets/p1.png", githubUrl:"https://github.com/EduardoProfe666/fastapi-calculadora", liveUrl:"https://fastapi-calculadora.onrender.com/"}
-const p2 = {title:"🌌Api Personalizada en Java🌌", pageUrl:"/work/api-personalizada", thumbnail:"/assets/p2.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Api-Personalizada", liveUrl:"https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/"}
-const p3 = {title:"🐱💻Jupyter Notebooks de Matemática Numérica🐱💻", pageUrl:"/work/mn-google-colab", thumbnail:"/assets/p3.png", githubUrl:"https://github.com/EduardoProfe666/Matematica-Numerica-Google-Colab"}
-const p4 = {title:"🤓Página Web de Teoría Política🤓", pageUrl:"/work/tp-web", thumbnail:"/assets/p4.png", githubUrl:"https://github.com/EduardoProfe666/teoria-politica-web", liveUrl:"https://eduardoprofe666.github.io/teoria-politica-web/"}
-const p5 = {title:"⛹Proyecto Final IP⛹", pageUrl:"/work/ip", thumbnail:"/assets/p5.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Final-C"}
-const p6 = {title:"🏥Proyecto Final DPOO🏥", pageUrl:"/work/dpoo", thumbnail:"/assets/p6.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Dpoo"}
-const p7 = {title:"🏋Cujae-13 | Proyecto Final ED🏋", pageUrl:"/work/ed", thumbnail:"/assets/p7.png", githubUrl:"https://github.com/EduardoProfe666/Cujae13-Proyecto"}
-const p8 = {title:"✨Conest | Proyecto Final BD✨", pageUrl:"/work/bd", thumbnail:"/assets/p8.png", githubUrl:"https://github.com/EduardoProfe666/bases-de-datos"}
-const p9 = {title:"📚Tarea 2 de JS📚", pageUrl:"/work/js", thumbnail:"/assets/p9.png", githubUrl:"https://github.com/EduardoProfe666/Tarea-2-JS", liveUrl:"https://eduardoprofe666.github.io/Tarea-2-JS/"}
-const p10 = {title:"🐈Tinger y el Estambre🐈", pageUrl:"/work/tinger", thumbnail:"/assets/p10.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Tinger-y-el-Estambre"}
-const p11 = {title:"📶Wifi-Repair📶", pageUrl:"/work/wifi", thumbnail:"https://cdn.mos.cms.futurecdn.net/kSRmHY5a98t7G5jMTgqhUi.jpg", githubUrl:"https://github.com/EduardoProfe666/Wifi-Repair"}
+const p1 = {title:"📝Sistema de documentación de AICA+ en ASP.NET Core 8.0📝", pageUrl:"/work/aicadocs", thumbnail:"/assets/p14.png", githubUrl:"https://github.com/EduardoProfe666/AicaDocsApi", liveUrl:"https://aicadocs-ui.onrender.com"}
+const p5 = {title:"📸Editor simple de imágenes en Python📸 ", pageUrl:"/work/py-image-editor", thumbnail:"/assets/p15.png", githubUrl:"https://github.com/EduardoProfe666/PyImageEditor", liveUrl:"https://github.com/EduardoProfe666/PyImageEditor/releases/latest"}
+const p7 = {title:"🐍📦Python package con implementaciones de métodos numéricos📦🐍", pageUrl:"mn-api", thumbnail:"/assets/p16.png", githubUrl:"https://github.com/EduardoProfe666/mn-api", liveUrl:"https://pypi.org/project/mn-api/"}
+const p10 = {title:"🌎Saludos de acuerdo al reloj para todas las partes del mundo🌎", pageUrl:"/work/world-greetings", thumbnail:"/assets/p17.png", githubUrl:"https://github.com/EduardoProfe666/world-greetings", liveUrl:"https://github.com/EduardoProfe666/world-greetings"}
+const p4 = {title:"💔Para los bros que necesitan el perdón💔", pageUrl:"/work/perdoname", thumbnail:"/assets/p18.png", githubUrl:"https://github.com/EduardoProfe666/Perdoname", liveUrl:"https://perdoname.onrender.com"}
+const p15 = {title:"🎃Sistema de ToDos en ASP.NET Core 8.0🎃", pageUrl:"/work/dotnet-todo", thumbnail:"/assets/p19.png", githubUrl:"https://github.com/EduardoProfe666/dotnet-todo", liveUrl:"https://dotnet-todo.onrender.com"}
 
-const p12 = {title:"🤵Porfolio Personal🤵", pageUrl:"/work/portfolio", thumbnail:"/assets/p13.png", githubUrl:"https://github.com/EduardoProfe666/", liveUrl:"https://eduardoprofe666.github.io/"}
+const p2 = {title:"🚀Api de Calculadora Simple con FastApi🚀", pageUrl:"/work/fastapi-calculadora", thumbnail:"/assets/p1.png", githubUrl:"https://github.com/EduardoProfe666/fastapi-calculadora", liveUrl:"https://fastapi-calculadora.onrender.com/"}
+const p3 = {title:"🌌Api Personalizada en Java🌌", pageUrl:"/work/api-personalizada", thumbnail:"/assets/p2.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Api-Personalizada", liveUrl:"https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/"}
+const p6 = {title:"🐱💻Jupyter Notebooks de Matemática Numérica🐱💻", pageUrl:"/work/mn-google-colab", thumbnail:"/assets/p3.png", githubUrl:"https://github.com/EduardoProfe666/Matematica-Numerica-Google-Colab"}
+const p8 = {title:"🤓Página Web de Teoría Política🤓", pageUrl:"/work/tp-web", thumbnail:"/assets/p4.png", githubUrl:"https://github.com/EduardoProfe666/teoria-politica-web", liveUrl:"https://eduardoprofe666.github.io/teoria-politica-web/"}
+const p13 = {title:"⛹Proyecto Final IP⛹", pageUrl:"/work/ip", thumbnail:"/assets/p5.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Final-C"}
+const p17 = {title:"🏥Proyecto Final DPOO🏥", pageUrl:"/work/dpoo", thumbnail:"/assets/p6.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Dpoo"}
+const p16 = {title:"🏋Cujae-13 | Proyecto Final ED🏋", pageUrl:"/work/ed", thumbnail:"/assets/p7.png", githubUrl:"https://github.com/EduardoProfe666/Cujae13-Proyecto"}
+const p14 = {title:"✨Conest | Proyecto Final BD✨", pageUrl:"/work/bd", thumbnail:"/assets/p8.png", githubUrl:"https://github.com/EduardoProfe666/bases-de-datos"}
+const p12 = {title:"📚Tarea 2 de JS📚", pageUrl:"/work/js", thumbnail:"/assets/p9.png", githubUrl:"https://github.com/EduardoProfe666/Tarea-2-JS", liveUrl:"https://eduardoprofe666.github.io/Tarea-2-JS/"}
+const p11 = {title:"🐈Tinger y el Estambre🐈", pageUrl:"/work/tinger", thumbnail:"/assets/p10.png", githubUrl:"https://github.com/EduardoProfe666/Proyecto-Tinger-y-el-Estambre"}
+const p9 = {title:"📶Wifi-Repair📶", pageUrl:"/work/wifi", thumbnail:"https://cdn.mos.cms.futurecdn.net/kSRmHY5a98t7G5jMTgqhUi.jpg", githubUrl:"https://github.com/EduardoProfe666/Wifi-Repair"}
+
+const p18 = {title:"🤵Porfolio Personal🤵", pageUrl:"/work/portfolio", thumbnail:"/assets/p13.png", githubUrl:"https://github.com/EduardoProfe666/", liveUrl:"https://eduardoprofe666.github.io/"}
 
 ---
 
@@ -49,6 +56,12 @@ const p12 = {title:"🤵Porfolio Personal🤵", pageUrl:"/work/portfolio", thumb
 				<ProjectCard projectDetail={p10}/>
 				<ProjectCard projectDetail={p11}/>
 				<ProjectCard projectDetail={p12}/>
+				<ProjectCard projectDetail={p13}/>
+				<ProjectCard projectDetail={p14}/>
+				<ProjectCard projectDetail={p15}/>
+				<ProjectCard projectDetail={p16}/>
+				<ProjectCard projectDetail={p17}/>
+				<ProjectCard projectDetail={p18}/>
 			</Grid>
 		</main>
 		<ContactCTA />
