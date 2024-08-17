@@ -106,7 +106,7 @@ export default function Page() {
                     </BlurFade>
                     <div className="text-center items-center justify-center flex flex-wrap gap-1">
 
-                        <IconCloud iconSlugs={[...DATA.skill_slugs]} dragControl={true}/>
+                        <IconCloud iconSlugs={[...DATA.skill_slugs]}/>
                     </div>
                 </div>
             </section>
