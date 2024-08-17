@@ -1,12 +1,12 @@
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { ModeToggle } from "@/components/mode-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { ModeToggle } from "@/components/main/mode-toggle";
+import { buttonVariants } from "@/components/common/button";
+import { Separator } from "@/components/common/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/common/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import {GithubIcon, HomeIcon, NotebookIcon} from "lucide-react";

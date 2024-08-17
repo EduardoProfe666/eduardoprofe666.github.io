@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/common/avatar";
+import { Badge } from "@/components/common/badge";
+import { Card, CardContent, CardHeader } from "@/components/common/card";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 

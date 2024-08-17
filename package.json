@@ -1,7 +1,14 @@
 {
-  "name": "porfolio",
-  "version": "0.1.0",
+  "name": "eduardoprofe666-personal-portfolio-v2",
+  "version": "1.0.0",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "email": "eduardoglez64377@gmail.com",
+    "name": "Eduardo González",
+    "url": "eduardoprofe666.github.io"
+  },
+  "description": "EduardoProfe666's personal portfolio built with Next.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

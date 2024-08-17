@@ -1,4 +1,4 @@
-import {Icons} from "@/components/icons";
+import {Icons} from "@/components/main/icons";
 
 export const DATA = {
     name: "Eduardo González",

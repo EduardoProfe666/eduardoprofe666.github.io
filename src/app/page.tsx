@@ -1,10 +1,10 @@
-import {HackathonCard} from "@/components/hackathon-card";
+import {EventCard} from "@/components/main/event-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import {ProjectCard} from "@/components/project-card";
-import {ResumeCard} from "@/components/resume-card";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {Badge} from "@/components/ui/badge";
+import {ProjectCard} from "@/components/main/project-card";
+import {ResumeCard} from "@/components/main/resume-card";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/common/avatar";
+import {Badge} from "@/components/common/badge";
 import {DATA} from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -107,12 +107,6 @@ export default function Page() {
                     <div className="text-center items-center justify-center flex flex-wrap gap-1">
 
                         <IconCloud iconSlugs={[...DATA.skill_slugs]}/>
-
-                        {/*{DATA.skills.map((skill, id) => (*/}
-                        {/*  <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>*/}
-                        {/*    <Badge key={skill}>{skill}</Badge>*/}
-                        {/*  </BlurFade>*/}
-                        {/*))}*/}
                     </div>
                 </div>
             </section>
@@ -186,7 +180,7 @@ export default function Page() {
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 15 + id * 0.05}
                                 >
-                                    <HackathonCard
+                                    <EventCard
                                         title={project.title}
                                         description={project.description}
                                         location={project.location}
@@ -218,7 +212,7 @@ export default function Page() {
                                 >
                                     con un correo directamente
                                 </Link>{" "}
-                                y te responderé en cuanto pueda. Siempre es un placer un ayudar.
+                                y te responderé en cuanto pueda. Siempre es un placer ayudar.
                             </p>
                         </div>
                     </BlurFade>

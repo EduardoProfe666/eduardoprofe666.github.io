@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/common/avatar";
+import { Badge } from "@/components/common/badge";
 import Link from "next/link";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   }[];
 }
 
-export function HackathonCard({
+export function EventCard({
   title,
   description,
   dates,

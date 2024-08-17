@@ -1,6 +1,6 @@
-import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import Navbar from "@/components/main/navbar";
+import { ThemeProvider } from "@/components/main/theme-provider";
+import { TooltipProvider } from "@/components/common/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
     google: "",
     yandex: "",
   },
-  keywords: "EduardoProfe",
+  keywords: "EduardoProfe666",
   authors: {
-    name: "EduardoProfe",
+    name: "EduardoProfe666",
     url: "https://github.com/EduardoProfe666"
   }
 };
