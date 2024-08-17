@@ -120,7 +120,7 @@ export const DATA = {
             start: "Junio 2021",
             end: "Abril 2022",
             description:
-                "Trabajé en sistemas de inventario, contabilidad y auditorías a almacénes y bienes de la universidad",
+                "Trabajé en sistemas de inventario, contabilidad y auditorías a almacenes y bienes de la universidad",
         },
     ],
     education: [
@@ -153,7 +153,7 @@ export const DATA = {
                     icon: <Icons.globe className="size-3"/>,
                 },
                 {
-                    type: "Source",
+                    type: "Fuente",
                     href: "https://github.com/EduardoProfe666/sudoku-play",
                     icon: <Icons.github className="size-3"/>,
                 },
@@ -176,7 +176,7 @@ export const DATA = {
             ],
             links: [
                 {
-                    type: "Source",
+                    type: "Fuente",
                     href: "https://github.com/EduardoProfe666/PyImageEditor",
                     icon: <Icons.github className="size-3"/>,
                 },
@@ -185,31 +185,30 @@ export const DATA = {
             video: "/projects/pyimageeditor.mp4",
         },
         {
-            title: "💔 Perdóname",
-            href: "https://perdoname.onrender.com",
-            dates: "Febrero 2024",
+            title: "🌌 Api Personalizada",
+            href: "https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/",
+            dates: "2022 - Presente",
             active: true,
             description:
-                "Proyecto para los bros que necesitan el perdón.",
+                "Proyecto de una api en Java con componentes visuales (Java Swing), funcionalidades y utilidades lógicas.",
             technologies: [
-                "HTML",
-                "CSS",
-                "JS",
+                "Java",
+                "Java Swing",
             ],
             links: [
                 {
-                    type: "Website",
-                    href: "https://perdoname.onrender.com",
+                    type: "Documentación",
+                    href: "https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/",
                     icon: <Icons.globe className="size-3"/>,
                 },
                 {
-                    type: "Source",
-                    href: "https://github.com/EduardoProfe666/Perdoname",
+                    type: "Fuente",
+                    href: "https://github.com/EduardoProfe666/Proyecto-Api-Personalizada",
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
             image: "",
-            video: "/projects/perdoname7.mp4",
+            video: "/projects/api-personalizada.mp4",
         },
         {
             title: "🚀 Fastapi-Calculator",
@@ -224,12 +223,12 @@ export const DATA = {
             ],
             links: [
                 {
-                    type: "Website",
+                    type: "Sitio Web",
                     href: "https://fastapi-calculadora.onrender.com/",
                     icon: <Icons.globe className="size-3"/>,
                 },
                 {
-                    type: "Source",
+                    type: "Fuente",
                     href: "https://github.com/EduardoProfe666/fastapi-calculadora",
                     icon: <Icons.github className="size-3"/>,
                 },
@@ -279,7 +278,7 @@ export const DATA = {
                 },
                 {
                     title: "Canal de Youtube",
-                    icon: <Icons.github className="h-4 w-4"/>,
+                    icon: <Icons.youtube className="h-4 w-4"/>,
                     href: "https://youtube.com/@EduardoProfeCujae",
                 }
             ],
