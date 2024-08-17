@@ -12,19 +12,6 @@ export const DATA = {
     summary:
         "Comencé la carrera de Ingeniería Informática en la [Universidad Tecnológica de La Habana](/#education) (CUJAE) a mediados de 2021. Durante dos años, he [trabajado en varias empresas](/#work) y participado en [múltiples eventos](/#events), lo que ha fortalecido mi experiencia. Me apasiona mi trabajo y tengo el deseo de continuar aprendiendo y aplicando [nuevas tecnologías](/#skills).",
     avatarUrl: "/me.png",
-    skills: [
-        "React",
-        "Next.js",
-        "Typescript",
-        "Node.js",
-        "Python",
-        "Go",
-        "Postgres",
-        "Docker",
-        "Kubernetes",
-        "Java",
-        "C++",
-    ],
     skill_slugs: [
         "gitforwindows",
         "django",
@@ -45,7 +32,6 @@ export const DATA = {
         "nestjs",
         "astro",
         "render",
-        "jest",
         "railway",
         "docker",
         "git",
@@ -53,7 +39,6 @@ export const DATA = {
         "gitlab",
         "vite",
         "githubpages",
-        "vercel",
         "redis",
         "fastapi",
         "netlify",
@@ -69,14 +54,6 @@ export const DATA = {
         email: "eduardoprofe666@gmail.com",
         tel: "+53 55839297",
         social: {
-            Whatsapp: {
-                url: "https://wa.me/5355839297",
-                icon: Icons.whatsapp,
-            },
-            Telegram: {
-                url: "https://www.linkedin.com/in/eduardo-gonzalez-23003628a",
-                icon: Icons.telegram,
-            },
             Correo: {
                 url: "mailto:eduardoglez64377@gmail.com",
                 icon: Icons.mail,
@@ -93,10 +70,6 @@ export const DATA = {
                 url: "https://www.instagram.com/eduardoglez02",
                 icon: Icons.instagram,
             },
-
-
-
-
         },
     },
 
@@ -133,7 +106,7 @@ export const DATA = {
             title: "Ingeniero Informático",
             logoUrl: "/work/alsofpro.png",
             start: "Diciembre 2023",
-            end: "Presente",
+            end: "Julio 2023",
             description:
                 "Co-desarrollé el backend de dos módulos (Contratación y Servicios) para ALCOM, la compañía de Aguas de La Habana, empleando Django y Django Rest Framework.",
         },
@@ -162,129 +135,111 @@ export const DATA = {
     ],
     projects: [
         {
-            title: "Chat Collect",
-            href: "https://chatcollect.com",
-            dates: "Jan 2024 - Feb 2024",
+            title: "🔢 Sudoku Play",
+            href: "https://sudoku-play.onrender.com",
+            dates: "Agosto 2024",
             active: true,
             description:
-                "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+                "Simple juego de sudoku, creado como una Progressive Web App instalable, que funciona On/Offline",
             technologies: [
-                "Next.js",
-                "Typescript",
-                "PostgreSQL",
-                "Prisma",
-                "TailwindCSS",
-                "Stripe",
-                "Shadcn UI",
-                "Magic UI",
+                "HTML",
+                "CSS",
+                "JS",
             ],
             links: [
                 {
-                    type: "Website",
-                    href: "https://chatcollect.com",
-                    icon: <Icons.globe className="size-3"/>,
-                },
-            ],
-            image: "",
-            video:
-                "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-        },
-        {
-            title: "Magic UI",
-            href: "https://magicui.design",
-            dates: "June 2023 - Present",
-            active: true,
-            description:
-                "Designed, developed and sold animated UI components for developers.",
-            technologies: [
-                "Next.js",
-                "Typescript",
-                "PostgreSQL",
-                "Prisma",
-                "TailwindCSS",
-                "Stripe",
-                "Shadcn UI",
-                "Magic UI",
-            ],
-            links: [
-                {
-                    type: "Website",
-                    href: "https://magicui.design",
+                    type: "Sitio Web",
+                    href: "https://sudoku-play.onrender.com",
                     icon: <Icons.globe className="size-3"/>,
                 },
                 {
                     type: "Source",
-                    href: "https://github.com/magicuidesign/magicui",
+                    href: "https://github.com/EduardoProfe666/sudoku-play",
+                    icon: <Icons.github className="size-3"/>,
+                },
+            ],
+            image: '',
+            video:
+                "/projects/sudoku-play.mp4",
+        },
+        {
+            title: "📸 PyImageEditor",
+            href: "https://github.com/EduardoProfe666/PyImageEditor",
+            dates: "Enero 2024",
+            active: true,
+            description:
+                "Editor simple de imágenes en Python",
+            technologies: [
+                "Python",
+                "CustomTkinter",
+                "PIL",
+            ],
+            links: [
+                {
+                    type: "Source",
+                    href: "https://github.com/EduardoProfe666/PyImageEditor",
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
             image: "",
-            video: "https://cdn.magicui.design/bento-grid.mp4",
+            video: "/projects/pyimageeditor.mp4",
         },
         {
-            title: "llm.report",
-            href: "https://llm.report",
-            dates: "April 2023 - September 2023",
+            title: "💔 Perdóname",
+            href: "https://perdoname.onrender.com",
+            dates: "Febrero 2024",
             active: true,
             description:
-                "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+                "Proyecto para los bros que necesitan el perdón.",
             technologies: [
-                "Next.js",
-                "Typescript",
-                "PostgreSQL",
-                "Prisma",
-                "TailwindCSS",
-                "Shadcn UI",
-                "Magic UI",
-                "Stripe",
-                "Cloudflare Workers",
+                "HTML",
+                "CSS",
+                "JS",
             ],
             links: [
                 {
                     type: "Website",
-                    href: "https://llm.report",
+                    href: "https://perdoname.onrender.com",
                     icon: <Icons.globe className="size-3"/>,
                 },
                 {
                     type: "Source",
-                    href: "https://github.com/dillionverma/llm.report",
+                    href: "https://github.com/EduardoProfe666/Perdoname",
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
             image: "",
-            video: "https://cdn.llm.report/openai-demo.mp4",
+            video: "/projects/perdoname7.mp4",
         },
         {
-            title: "Automatic Chat",
-            href: "https://automatic.chat",
-            dates: "April 2023 - March 2024",
+            title: "🚀 Fastapi-Calculator",
+            href: "https://github.com/EduardoProfe666/Fastapi-Calculator",
+            dates: "Enero 2024",
             active: true,
             description:
-                "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+                "Api de Calculadora que contiene cálculo básico, conversión (divisas incluidas), trigonometría, calculadora, estadística y más",
             technologies: [
-                "Next.js",
-                "Typescript",
-                "PostgreSQL",
-                "Prisma",
-                "TailwindCSS",
-                "Shadcn UI",
-                "Magic UI",
-                "Stripe",
-                "Cloudflare Workers",
+                "Fastapi",
+                "Python",
             ],
             links: [
                 {
                     type: "Website",
-                    href: "https://automatic.chat",
+                    href: "https://fastapi-calculadora.onrender.com/",
                     icon: <Icons.globe className="size-3"/>,
+                },
+                {
+                    type: "Source",
+                    href: "https://github.com/EduardoProfe666/fastapi-calculadora",
+                    icon: <Icons.github className="size-3"/>,
                 },
             ],
             image: "",
             video:
-                "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+                "/projects/fastapi-calculator.mp4",
         },
     ],
-    hackathons: [
+    events: [
         {
             title: "ICPC Caribe",
             dates: "2023",

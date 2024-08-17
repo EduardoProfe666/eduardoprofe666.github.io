@@ -106,7 +106,7 @@ export default function Page() {
                     </BlurFade>
                     <div className="text-center items-center justify-center flex flex-wrap gap-1">
 
-                        <IconCloud iconSlugs={[...DATA.skill_slugs]}/>
+                        <IconCloud iconSlugs={[...DATA.skill_slugs]} dragControl/>
                     </div>
                 </div>
             </section>
@@ -167,7 +167,7 @@ export default function Page() {
                                 </h2>
                                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     A lo largo de mi estancia en la universidad, He participado en{" "}
-                                    {DATA.hackathons.length}+ eventos. Van desde concursos de programación universitarios,
+                                    {DATA.events.length}+ eventos. Van desde concursos de programación universitarios,
                                     regionales, y eventos universitarios en general.
                                 </p>
                             </div>
@@ -175,7 +175,7 @@ export default function Page() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 14}>
                         <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-                            {DATA.hackathons.map((project, id) => (
+                            {DATA.events.map((project, id) => (
                                 <BlurFade
                                     key={project.title + project.dates}
                                     delay={BLUR_FADE_DELAY * 15 + id * 0.05}
@@ -205,7 +205,7 @@ export default function Page() {
                                 Contáctame
                             </h2>
                             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                Quieres hablar conmigo? Solo mándame un dm a cualquiera de mis redes sociales, o{" "}
+                                Quieres contactarme? Solo mándame un dm a cualquiera de mis redes sociales, o{" "}
                                 <Link
                                     href={DATA.contact.social.Correo.url}
                                     className="text-blue-500 hover:underline"
