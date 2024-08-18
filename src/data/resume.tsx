@@ -158,9 +158,9 @@ export const DATA = {
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
-            image: '',
+            image: '/projects/sudoku-play.png',
             video:
-                "/projects/sudoku-play.mp4",
+                "",
         },
         {
             title: "📸 PyImageEditor",
@@ -181,8 +181,8 @@ export const DATA = {
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
-            image: "",
-            video: "/projects/pyimageeditor.mp4",
+            image: "/projects/pyimageeditor.png",
+            video: "",
         },
         {
             title: "🌌 Api Personalizada",
@@ -207,8 +207,8 @@ export const DATA = {
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
-            image: "",
-            video: "/projects/api-personalizada.mp4",
+            image: "/projects/api-personalizada.png",
+            video: "",
         },
         {
             title: "🚀 Fastapi-Calculator",
@@ -233,9 +233,65 @@ export const DATA = {
                     icon: <Icons.github className="size-3"/>,
                 },
             ],
-            image: "",
+            image: "/projects/fastapi-calculadora.png",
             video:
-                "/projects/fastapi-calculator.mp4",
+                "",
+        },
+        {
+            title: "⚔️ Descargar Anime Free Bot",
+            href: "https://t.me/descargar_anime_free_bot",
+            dates: "Julio 2024",
+            active: true,
+            description:
+                "Bot de telegram para descargar animes subtitulados al español",
+            technologies: [
+                "Python",
+                "Web Scrapping",
+                "Telegram API"
+            ],
+            links: [
+                {
+                    type: "Telegram",
+                    href: "https://t.me/descargar_anime_free_bot",
+                    icon: <Icons.telegram className="size-3"/>,
+                },
+                {
+                    type: "Fuente",
+                    href: "https://github.com/EduardoProfe666/Descargar-Anime-Free-Bot",
+                    icon: <Icons.github className="size-3"/>,
+                },
+            ],
+            image: "/projects/bot.png",
+            video:
+                "",
+        },
+        {
+            title: "💔 Perdoname ",
+            href: "https://perdoname.onrender.com/",
+            dates: "Marzo 2024",
+            active: true,
+            description:
+                "Proyecto para los bros que necesitan el perdón",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JS"
+            ],
+            links: [
+                {
+                    type: "Sitio Web",
+                    href: "https://perdoname.onrender.com/",
+                    icon: <Icons.globe className="size-3"/>,
+                },
+                {
+                    type: "Fuente",
+                    href: "https://github.com/EduardoProfe666/Perdoname",
+                    icon: <Icons.github className="size-3"/>,
+                },
+            ],
+            image: "/projects/perdoname.png",
+            video:
+                "",
         },
     ],
     events: [

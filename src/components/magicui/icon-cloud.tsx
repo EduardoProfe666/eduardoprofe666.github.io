@@ -25,7 +25,7 @@ export const cloudProps: Omit<ICloud, "children"> = {
         depth: 1,
         wheelZoom: false,
         imageScale: 2,
-        activeCursor: "default",
+        activeCursor: "pointer",
         tooltip: "native",
         initial: [0.1, -0.1],
         clickToFront: 500,
@@ -33,7 +33,7 @@ export const cloudProps: Omit<ICloud, "children"> = {
         outlineColour: "#0000",
         maxSpeed: 0.04,
         minSpeed: 0.02,
-        dragControl: true,
+        dragControl: false,
     },
 };
 
