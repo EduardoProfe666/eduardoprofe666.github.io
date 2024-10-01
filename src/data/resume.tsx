@@ -8,7 +8,7 @@ export const DATA = {
     locationLink: "https://www.google.com/maps/place/havana",
     description:
         "\n" +
-        "Estudiante de tercer año en Ingeniería Informática en la CUJAE, con pasión por la creación y el apoyo a otros. Activo en GitHub.",
+        "Estudiante de cuarto año en Ingeniería Informática en la CUJAE, con pasión por la creación y el apoyo a otros. Activo en GitHub.",
     summary:
         "Comencé la carrera de Ingeniería Informática en la [Universidad Tecnológica de La Habana](/#education) (CUJAE) a mediados de 2021. Durante dos años, he [trabajado en varias empresas](/#work) y participado en [múltiples eventos](/#events), lo que ha fortalecido mi experiencia. Me apasiona mi trabajo y tengo el deseo de continuar aprendiendo y aplicando [nuevas tecnologías](/#skills).",
     avatarUrl: "/me.png",
