@@ -8,7 +8,7 @@ export const DATA = {
     locationLink: "https://www.google.com/maps/place/havana",
     description:
         "\n" +
-        "Estudiante de tercer año en Ingeniería Informática en la CUJAE, con pasión por la creación y el apoyo a otros. Activo en GitHub.",
+        "Estudiante de cuarto año en Ingeniería Informática en la CUJAE, con pasión por la creación y el apoyo a otros. Activo en GitHub.",
     summary:
         "Comencé la carrera de Ingeniería Informática en la [Universidad Tecnológica de La Habana](/#education) (CUJAE) a mediados de 2021. Durante dos años, he [trabajado en varias empresas](/#work) y participado en [múltiples eventos](/#events), lo que ha fortalecido mi experiencia. Me apasiona mi trabajo y tengo el deseo de continuar aprendiendo y aplicando [nuevas tecnologías](/#skills).",
     avatarUrl: "/me.png",
@@ -58,7 +58,7 @@ export const DATA = {
                 url: "mailto:eduardoglez64377@gmail.com",
                 icon: Icons.mail,
             }
-            ,LinkedIn: {
+            , LinkedIn: {
                 url: "https://www.linkedin.com/in/eduardo-gonzalez-23003628a",
                 icon: Icons.linkedin,
             },
@@ -75,6 +75,18 @@ export const DATA = {
 
     work: [
         {
+            company: "Mdialityc",
+            badges: ["actual"],
+            href: "https://github.com/Mdialityc",
+            location: "La Habana, CU",
+            title: "Desarrollador Backend",
+            logoUrl: "/work/mdialityc.png",
+            start: "Octubre 2024",
+            end: "Presente",
+            description:
+                "Actualmente desarrollando backend para los proyectos de la empresa.",
+        },
+        {
             company: "Laboratorios Farmacéuticos AICA+",
             href: "https://aica.cu",
             badges: ["actual"],
@@ -89,14 +101,14 @@ export const DATA = {
         {
             company: "Facultad de Ingeniería Informática en la CUJAE",
             href: "https://cujae.cu",
-            badges: [],
+            badges: ["actual"],
             location: "La Habana, CU",
             title: "Asistente Técnico de la Docencia (Profesor)",
             logoUrl: "/work/cujae.png",
             start: "Enero 2023",
             end: "Presente",
             description:
-                "Impartí clases en primer y segundo año de Ingeniería Informática, abarcando materias como Introducción a la Programación, Diseño de Interfaces y Pruebas, Programación Orientada a Objetos, y Estructuras de Datos.",
+                "Impartí clases en primer y segundo año de Ingeniería Informática, abarcando materias como Introducción a la Programación, Diseño de Interfaces y Pruebas, Programación Orientada a Objetos, y Estructuras de Datos. Actualmente estoy impartiendo clases de Programación Web para tercer año de Ingeniería Informática",
         },
         {
             company: "AlsoftPro",
@@ -127,7 +139,7 @@ export const DATA = {
         {
             school: "CUJAE",
             href: "https://cujae.cu",
-            degree: "Estudiante de 3er año de Ingeniería Informática",
+            degree: "Estudiante de 4to año de Ingeniería Informática",
             logoUrl: "/work/cujae.png",
             start: "2022",
             end: "Presente",
@@ -295,6 +307,17 @@ export const DATA = {
         },
     ],
     events: [
+        {
+            title: "ICPC Caribe",
+            dates: "2024",
+            location: "Caribe",
+            description:
+                "Ganador en concurso de programación de la ICPC a nivel del Caribe. Clasificado a la siguiente ronda a nivel de América Latina",
+            image:
+                "/logos/icpc.ico",
+            mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
+            links: [],
+        },
         {
             title: "ICPC Caribe",
             dates: "2023",
