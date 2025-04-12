@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/common/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import { Card, CardContent, CardHeader } from "@/components/common/card";
 import { ChevronRightIcon } from "lucide-react";
@@ -44,7 +48,7 @@ export const ResumeCard = ({
               <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
                 {title}
                 {badges && (
-                  <span className="inline-flex gap-x-1">
+                  <span className="inline-flex gap-x-1 pl-1">
                     {badges.map((badge, index) => (
                       <Badge
                         variant="secondary"
