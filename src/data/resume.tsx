@@ -59,7 +59,7 @@ export const DATA = {
         icon: Icons.mail,
       },
       LinkedIn: {
-        url: "https://www.linkedin.com/in/eduardo-alejandro-gonz%C3%A1lez-martell-23003628a/",
+        url: "www.linkedin.com/in/eduardoprofe666",
         icon: Icons.linkedin,
       },
       Youtube: {
@@ -99,7 +99,7 @@ export const DATA = {
         "Currently leading the development of the Gesel system for the Cuban Law Firm Association, implementing a comprehensive legal management solution using Angular.js, Tailwind CSS, Express.js, and MySQL. Focus on improving legal workflow efficiency and case management.",
     },
     {
-      company: "Mdialityc",
+      company: "Medialityc",
       badges: ["current"],
       href: "https://github.com/medialityc/",
       location: "Havana, CU",
@@ -142,7 +142,7 @@ export const DATA = {
       title: "Software Engineer",
       logoUrl: "/work/alsofpro.png",
       start: "December 2023",
-      end: "July 2023",
+      end: "July 2024",
       description:
         "Co-developed the backend for two modules (Contracting and Services) for ALCOM, Havana's Water Company, using Django and Django Rest Framework.",
     },
