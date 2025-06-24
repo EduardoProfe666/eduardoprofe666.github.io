@@ -55,7 +55,7 @@ export const DATA = {
     tel: "+53 55839297",
     social: {
       Email: {
-        url: "mailto:eduardoglez64377@gmail.com",
+        url: "mailto:eduardoprofe666@gmail.com",
         icon: Icons.mail,
       },
       LinkedIn: {
@@ -75,6 +75,18 @@ export const DATA = {
 
   work: [
     {
+      company: "Codes SRL",
+      badges: ["current"],
+      href: "https://www.codestic.net/",
+      location: "Havana, CU",
+      title: "Backend Developer",
+      logoUrl: "/work/codes.png",
+      start: "May 2025",
+      end: "Present",
+      description:
+        "Currently developing a worldwide ecommerce platform using .NET, RabbitMQ, AWS S3, AWS CDN, MinIO.",
+    },
+    {
       company: "EMSI FARMA TECH",
       badges: ["current"],
       href: "https://www.emsifarma.com",
@@ -88,27 +100,27 @@ export const DATA = {
     },
     {
       company: "Ecos Productions",
-      badges: ["current"],
+      badges: [],
       href: "https://www.ecosvideos.com",
       location: "Mayabeque, CU",
       title: "Fullstack Developer",
       logoUrl: "/work/ecos.jpg",
       start: "March 2025",
-      end: "July 2025",
+      end: "June 2025",
       description:
-        "Currently leading the development of the Gesel system for the Cuban Law Firm Association, implementing a comprehensive legal management solution using Angular.js, Tailwind CSS, Express.js, and MySQL. Focus on improving legal workflow efficiency and case management.",
+        "Leaded the development of the Gesel system for the Cuban Law Firm Association, implementing a comprehensive legal management solution using Angular.js, Tailwind CSS, Express.js, and MySQL. Focus on improving legal workflow efficiency and case management.",
     },
     {
       company: "Medialityc",
-      badges: ["current"],
+      badges: [],
       href: "https://github.com/medialityc/",
       location: "Havana, CU",
       title: "Backend Developer / Project Manager",
       logoUrl: "/work/medialityc.png",
       start: "October 2024",
-      end: "Present",
+      end: "June 202",
       description:
-        "Currently developing backend solutions for company projects while leading full-stack development teams. Responsible for technical decision-making, team mentoring, and ensuring project delivery excellence across multiple development teams.",
+        "Developed backend solutions for company projects while leading full-stack development teams. Responsible for technical decision-making, team mentoring, and ensuring project delivery excellence across multiple development teams.",
     },
     {
       company: "AICA+ Pharmaceutical Laboratories",

@@ -126,7 +126,16 @@ export default function Page() {
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from desktop
                   applications to complex web applications. Here are some of my
-                  favorites. Check out my GitHub to find most of my work.
+                  favorites. Check out{" "}
+                  <a
+                    className="hover:underline hover:underline-offset-4 text-blue-600 font-semibold"
+                    href="https://github.com/EduardoProfe666"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    my GitHub
+                  </a>{" "}
+                  to find most of my work.
                 </p>
               </div>
             </div>
