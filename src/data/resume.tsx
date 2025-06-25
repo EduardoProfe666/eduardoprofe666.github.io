@@ -118,7 +118,7 @@ export const DATA = {
       title: "Backend Developer / Project Manager",
       logoUrl: "/work/medialityc.png",
       start: "October 2024",
-      end: "June 202",
+      end: "June 2025",
       description:
         "Developed backend solutions for company projects while leading full-stack development teams. Responsible for technical decision-making, team mentoring, and ensuring project delivery excellence across multiple development teams.",
     },

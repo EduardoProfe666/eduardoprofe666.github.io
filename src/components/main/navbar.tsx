@@ -9,9 +9,9 @@ import {
 } from "@/components/common/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import {GithubIcon, HomeIcon, NotebookIcon} from "lucide-react";
+import { GithubIcon, HomeIcon, NotebookIcon, FileText } from "lucide-react";
 import Link from "next/link";
-import {GitHubLogoIcon} from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function Navbar() {
   return (
@@ -22,17 +22,20 @@ export default function Navbar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="/"
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "size-12"
                 )}
               >
-                <HomeIcon className="size-4" />
+                <FileText className="size-4" />
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Home</p>
+              <p>Download Resume</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>
@@ -40,11 +43,11 @@ export default function Navbar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                  href="https://github.com/EduardoProfe666"
-                  className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12"
-                  )}
+                href="https://github.com/EduardoProfe666"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "size-12"
+                )}
               >
                 <GitHubLogoIcon className="size-4" />
               </Link>
