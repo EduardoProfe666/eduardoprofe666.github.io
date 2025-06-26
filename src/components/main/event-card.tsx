@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/common/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import Link from "next/link";
 
@@ -27,7 +31,12 @@ export function EventCard({
     <li className="relative ml-10 py-4">
       <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
         <Avatar className="border size-12 m-auto">
-          <AvatarImage src={image} alt={title} className="object-contain" />
+          <AvatarImage
+            src={image}
+            alt={title}
+            className="object-contain"
+            loading="lazy"
+          />
           <AvatarFallback>{title[0]}</AvatarFallback>
         </Avatar>
       </div>

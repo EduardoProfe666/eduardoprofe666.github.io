@@ -13,8 +13,11 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import IconCloud from "@/components/magicui/icon-cloud";
+import { lazy, Suspense } from "react";
 
-const BLUR_FADE_DELAY = 0.04;
+const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
+
+const BLUR_FADE_DELAY = 0;
 
 export default function Page() {
   return (
@@ -34,10 +37,14 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
-            </div>
+            </div>{" "}
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                <AvatarImage
+                  alt={DATA.name}
+                  src={DATA.avatarUrl}
+                  loading="eager"
+                />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -106,9 +113,17 @@ export default function Page() {
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Technologies</h2>
-          </BlurFade>
+          </BlurFade>{" "}
           <div className="text-center items-center justify-center flex flex-wrap gap-1">
-            <IconCloud iconSlugs={[...DATA.skill_slugs]} />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-64 w-full animate-pulse">
+                  Loading skills...
+                </div>
+              }
+            >
+              <LazyIconCloud iconSlugs={[...DATA.skill_slugs]} />
+            </Suspense>
           </div>
         </div>
       </section>
