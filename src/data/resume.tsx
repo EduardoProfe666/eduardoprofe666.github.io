@@ -192,20 +192,26 @@ export const DATA = {
       video: "",
     },
     {
-      title: "📸 PyImageEditor",
-      href: "https://github.com/EduardoProfe666/PyImageEditor",
-      dates: "January 2024",
+      title: "💱 Candela",
+      href: "https://candela.medialityc.com",
+      dates: "May 2025",
       active: true,
-      description: "Simple yet powerful image editor built with Python",
-      technologies: ["Python", "CustomTkinter", "PIL"],
+      description:
+        "Website for Historical Analysis of CUP Exchange Rates powered by elToque",
+      technologies: ["Next.js", "Tailwind", "elToque API"],
       links: [
         {
           type: "Source",
-          href: "https://github.com/EduardoProfe666/PyImageEditor",
+          href: "https://github.com/EduardoProfe666/tasas-cuba",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "Website",
+          href: "https://candela.medialityc.com",
+          icon: <Icons.globe className="size-3" />,
+        },
       ],
-      image: "/projects/pyimageeditor.png",
+      image: "/projects/candela.png",
       video: "",
     },
     {
@@ -232,26 +238,25 @@ export const DATA = {
       video: "",
     },
     {
-      title: "🚀 Fastapi-Calculator",
-      href: "https://github.com/EduardoProfe666/Fastapi-Calculator",
-      dates: "January 2024",
+      title: "🌤️ Weather App",
+      href: "https://the-cool-weather-app.onrender.com/",
+      dates: "April 2025",
       active: true,
-      description:
-        "Calculator API featuring basic calculations, conversions (including currencies), trigonometry, statistics, and more",
-      technologies: ["Fastapi", "Python"],
+      description: "Weather App powered by Open-Meteo",
+      technologies: ["Next.js", "Tailwind", "OpenMeteo"],
       links: [
         {
           type: "Website",
-          href: "https://fastapi-calculadora.onrender.com/",
+          href: "https://the-cool-weather-app.onrender.com/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/EduardoProfe666/fastapi-calculadora",
+          href: "https://github.com/EduardoProfe666/weather-app",
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/fastapi-calculadora.png",
+      image: "/projects/weather-app.png",
       video: "",
     },
     {
@@ -277,25 +282,26 @@ export const DATA = {
       video: "",
     },
     {
-      title: "💔 Forgive Me",
-      href: "https://perdoname.onrender.com/",
+      title: "🔐 Password Security Toolkit",
+      href: "https://password-security-toolkit.onrender.com/",
       dates: "March 2024",
       active: true,
-      description: "Interactive project for seeking forgiveness",
-      technologies: ["HTML", "CSS", "JS"],
+      description:
+        "A set of tools for password security, including a password generator, strength checker, and entropy calculator.",
+      technologies: ["React", "Password", "Tailwind"],
       links: [
         {
           type: "Website",
-          href: "https://perdoname.onrender.com/",
+          href: "https://password-security-toolkit.onrender.com/",
           icon: <Icons.globe className="size-3" />,
         },
         {
           type: "Source",
-          href: "https://github.com/EduardoProfe666/Perdoname",
+          href: "https://github.com/EduardoProfe666/password-generator",
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/perdoname.png",
+      image: "/projects/password-generator.png",
       video: "",
     },
   ],
