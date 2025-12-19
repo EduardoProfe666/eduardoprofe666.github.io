@@ -192,26 +192,26 @@ export const DATA = {
       video: "",
     },
     {
-      title: "💱 Candela",
-      href: "https://candela.medialityc.com",
-      dates: "May 2025",
+      title: "⚡ UNE Unwrapped",
+      href: "https://une-unwrapped-habana.vercel.app",
+      dates: "December 2025",
       active: true,
       description:
-        "Website for Historical Analysis of CUP Exchange Rates powered by elToque",
-      technologies: ["Next.js", "Tailwind", "elToque API"],
+        "A website for displaying statistics about UNE's public Telegram channel in Havana",
+      technologies: ["Python", "Telethon", "React.js"],
       links: [
         {
           type: "Source",
-          href: "https://github.com/EduardoProfe666/tasas-cuba",
+          href: "https://github.com/EduardoProfe666/une-unwrapped-habana",
           icon: <Icons.github className="size-3" />,
         },
         {
           type: "Website",
-          href: "https://candela.medialityc.com",
+          href: "https://une-unwrapped-habana.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/candela.png",
+      image: "/projects/une-unwrapped.png",
       video: "",
     },
     {
