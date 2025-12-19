@@ -11,7 +11,7 @@ export const DATA = {
     "Computer Engineering graduate, passionate about software development and helping others. Active GitHub contributor.",
   summary:
     "I graduated with Gold Title honors from [Technological University of Havana](/#education) (CUJAE) in March 2025. Over my academic and professional journey, I've gained valuable experience through [various professional roles](/#work) and [competitive events](/#events). I'm passionate about my work and eager to continue learning and implementing [cutting-edge technologies](/#skills).",
-  avatarUrl: "/me.png",
+  avatarUrl: "/me.jpg",
   skill_slugs: [
     "python",
     "typescript",
