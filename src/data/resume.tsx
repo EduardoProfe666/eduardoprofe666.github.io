@@ -61,28 +61,40 @@ export const DATA = {
 
   work: [
     {
+      company: "AIKoders LLC",
+      badges: [],
+      href: "https://aikoders.tech/",
+      location: "Miami, Florida, USA",
+      title: "Lead Fullstack Developer | AI Architect",
+      logoUrl: "/work/aikoders.png",
+      start: "January 2026",
+      end: "Present",
+      description:
+       "Leading the design and development of scalable enterprise solutions using Next.js, focusing on process optimization through the strategic integration of Artificial Intelligence. Implementing complex automation workflows with n8n to bridge AI services with core business logic, successfully reducing operational costs and significantly increasing the value delivered to end clients." 
+    },
+    {
       company: "Codes SRL",
-      badges: ["current"],
+      badges: [],
       href: "https://www.codestic.net/",
       location: "Havana, CU",
       title: "Backend Developer",
       logoUrl: "/work/codes.png",
       start: "May 2025",
-      end: "Present",
+      end: "January 2026",
       description:
-        "Currently developing a worldwide ecommerce platform using .NET, RabbitMQ, AWS S3, AWS CDN, MinIO.",
+        "Developed the backend for the transnational e-commerce platform srmercado.com, implementing a microservices architecture in .NET based on Clean Architecture principles, CQRS, and event-driven communication using RabbitMQ. I managed storage and content delivery infrastructure via AWS (S3 and CloudFront CDN), later leading the migration to an on-premise solution with MinIO to meet strict data sovereignty requirements. Additionally, I ensured the platform's financial operability by integrating multiple international payment gateways—including Monei, PayNoPain (PayLands), and RedSys—guaranteeing secure and efficient cross-border transaction flows.",
     },
     {
       company: "EMSI FARMA TECH",
-      badges: ["current"],
+      badges: [],
       href: "https://www.emsifarma.com",
       location: "Havana, CU",
       title: "Software Engineer",
       logoUrl: "/work/emsifarma.png",
       start: "March 2025",
-      end: "Present",
+      end: "December 20225",
       description:
-        "Currently developing an Industry 4.0 MES/SCADA system using .NET, Tailwind CSS, WSO2 Identity Server, and Next.js. Implementing advanced manufacturing execution and supervisory control systems to optimize pharmaceutical production processes.",
+        "Driven the digital transformation toward Industry 4.0 by developing an integrated MES/SCADA system using .NET and Next.js, incorporating WSO2 Identity Server to ensure robust and secure identity management. Additionally, I led the optimization of legal workflows and complex case management by implementing agentic solutions with n8n. This initiative automated critical processes for multi-sector companies, significantly increasing operational efficiency through the deployment of intelligent, automated workflows."
     },
     {
       company: "Ecos Productions",
