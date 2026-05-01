@@ -28,8 +28,12 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-2xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
+                text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
+              >
+                <span className="inline-block origin-[70%_70%] hover:animate-wave">
+                  👋
+                </span>
+              </BlurFadeText>
               <BlurFadeText
                 className="max-w-[600px] md:text-xl"
                 delay={BLUR_FADE_DELAY}
