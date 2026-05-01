@@ -4,7 +4,7 @@
 
 # My Personal Portfolio
 
-Crafted with Next.js, Tailwind, [shadcn/ui](https://ui.shadcn.com/) yand [magic ui](https://magicui.design/). 
+Crafted with Next.js, Tailwind, [shadcn/ui](https://ui.shadcn.com/) and [magic ui](https://magicui.design/). 
 
 Deployed on Github Pages.
 
