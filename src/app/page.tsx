@@ -8,11 +8,9 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/common/avatar";
-import { Badge } from "@/components/common/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import IconCloud from "@/components/magicui/icon-cloud";
 import { lazy, Suspense } from "react";
 
 const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
@@ -56,9 +54,9 @@ export default function Page() {
           <h2 className="text-xl font-bold">About Me</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            <Markdown>{DATA.summary}</Markdown>
+          </div>
         </BlurFade>
       </section>
       <section id="work">

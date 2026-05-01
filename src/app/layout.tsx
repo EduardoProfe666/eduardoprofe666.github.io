@@ -76,16 +76,15 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/me.png" as="image" />
         <link rel="dns-prefetch" href="//cdn.simpleicons.org" />
       </head>
       <body
+        suppressHydrationWarning
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
           fontSans.variable
         )}
       >
-        {" "}
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={100}>
             {children}

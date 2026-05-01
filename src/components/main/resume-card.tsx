@@ -5,7 +5,7 @@ import {
 } from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import { Card, CardContent, CardHeader } from "@/components/common/card";
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 interface ResumeCardProps {
@@ -60,7 +60,7 @@ export const ResumeCard = ({
                     ))}
                   </span>
                 )}
-                <ChevronRightIcon className="size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
+                <ChevronRight className="size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
               </h3>
               <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
                 {period}

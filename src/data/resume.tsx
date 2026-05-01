@@ -11,7 +11,7 @@ export const DATA = {
     "Computer Engineering graduate, passionate about software development and helping others. Active GitHub contributor.",
   summary:
     "I graduated with Gold Title honors from [Technological University of Havana](/#education) (CUJAE) in March 2025. Over my academic and professional journey, I've gained valuable experience through [various professional roles](/#work) and [competitive events](/#events). I'm passionate about my work and eager to continue learning and implementing [cutting-edge technologies](/#skills).",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.avif",
   skill_slugs: [
     "python",
     "typescript",
@@ -66,7 +66,7 @@ export const DATA = {
       href: "https://aikoders.tech/",
       location: "Miami, Florida, USA",
       title: "Lead Fullstack Developer | AI Architect",
-      logoUrl: "/work/aikoders.png",
+      logoUrl: "/work/aikoders.avif",
       start: "January 2026",
       end: "Present",
       description:
@@ -78,7 +78,7 @@ export const DATA = {
       href: "https://www.codestic.net/",
       location: "Havana, CU",
       title: "Backend Developer",
-      logoUrl: "/work/codes.png",
+      logoUrl: "/work/codes.avif",
       start: "May 2025",
       end: "January 2026",
       description:
@@ -90,7 +90,7 @@ export const DATA = {
       href: "https://www.emsifarma.com",
       location: "Havana, CU",
       title: "Software Engineer",
-      logoUrl: "/work/emsifarma.png",
+      logoUrl: "/work/emsifarma.avif",
       start: "March 2025",
       end: "December 20225",
       description:
@@ -102,7 +102,7 @@ export const DATA = {
       href: "https://www.ecosvideos.com",
       location: "Mayabeque, CU",
       title: "Fullstack Developer",
-      logoUrl: "/work/ecos.jpg",
+      logoUrl: "/work/ecos.avif",
       start: "March 2025",
       end: "June 2025",
       description:
@@ -114,7 +114,7 @@ export const DATA = {
       href: "https://github.com/medialityc/",
       location: "Havana, CU",
       title: "Backend Developer / Project Manager",
-      logoUrl: "/work/medialityc.png",
+      logoUrl: "/work/medialityc.avif",
       start: "October 2024",
       end: "June 2025",
       description:
@@ -126,7 +126,7 @@ export const DATA = {
       badges: [],
       location: "Havana, CU",
       title: "Software Engineer",
-      logoUrl: "/work/aica.png",
+      logoUrl: "/work/aica.avif",
       start: "May 2024",
       end: "Present",
       description:
@@ -138,7 +138,7 @@ export const DATA = {
       badges: [],
       location: "Havana, CU",
       title: "Teaching Assistant / Professor",
-      logoUrl: "/work/cujae.png",
+      logoUrl: "/work/cujae.avif",
       start: "January 2023",
       end: "March 2025",
       description:
@@ -150,7 +150,7 @@ export const DATA = {
       href: "https://www.directoriocubano.info/empresas/alsoftpro/",
       location: "Havana, CU",
       title: "Software Engineer",
-      logoUrl: "/work/alsofpro.png",
+      logoUrl: "/work/alsofpro.avif",
       start: "December 2023",
       end: "July 2024",
       description:
@@ -162,7 +162,7 @@ export const DATA = {
       badges: [],
       location: "Havana, CU",
       title: "Accountant E",
-      logoUrl: "/work/cujae.png",
+      logoUrl: "/work/cujae.avif",
       start: "June 2021",
       end: "April 2022",
       description:
@@ -174,7 +174,7 @@ export const DATA = {
       school: "CUJAE",
       href: "https://cujae.cu",
       degree: "Computer Engineering Graduate - Gold Title Honors",
-      logoUrl: "/work/cujae.png",
+      logoUrl: "/work/cujae.avif",
       start: "2022",
       end: "March 2025",
     },
@@ -200,7 +200,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/sudoku-play.png",
+      image: "/projects/sudoku-play.avif",
       video: "",
     },
     {
@@ -223,7 +223,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/une-unwrapped.png",
+      image: "/projects/une-unwrapped.avif",
       video: "",
     },
     {
@@ -246,7 +246,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/api-personalizada.png",
+      image: "/projects/api-personalizada.avif",
       video: "",
     },
     {
@@ -268,7 +268,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/weather-app.png",
+      image: "/projects/weather-app.avif",
       video: "",
     },
     {
@@ -290,7 +290,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/bot.png",
+      image: "/projects/bot.avif",
       video: "",
     },
     {
@@ -313,7 +313,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/password-generator.png",
+      image: "/projects/password-generator.avif",
       video: "",
     },
   ],
@@ -324,7 +324,7 @@ export const DATA = {
       location: "Caribbean",
       description:
         "Winner of the ICPC programming competition at the Caribbean level. Qualified for the next round at Latin America level",
-      image: "/logos/icpc.ico",
+      image: "/logos/icpc.avif",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
@@ -334,7 +334,7 @@ export const DATA = {
       location: "Caribbean",
       description:
         "Honorable mention in the ICPC programming competition at the Caribbean level.",
-      image: "/logos/icpc.ico",
+      image: "/logos/icpc.avif",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
@@ -343,7 +343,7 @@ export const DATA = {
       dates: "2023",
       location: "Cujae, Havana",
       description: "First Place in the event with my team Error404",
-      image: "/work/cujae.png",
+      image: "/work/cujae.avif",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
@@ -353,8 +353,8 @@ export const DATA = {
       location: "Cujae, Havana",
       description:
         "First Place award for educational programming videos and resources.",
-      icon: "/work/cujae.png",
-      image: "/work/cujae.png",
+      icon: "/work/cujae.avif",
+      image: "/work/cujae.avif",
       links: [
         {
           title: "Custom API",

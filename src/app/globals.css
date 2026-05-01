@@ -1,6 +1,91 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-wave: wave 1.5s infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    15% {
+      transform: rotate(14deg);
+    }
+    30% {
+      transform: rotate(-8deg);
+    }
+    45% {
+      transform: rotate(14deg);
+    }
+    60% {
+      transform: rotate(-4deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
 
 @layer base {
   :root {
@@ -76,11 +161,11 @@
 }
 
 h3 code {
-  @apply !text-lg md:!text-xl;
+  @apply text-lg! md:text-xl!;
 }
 
 pre {
-  @apply !px-0 rounded-lg overflow-x-auto py-4;
+  @apply px-0! rounded-lg overflow-x-auto py-4;
 }
 
 pre [data-line] {
@@ -88,7 +173,7 @@ pre [data-line] {
 }
 
 code {
-  @apply text-sm md:text-base !leading-loose;
+  @apply text-sm md:text-base leading-loose!;
 }
 
 pre > code {
@@ -126,8 +211,6 @@ code {
 code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-
-  /* Other styling */
   display: inline-block;
   width: 1rem;
   margin-right: 2rem;
@@ -147,13 +230,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   scroll-behavior: smooth;
 }
 
-/* Performance optimizations */
 img,
 video {
   content-visibility: auto;
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -162,7 +243,6 @@ video {
   }
 }
 
-/* Optimize font rendering */
 html {
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, lazy, Suspense } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
 import { useTheme } from "next-themes";
 import {
   Cloud,
@@ -53,7 +53,7 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
-      onClick: (e: any) => e.preventDefault(),
+      onClick: (e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault(),
     },
   });
 };
@@ -116,7 +116,6 @@ function IconCloudCore({ iconSlugs }: DynamicCloudProps) {
   }
 
   return (
-    // @ts-ignore
     <Cloud {...cloudProps}>
       <>{renderedIcons}</>
     </Cloud>
