@@ -1,3 +1,4 @@
+import { BackToTop } from "@/components/main/back-to-top";
 import Navbar from "@/components/main/navbar";
 import { ThemeProvider } from "@/components/main/theme-provider";
 import { TooltipProvider } from "@/components/common/tooltip";
@@ -89,6 +90,7 @@ export default function RootLayout({
           <TooltipProvider delayDuration={100}>
             {children}
             <Navbar />
+            <BackToTop />
           </TooltipProvider>
         </ThemeProvider>
       </body>
