@@ -59,7 +59,7 @@ export const ProjectCard = React.memo(function ProjectCard({
   return (
     <Card
       className={cn(
-        "flex flex-col overflow-hidden border border-border/40 hover:border-border hover:shadow-lg transition-all duration-200 h-full group rounded-xl",
+        "flex flex-col overflow-hidden border border-border/40 hover:border-border hover:shadow-xl transition-all duration-300 ease-out h-full group rounded-xl hover:-translate-y-1",
         className
       )}
     >
@@ -77,28 +77,28 @@ export const ProjectCard = React.memo(function ProjectCard({
             muted
             playsInline
             preload="none"
-            className="pointer-events-none mx-auto h-44 w-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-300"
+            className="pointer-events-none mx-auto h-44 w-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
           />
         )}
         {image && (
           <OptimizedImage
             src={image}
             alt={title}
-            className="h-44 w-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-300"
+            className="h-44 w-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Link>
       <CardHeader className="px-4 pt-4 pb-0 space-y-1.5">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-base font-semibold leading-tight group-hover:text-foreground transition-colors">
+          <CardTitle className="text-base font-semibold leading-tight group-hover:translate-x-0.5 transition-transform duration-300">
             {title}
           </CardTitle>
           {githubRepo && <GitHubStars repo={githubRepo} />}
         </div>
-        <div className="flex items-center gap-1.5">
-          <Calendar className="size-3 text-muted-foreground/60" />
-          <time className="text-xs text-muted-foreground/70">{dates}</time>
+        <div className="flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform duration-300 delay-75">
+          <Calendar className="size-3 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors duration-300" />
+          <time className="text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-300">{dates}</time>
         </div>
         <div className="hidden font-sans text-xs underline print:visible">
           {link?.replace("https://", "").replace("www.", "").replace("/", "")}
@@ -110,11 +110,12 @@ export const ProjectCard = React.memo(function ProjectCard({
       <CardContent className="mt-auto flex flex-col px-4 pb-0">
         {tags && tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1">
-            {tags.map((tag) => (
+            {tags.map((tag, i) => (
               <Badge
-                className="px-2 py-0.5 text-[10px] font-medium rounded-full"
+                className="px-2 py-0.5 text-[10px] font-medium rounded-full transition-all duration-200 hover:scale-105 hover:shadow-sm"
                 variant="secondary"
                 key={tag}
+                style={{ transitionDelay: `${i * 20}ms` }}
               >
                 {tag}
               </Badge>
@@ -127,10 +128,10 @@ export const ProjectCard = React.memo(function ProjectCard({
           <div className="flex flex-row flex-wrap items-start gap-1.5">
             {links.map((linkItem, idx) => (
               <Link href={linkItem.href} key={idx} target="_blank" rel="noopener noreferrer">
-                <Badge className="flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full hover:shadow-sm transition-all duration-200 hover:scale-[1.02]">
+                <Badge className="flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full transition-all duration-200 hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95">
                   {linkItem.icon}
                   {linkItem.type}
-                  <ExternalLink className="size-2.5 opacity-40" />
+                  <ExternalLink className="size-2.5 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-40 group-hover:translate-x-0" />
                 </Badge>
               </Link>
             ))}

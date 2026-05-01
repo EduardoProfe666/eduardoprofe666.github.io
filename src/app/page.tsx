@@ -41,7 +41,7 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={0.1}>
-              <Avatar className="size-28 border-2 shadow-xl ring-4 ring-border/20 hover:ring-border/40 transition-all duration-500">
+              <Avatar className="size-28 border-2 shadow-xl ring-4 ring-border/20 hover:ring-border/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out cursor-default">
                 <AvatarImage
                   alt={DATA.name}
                   src={DATA.avatarUrl}
@@ -57,10 +57,10 @@ export default function Page() {
       {/* About */}
       <section id="about" aria-label="About Me">
         <BlurFade delay={0.15}>
-          <h2 className="text-xl font-bold mb-2">About Me</h2>
+          <h2 className="text-xl font-bold mb-2 hover:translate-x-0.5 transition-transform duration-300 cursor-default">About Me</h2>
         </BlurFade>
         <BlurFade delay={0.2}>
-          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed">
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:transition-colors [&_a]:duration-200 [&_strong]:transition-colors [&_strong]:duration-200 [&_strong]:hover:text-foreground">
             <Markdown>{DATA.summary}</Markdown>
           </div>
         </BlurFade>
@@ -70,7 +70,7 @@ export default function Page() {
       <section id="work" aria-label="Work Experience">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={0.25}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
+            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade key={work.company} delay={id * 0.03} inView>
@@ -95,7 +95,7 @@ export default function Page() {
       <section id="education" aria-label="Education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade key={education.school} delay={id * 0.03} inView>
@@ -103,6 +103,7 @@ export default function Page() {
                 logoUrl={education.logoUrl}
                 altText={education.school}
                 title={education.school}
+                href={"https://cujae.edu.cu/"}
                 period={`${education.start} - ${education.end}`}
                 duration={calcDuration(education.start, education.end)}
                 description={
@@ -115,7 +116,7 @@ export default function Page() {
                           href={education.thesis.repository}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline relative z-10"
+                          className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-200 relative z-10"
                         >
                           Repository
                         </a>
@@ -124,7 +125,7 @@ export default function Page() {
                           href={education.thesis.download}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline relative z-10"
+                          className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-200 relative z-10"
                         >
                           Download PDF
                         </a>
@@ -142,7 +143,7 @@ export default function Page() {
       <section id="skills" aria-label="Technologies">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <h2 className="text-xl font-bold">Technologies</h2>
+            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Technologies</h2>
           </BlurFade>
           <BlurFade inView>
             <div className="text-center items-center justify-center flex flex-wrap gap-1">
@@ -168,7 +169,7 @@ export default function Page() {
           <BlurFade inView>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
+                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
                   My Projects
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
@@ -177,7 +178,7 @@ export default function Page() {
                 <p className="mx-auto max-w-[600px] text-pretty text-muted-foreground md:text-lg/relaxed">
                   From web apps to bots and tools. Check out{" "}
                   <a
-                    className="text-blue-500 font-medium hover:underline underline-offset-4"
+                    className="text-blue-500 font-medium hover:underline underline-offset-4 hover:text-blue-600 transition-colors duration-200"
                     href="https://github.com/EduardoProfe666"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -214,7 +215,7 @@ export default function Page() {
           <BlurFade inView>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
+                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
                   Events
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
@@ -251,7 +252,7 @@ export default function Page() {
         <div className="flex flex-col items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-16">
           <BlurFade inView>
             <div className="space-y-4">
-              <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
+              <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
                 Contact
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
@@ -267,9 +268,9 @@ export default function Page() {
             <div className="flex flex-col items-center gap-5">
               <Link
                 href={DATA.contact.social.Email.url}
-                className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-8 py-3.5 text-sm font-medium hover:bg-foreground/90 hover:shadow-lg transition-all duration-300"
+                className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground text-background px-8 py-3.5 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
               >
-                <DATA.contact.social.Email.icon className="size-4" />
+                <DATA.contact.social.Email.icon className="size-4 group-hover/cta:rotate-12 transition-transform duration-300" />
                 Send me an email
               </Link>
               <div className="flex items-center gap-3">
@@ -281,10 +282,10 @@ export default function Page() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center size-11 rounded-full border border-border bg-background hover:bg-muted hover:border-foreground/20 hover:shadow-md transition-all duration-300"
+                      className="group/social flex items-center justify-center size-11 rounded-full border border-border bg-background hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 transition-all duration-300"
                       aria-label={name}
                     >
-                      <social.icon className="size-4" />
+                      <social.icon className="size-4 group-hover/social:scale-110 transition-transform duration-300" />
                     </Link>
                   ))}
               </div>
