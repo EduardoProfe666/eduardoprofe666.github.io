@@ -4,7 +4,7 @@ import {
   AvatarImage,
 } from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
-import { MapPin, Calendar } from "lucide-react";
+import { MapPin, Calendar, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -70,6 +70,7 @@ export function EventCard({
                 <Badge className="flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full transition-all duration-200 hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95">
                   {link.icon}
                   {link.title}
+                  <ExternalLink className="size-2.5 opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-40 group-hover:translate-x-0" />
                 </Badge>
               </Link>
             ))}
