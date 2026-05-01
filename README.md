@@ -2,7 +2,11 @@
 <img alt="Portfolio" src="public/portfolio.png" width="1627">
 </div>
 
-# Mi Portfolio Personal
+# My Personal Portfolio
 
-Creado con Next.js, [shadcn/ui](https://ui.shadcn.com/) y [magic ui](https://magicui.design/). Desplegado en Github Pages
+Crafted with Next.js, Tailwind, [shadcn/ui](https://ui.shadcn.com/) yand [magic ui](https://magicui.design/). 
+
+Deployed on Github Pages.
+
+Available at [eduardoprofe666.github.io](https://eduardprofe666.github.io)
 
