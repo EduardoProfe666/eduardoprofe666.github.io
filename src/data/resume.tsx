@@ -7,10 +7,9 @@ export const DATA = {
   location: "Havana, CU",
   locationLink: "https://www.google.com/maps/place/havana",
   description:
-    "\n" +
-    "Computer Engineering graduate, passionate about software development and helping others. Active GitHub contributor.",
+    "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
   summary:
-    "I graduated with Gold Title honors from [Technological University of Havana](/#education) (CUJAE) in March 2025. Over my academic and professional journey, I've gained valuable experience through [various professional roles](/#work) and [competitive events](/#events). I'm passionate about my work and eager to continue learning and implementing [cutting-edge technologies](/#skills).",
+    "I'm a **Computer Engineering** graduate with **Gold Title honors** from [CUJAE](/#education) and over **4 years of experience** building software across the full stack. I currently lead development teams and architect enterprise solutions integrating **AI, automation workflows, and cloud infrastructure** (AWS, DigitalOcean, Vercel). My background spans from [backend-heavy distributed systems](/#work) to [frontend engineering](/#work), with hands-on DevOps and infrastructure skills including **Docker, CI/CD pipelines, and cloud deployments**. I thrive in fast-paced environments and enjoy mentoring teams, competing in [programming events](/#events), and pushing the boundaries of [modern technologies](/#skills).",
   avatarUrl: "/me.avif",
   skill_slugs: [
     "python",
@@ -24,6 +23,7 @@ export const DATA = {
     "nuxt",
     "vuedotjs",
     "angular",
+    "vercel",
     "django",
     "fastapi",
     "nestjs",
@@ -75,12 +75,12 @@ export const DATA = {
       badges: [],
       href: "https://aikoders.tech/",
       location: "Miami, Florida, USA",
-      title: "Lead Fullstack Developer | AI Architect",
+      title: "Fullstack Team Lead | AI Engineer | DevOps",
       logoUrl: "/work/aikoders.avif",
       start: "January 2026",
       end: "Present",
       description:
-       "Leading the design and development of scalable enterprise solutions using Next.js, focusing on process optimization through the strategic integration of Artificial Intelligence. Implementing complex automation workflows with n8n to bridge AI services with core business logic, successfully reducing operational costs and significantly increasing the value delivered to end clients." 
+        "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), and Easy Cargo Express (ecommerce logistics). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native, shipped to both Google Play Store and Apple App Store.",
     },
     {
       company: "Codes SRL",
@@ -102,7 +102,7 @@ export const DATA = {
       title: "Software Engineer",
       logoUrl: "/work/emsifarma.avif",
       start: "March 2025",
-      end: "December 20225",
+      end: "December 2025",
       description:
         "Driven the digital transformation toward Industry 4.0 by developing an integrated MES/SCADA system using .NET and Next.js, incorporating WSO2 Identity Server to ensure robust and secure identity management. Additionally, I led the optimization of legal workflows and complex case management by implementing agentic solutions with n8n. This initiative automated critical processes for multi-sector companies, significantly increasing operational efficiency through the deployment of intelligent, automated workflows."
     },
