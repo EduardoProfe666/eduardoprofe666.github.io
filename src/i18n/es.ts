@@ -86,6 +86,11 @@ const es: Translations = {
   "project.password.description":
     "Un conjunto de herramientas para la seguridad de contraseñas, incluyendo un generador de contraseñas, verificador de fortaleza y calculador de entropía.",
 
+  // 404
+  "notFound.title": "Página no encontrada",
+  "notFound.description": "La página que buscas no existe o ha sido movida. Vamos a llevarte de vuelta.",
+  "notFound.cta": "Volver al inicio",
+
   // Events
   "event.icpc2024.description":
     "Ganador de la competencia de programación ICPC a nivel caribeño. Clasificado para la siguiente ronda a nivel latinoamericano",

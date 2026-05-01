@@ -85,6 +85,11 @@ const fr: Translations = {
   "project.password.description":
     "Un ensemble d'outils pour la sécurité des mots de passe, incluant un générateur de mots de passe, un vérificateur de robustesse et un calculateur d'entropie.",
 
+  // 404
+  "notFound.title": "Page introuvable",
+  "notFound.description": "La page que vous recherchez n'existe pas ou a été déplacée. Revenons sur la bonne voie.",
+  "notFound.cta": "Retour à l'accueil",
+
   // Events
   "event.icpc2024.description":
     "Vainqueur de la compétition de programmation ICPC au niveau caribéen. Qualifié pour le tour suivant au niveau Amérique latine",

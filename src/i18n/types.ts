@@ -65,6 +65,11 @@ export interface Translations {
   "project.anime.description": string;
   "project.password.description": string;
 
+  // 404
+  "notFound.title": string;
+  "notFound.description": string;
+  "notFound.cta": string;
+
   // Events
   "event.icpc2024.description": string;
   "event.icpc2023.description": string;

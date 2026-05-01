@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /_next/
 
 Sitemap: https://eduardoprofe666.github.io/sitemap.xml
+Host: https://eduardoprofe666.github.io

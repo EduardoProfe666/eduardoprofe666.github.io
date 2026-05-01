@@ -84,6 +84,11 @@ const en: Translations = {
   "project.password.description":
     "A set of tools for password security, including a password generator, strength checker, and entropy calculator.",
 
+  // 404
+  "notFound.title": "Page not found",
+  "notFound.description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+  "notFound.cta": "Back to home",
+
   // Events
   "event.icpc2024.description":
     "Winner of the ICPC programming competition at the Caribbean level. Qualified for the next round at Latin America level",

@@ -1,17 +1,22 @@
 {
-  "name": "Eduardo González - Portfolio",
+  "name": "Eduardo González — Fullstack Team Lead & AI Engineer",
   "short_name": "Eduardo G.",
   "description": "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#171717",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["portfolio", "technology", "education"],
   "icons": [
     {
       "src": "/portfolio.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }

@@ -54,7 +54,7 @@ export default function Navbar() {
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Download Resume</p>
+              <p>Resume</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>

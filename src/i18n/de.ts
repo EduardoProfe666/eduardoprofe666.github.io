@@ -85,6 +85,11 @@ const de: Translations = {
   "project.password.description":
     "Eine Sammlung von Werkzeugen für Passwortsicherheit, einschließlich eines Passwortgenerators, Stärkeprüfers und Entropierechners.",
 
+  // 404
+  "notFound.title": "Seite nicht gefunden",
+  "notFound.description": "Die gesuchte Seite existiert nicht oder wurde verschoben. Lassen Sie uns zurückkehren.",
+  "notFound.cta": "Zurück zur Startseite",
+
   // Events
   "event.icpc2024.description":
     "Gewinner des ICPC-Programmierwettbewerbs auf karibischer Ebene. Qualifikation für die nächste Runde auf lateinamerikanischer Ebene",
