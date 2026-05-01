@@ -247,27 +247,46 @@ export default function Page() {
         </div>
       </section>
       <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+        <div className="flex flex-col items-center justify-center gap-6 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                 Contact
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in touch
+                Let&apos;s work together
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to connect? Feel free to reach out through any of my social
-                media channels, or{" "}
-                <Link
-                  href={DATA.contact.social.Email.url}
-                  className="text-blue-500 hover:underline"
-                >
-                  send me an email directly
-                </Link>{" "}
-                and I&apos;ll get back to you as soon as possible. Always happy
-                to help.
+              <p className="mx-auto max-w-[500px] text-muted-foreground md:text-lg/relaxed">
+                Have a project in mind or just want to say hi? I&apos;m always
+                open to new opportunities and collaborations.
               </p>
+            </div>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 17}>
+            <div className="flex flex-col items-center gap-4">
+              <Link
+                href={DATA.contact.social.Email.url}
+                className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium hover:bg-foreground/90 transition-colors"
+              >
+                <DATA.contact.social.Email.icon className="size-4" />
+                Send me an email
+              </Link>
+              <div className="flex items-center gap-3">
+                {Object.entries(DATA.contact.social)
+                  .filter(([name]) => name !== "Email")
+                  .map(([name, social]) => (
+                    <Link
+                      key={name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center size-10 rounded-full border border-border hover:bg-muted hover:border-foreground/20 transition-all duration-300"
+                      aria-label={name}
+                    >
+                      <social.icon className="size-4" />
+                    </Link>
+                  ))}
+              </div>
             </div>
           </BlurFade>
         </div>
