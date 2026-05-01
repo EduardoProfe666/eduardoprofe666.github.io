@@ -36,33 +36,39 @@ export default function Page() {
       {/* Hero */}
       <section id="hero" aria-label="Introduction">
         <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-4 flex justify-between items-center">
-            <div className="flex-col flex flex-1 space-y-2">
+          <div className="gap-6 flex justify-between items-center">
+            <div className="flex-col flex flex-1 space-y-3">
               <BlurFadeText
-                delay={0.05}
+                delay={0}
+                characterDelay={0.025}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none text-balance"
-                yOffset={8}
+                yOffset={10}
+                animateByCharacter
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
               >
                 <span className="inline-block origin-[70%_70%] hover:animate-wave cursor-default">
                   👋
                 </span>
               </BlurFadeText>
-              <BlurFadeText
-                className="max-w-[600px] text-pretty text-muted-foreground md:text-lg"
-                delay={0.1}
-                text={DATA.description}
-              />
+              <BlurFade delay={0.4}>
+                <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
+                  {DATA.description}
+                </p>
+              </BlurFade>
             </div>
-            <BlurFade delay={0.1}>
-              <Avatar className="size-28 border-2 shadow-xl ring-4 ring-border/20 hover:ring-border/50 hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out cursor-default">
-                <AvatarImage
-                  alt={DATA.name}
-                  src={DATA.avatarUrl}
-                  loading="eager"
-                />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+            <BlurFade delay={0.3}>
+              <div className="relative group/avatar cursor-default">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-foreground/5 to-foreground/10 opacity-0 group-hover/avatar:opacity-100 blur-md transition-opacity duration-700" />
+                <Avatar className="relative size-28 border-2 shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-500 ease-out">
+                  <AvatarImage
+                    alt={DATA.name}
+                    src={DATA.avatarUrl}
+                    loading="eager"
+                    className="group-hover/avatar:brightness-105 transition-[filter] duration-500"
+                  />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+              </div>
             </BlurFade>
           </div>
         </div>
@@ -130,7 +136,7 @@ export default function Page() {
                           href={education.thesis.repository}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 hover:text-foreground hover:underline transition-colors duration-200 relative z-10"
+                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
                         >
                           Repository
                         </a>
@@ -139,7 +145,7 @@ export default function Page() {
                           href={education.thesis.download}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 hover:text-foreground hover:underline transition-colors duration-200 relative z-10"
+                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
                         >
                           Download PDF
                         </a>

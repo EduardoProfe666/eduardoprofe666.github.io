@@ -38,7 +38,7 @@ const BlurFadeText = ({
 
   if (animateByCharacter) {
     return (
-      <div className="flex">
+      <div className="flex flex-wrap">
         {characters.map((char, i) => (
           <motion.span
             key={i}
@@ -51,11 +51,26 @@ const BlurFadeText = ({
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
             className={cn("inline-block", className)}
-            style={{ width: char.trim() === "" ? "0.2em" : "auto" }}
+            style={{ width: char.trim() === "" ? "0.25em" : "auto" }}
           >
             {char}
           </motion.span>
         ))}
+        {children && (
+          <motion.span
+            initial="hidden"
+            animate="visible"
+            variants={combinedVariants}
+            transition={{
+              delay: delay + characters.length * characterDelay,
+              duration: 0.4,
+              ease: [0.21, 0.47, 0.32, 0.98],
+            }}
+            className={cn("inline-block", className)}
+          >
+            {children}
+          </motion.span>
+        )}
       </div>
     );
   }
