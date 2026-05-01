@@ -100,12 +100,37 @@ export default function Page() {
             >
               <ResumeCard
                 key={education.school}
-                href={education.href}
                 logoUrl={education.logoUrl}
                 altText={education.school}
                 title={education.school}
                 period={`${education.start} - ${education.end}`}
-                description={education.degree}
+                description={
+                  <>
+                    {education.degree}
+                    {"thesis" in education && education.thesis && (
+                      <span className="block mt-1">
+                        Thesis:{" "}
+                        <a
+                          href={education.thesis.repository}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline relative z-10"
+                        >
+                          Repository
+                        </a>
+                        {" · "}
+                        <a
+                          href={education.thesis.download}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline relative z-10"
+                        >
+                          Download PDF
+                        </a>
+                      </span>
+                    )}
+                  </>
+                }
               />
             </BlurFade>
           ))}

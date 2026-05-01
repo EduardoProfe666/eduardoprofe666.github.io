@@ -187,6 +187,10 @@ export const DATA = {
       logoUrl: "/work/cujae.avif",
       start: "2022",
       end: "March 2025",
+      thesis: {
+        repository: "https://repositorio.cujae.edu.cu/items/4fafa995-04f7-4c3e-ba52-8f375b4b0129",
+        download: "https://repositorio.cujae.edu.cu/server/api/core/bitstreams/a105cbae-d41c-4fde-b1b3-81cc6c99e315/content",
+      },
     },
   ],
   projects: [
