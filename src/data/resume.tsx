@@ -183,7 +183,7 @@ export const DATA = {
     {
       school: "CUJAE",
       href: "https://cujae.cu",
-      degree: "Computer Engineering Graduate - Gold Title Honors",
+      degree: "Computer Engineering Graduate - Gold Title Honors (GPA: 5.0/5.0)",
       logoUrl: "/work/cujae.avif",
       start: "April 2022",
       end: "March 2025",

@@ -227,20 +227,22 @@ export default function Page() {
       <section id="events" aria-label="Events">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <SectionHeading>Events</SectionHeading>
+            <SectionHeading>Events &amp; Competitions</SectionHeading>
           </BlurFade>
           <BlurFade inView>
             <p className="text-pretty text-sm text-muted-foreground">
               Throughout my journey, I&apos;ve participated in{" "}
-              <span className="font-medium text-foreground/80">{DATA.events.length}+ events</span>
-              {" "}ranging from ICPC programming competitions to university
-              hackathons and awards.
+              <span className="font-medium text-foreground/80">{DATA.events.length}+ competitive events</span>
+              —from{" "}
+              <span className="font-medium text-foreground/80">ICPC</span>
+              {" "}programming contests at the Caribbean level to university
+              hackathons and academic awards.
             </p>
           </BlurFade>
           <BlurFade inView>
-            <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l">
+            <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
               {DATA.events.map((event, id) => (
-                <BlurFade key={event.title + event.dates} delay={id * 0.03} inView>
+                <BlurFade key={event.title + event.dates} delay={id * 0.04} inView>
                   <EventCard
                     title={event.title}
                     description={event.description}
