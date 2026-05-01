@@ -6,7 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/common/card";
+import { GitHubStars } from "@/components/common/github-stars";
 import { cn } from "@/lib/utils";
+import { Calendar, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import React from "react";
@@ -29,6 +31,17 @@ interface Props {
   className?: string;
 }
 
+function extractGitHubRepo(
+  links?: readonly { href: string }[]
+): string | null {
+  if (!links) return null;
+  for (const l of links) {
+    const match = l.href.match(/github\.com\/([^/]+\/[^/]+)/);
+    if (match) return match[1];
+  }
+  return null;
+}
+
 export const ProjectCard = React.memo(function ProjectCard({
   title,
   href,
@@ -41,15 +54,20 @@ export const ProjectCard = React.memo(function ProjectCard({
   links,
   className,
 }: Props) {
+  const githubRepo = extractGitHubRepo(links);
+
   return (
     <Card
-      className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-      }
+      className={cn(
+        "flex flex-col overflow-hidden border hover:border-border/80 hover:shadow-lg transition-all duration-300 ease-out h-full group",
+        className
+      )}
     >
       <Link
         href={href || "#"}
-        className={cn("block cursor-pointer", className)}
+        className="block cursor-pointer overflow-hidden"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {video && (
           <video
@@ -59,35 +77,41 @@ export const ProjectCard = React.memo(function ProjectCard({
             muted
             playsInline
             preload="none"
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="pointer-events-none mx-auto h-40 w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
           />
-        )}{" "}
+        )}
         {image && (
           <OptimizedImage
             src={image}
             alt={title}
-            className="h-40 w-full overflow-hidden object-cover object-top"
+            className="h-40 w-full overflow-hidden object-cover object-top group-hover:scale-105 transition-transform duration-500"
           />
         )}
       </Link>
-      <CardHeader className="px-2">
-        <div className="space-y-1">
-          <CardTitle className="mt-1 text-base">{title}</CardTitle>
-          <time className="font-sans text-xs">{dates}</time>
-          <div className="hidden font-sans text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
-          </div>
-          <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-            <Markdown>{description}</Markdown>
-          </div>
+      <CardHeader className="px-4 pt-4 pb-0">
+        <div className="flex items-start justify-between gap-2">
+          <CardTitle className="text-base font-semibold leading-tight">
+            {title}
+          </CardTitle>
+          {githubRepo && <GitHubStars repo={githubRepo} />}
+        </div>
+        <div className="flex items-center gap-1.5 mt-1.5">
+          <Calendar className="size-3 text-muted-foreground" />
+          <time className="text-xs text-muted-foreground">{dates}</time>
+        </div>
+        <div className="hidden font-sans text-xs underline print:visible">
+          {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+        </div>
+        <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert mt-2 leading-relaxed">
+          <Markdown>{description}</Markdown>
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex flex-col px-2">
+      <CardContent className="mt-auto flex flex-col px-4 pb-0">
         {tags && tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {tags?.map((tag) => (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {tags.map((tag) => (
               <Badge
-                className="px-1 py-0 text-[10px]"
+                className="px-1.5 py-0.5 text-[10px] font-medium"
                 variant="secondary"
                 key={tag}
               >
@@ -97,15 +121,17 @@ export const ProjectCard = React.memo(function ProjectCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="px-2 pb-2">
+      <CardFooter className="px-4 pb-4 pt-3">
         {links && links.length > 0 && (
-          <div className="flex flex-row flex-wrap items-start gap-1">
-            {" "}
-            {links?.map((linkItem, idx) => (
-              <Link href={linkItem?.href} key={idx} target="_blank">
-                <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
+          <div className="flex flex-row flex-wrap items-start gap-1.5">
+            {links.map((linkItem, idx) => (
+              <Link href={linkItem.href} key={idx} target="_blank" rel="noopener noreferrer">
+                <Badge
+                  className="flex gap-1.5 px-2.5 py-1 text-[10px] hover:shadow-sm transition-shadow"
+                >
                   {linkItem.icon}
                   {linkItem.type}
+                  <ExternalLink className="size-2.5 opacity-50" />
                 </Badge>
               </Link>
             ))}
