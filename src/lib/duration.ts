@@ -14,7 +14,7 @@ export function calcDuration(start: string, end: string): string {
   const s = parseDate(start);
   const e = parseDate(end);
 
-  let months = (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth()) + 1;
+  let months = (e.getFullYear() - s.getFullYear()) * 12 + (e.getMonth() - s.getMonth());
   if (months < 1) months = 1;
 
   const y = Math.floor(months / 12);

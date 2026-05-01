@@ -77,7 +77,7 @@ export const DATA = {
       location: "Miami, Florida, USA",
       title: "Fullstack Team Lead | AI Engineer | DevOps",
       logoUrl: "/work/aikoders.avif",
-      start: "January 2026",
+      start: "December 2025",
       end: "Present",
       description:
         "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), and Easy Cargo Express (ecommerce logistics). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native, shipped to both Google Play Store and Apple App Store.",

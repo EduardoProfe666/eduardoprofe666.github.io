@@ -16,6 +16,20 @@ import { lazy, Suspense } from "react";
 
 const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
 
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="group/heading text-xl font-bold cursor-default relative w-fit">
+      <span className="inline-flex items-center">
+        <span className="inline-block w-0 overflow-hidden opacity-0 group-hover/heading:w-[1.2em] group-hover/heading:opacity-60 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-muted-foreground font-mono text-lg select-none">
+          #
+        </span>
+        {children}
+      </span>
+      <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-foreground/25 rounded-full transition-all duration-500 ease-out group-hover/heading:w-full" />
+    </h2>
+  );
+}
+
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-14">
@@ -57,10 +71,10 @@ export default function Page() {
       {/* About */}
       <section id="about" aria-label="About Me">
         <BlurFade delay={0.15}>
-          <h2 className="text-xl font-bold mb-2 hover:translate-x-0.5 transition-transform duration-300 cursor-default">About Me</h2>
+          <SectionHeading>About Me</SectionHeading>
         </BlurFade>
         <BlurFade delay={0.2}>
-          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:transition-colors [&_a]:duration-200 [&_strong]:transition-colors [&_strong]:duration-200 [&_strong]:hover:text-foreground">
+          <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-all [&_a]:after:duration-300 [&_a]:after:ease-out [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-300 [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
             <Markdown>{DATA.summary}</Markdown>
           </div>
         </BlurFade>
@@ -70,7 +84,7 @@ export default function Page() {
       <section id="work" aria-label="Work Experience">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={0.25}>
-            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Work Experience</h2>
+            <SectionHeading>Work Experience</SectionHeading>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade key={work.company} delay={id * 0.03} inView>
@@ -95,7 +109,7 @@ export default function Page() {
       <section id="education" aria-label="Education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Education</h2>
+            <SectionHeading>Education</SectionHeading>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade key={education.school} delay={id * 0.03} inView>
@@ -116,7 +130,7 @@ export default function Page() {
                           href={education.thesis.repository}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-200 relative z-10"
+                          className="text-foreground/70 hover:text-foreground hover:underline transition-colors duration-200 relative z-10"
                         >
                           Repository
                         </a>
@@ -125,7 +139,7 @@ export default function Page() {
                           href={education.thesis.download}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline hover:text-blue-600 transition-colors duration-200 relative z-10"
+                          className="text-foreground/70 hover:text-foreground hover:underline transition-colors duration-200 relative z-10"
                         >
                           Download PDF
                         </a>
@@ -143,7 +157,7 @@ export default function Page() {
       <section id="skills" aria-label="Technologies">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <h2 className="text-xl font-bold hover:translate-x-0.5 transition-transform duration-300 cursor-default">Technologies</h2>
+            <SectionHeading>Technologies</SectionHeading>
           </BlurFade>
           <BlurFade inView>
             <div className="text-center items-center justify-center flex flex-wrap gap-1">
@@ -165,32 +179,26 @@ export default function Page() {
 
       {/* Projects */}
       <section id="projects" aria-label="Projects">
-        <div className="space-y-10 w-full py-6">
+        <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
-                  My Projects
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
-                  Check out my latest work
-                </h2>
-                <p className="mx-auto max-w-[600px] text-pretty text-muted-foreground md:text-lg/relaxed">
-                  From web apps to bots and tools. Check out{" "}
-                  <a
-                    className="text-blue-500 font-medium hover:underline underline-offset-4 hover:text-blue-600 transition-colors duration-200"
-                    href="https://github.com/EduardoProfe666"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    my GitHub
-                  </a>{" "}
-                  for more.
-                </p>
-              </div>
-            </div>
+            <SectionHeading>Projects</SectionHeading>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto">
+          <BlurFade inView>
+            <p className="text-pretty text-sm text-muted-foreground">
+              I&apos;ve worked on a variety of projects, from desktop apps to
+              complex web platforms. Here are some of my favorites. Check out{" "}
+              <a
+                className="text-foreground/70 font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
+                href="https://github.com/EduardoProfe666"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                my GitHub
+              </a>{" "}
+              to find more.
+            </p>
+          </BlurFade>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
             {DATA.projects.map((project, id) => (
               <BlurFade key={project.title} delay={id * 0.04} inView>
                 <ProjectCard
@@ -211,25 +219,20 @@ export default function Page() {
 
       {/* Events */}
       <section id="events" aria-label="Events">
-        <div className="space-y-10 w-full py-6">
+        <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
-                  Events
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
-                  I love to compete
-                </h2>
-                <p className="mx-auto max-w-[600px] text-pretty text-muted-foreground md:text-lg/relaxed">
-                  {DATA.events.length}+ events ranging from ICPC competitions to
-                  university hackathons and awards.
-                </p>
-              </div>
-            </div>
+            <SectionHeading>Events</SectionHeading>
           </BlurFade>
           <BlurFade inView>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+            <p className="text-pretty text-sm text-muted-foreground">
+              Throughout my journey, I&apos;ve participated in{" "}
+              <span className="font-medium text-foreground/80">{DATA.events.length}+ events</span>
+              {" "}ranging from ICPC programming competitions to university
+              hackathons and awards.
+            </p>
+          </BlurFade>
+          <BlurFade inView>
+            <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l">
               {DATA.events.map((event, id) => (
                 <BlurFade key={event.title + event.dates} delay={id * 0.03} inView>
                   <EventCard
