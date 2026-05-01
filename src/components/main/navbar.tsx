@@ -14,6 +14,10 @@ import { cn } from "@/lib/utils";
 import { FileText } from "lucide-react";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { LanguageSwitcher } from "@/components/main/language-switcher";
+import { useTranslation } from "@/i18n/provider";
+import { locales } from "@/i18n/index";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
@@ -22,6 +26,10 @@ export default function Navbar() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const { locale, t } = useTranslation();
+  const { theme } = useTheme();
+  const currentLang = locales.find((l) => l.code === locale);
 
   if (!mounted) return null;
 
@@ -91,14 +99,10 @@ export default function Navbar() {
         ))}
         <Separator orientation="vertical" className="h-full py-2" />
         <DockIcon>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <ModeToggle />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Theme</p>
-            </TooltipContent>
-          </Tooltip>
+            <ModeToggle />
+        </DockIcon>
+        <DockIcon>
+            <LanguageSwitcher />
         </DockIcon>
       </Dock>
     </div>

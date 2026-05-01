@@ -1,3 +1,5 @@
+"use client";
+
 import { EventCard } from "@/components/main/event-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/main/project-card";
@@ -5,12 +7,42 @@ import { ResumeCard } from "@/components/main/resume-card";
 import { AvatarFlip } from "@/components/main/avatar-flip";
 import { HeroTitle } from "@/components/main/hero-title";
 import { DATA } from "@/data/resume";
+import { useTranslation } from "@/i18n/provider";
+import type { Translations } from "@/i18n/types";
 import { calcDuration } from "@/lib/duration";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
 
 const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
+
+const WORK_KEYS: Record<string, string> = {
+  "AIKoders LLC": "aikoders",
+  "Codes SRL": "codes",
+  "EMSI FARMA TECH": "emsifarma",
+  "Ecos Productions": "ecos",
+  Medialityc: "medialityc",
+  "AICA+ Pharmaceutical Laboratories": "aica",
+  "Faculty of Computer Engineering at CUJAE": "cujae-prof",
+  AlsoftPro: "alsoftpro",
+  "CUJAE Economics Department": "cujae-econ",
+};
+
+const PROJECT_KEYS: Record<string, string> = {
+  "🔢 Sudoku Play": "sudoku",
+  "⚡ UNE Unwrapped": "une",
+  "🌌 Custom API": "api",
+  "🌤️ Weather App": "weather",
+  "⚔️ Download Anime Free Bot": "anime",
+  "🔐 Password Security Toolkit": "password",
+};
+
+const EVENT_KEYS: Record<string, string> = {
+  "ICPC Caribbean-2024": "icpc2024",
+  "ICPC Caribbean-2023": "icpc2023",
+  "Copa Cujae-2023": "copa2023",
+  "Yuca Awards-2022 - 2023": "yuca",
+};
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -27,6 +59,8 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function Page() {
+  const { t } = useTranslation();
+
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-14">
       {/* Hero */}
@@ -42,7 +76,7 @@ export default function Page() {
               </BlurFade>
               <BlurFade delay={0.4}>
                 <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
-                  {DATA.description}
+                  {t("hero.description")}
                 </p>
               </BlurFade>
             </div>
@@ -58,47 +92,50 @@ export default function Page() {
       </section>
 
       {/* About */}
-      <section id="about" aria-label="About Me">
+      <section id="about" aria-label={t("about.title")}>
         <BlurFade delay={0.15}>
-          <SectionHeading>About Me</SectionHeading>
+          <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
         <BlurFade delay={0.2}>
           <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-all [&_a]:after:duration-300 [&_a]:after:ease-out [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-300 [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
-            <Markdown>{DATA.summary}</Markdown>
+            <Markdown>{t("about.summary")}</Markdown>
           </div>
         </BlurFade>
       </section>
 
       {/* Work */}
-      <section id="work" aria-label="Work Experience">
+      <section id="work" aria-label={t("work.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={0.25}>
-            <SectionHeading>Work Experience</SectionHeading>
+            <SectionHeading>{t("work.title")}</SectionHeading>
           </BlurFade>
-          {DATA.work.map((work, id) => (
-            <BlurFade key={work.company} delay={id * 0.03} inView>
-              <ResumeCard
-                logoUrl={work.logoUrl}
-                altText={work.company}
-                title={work.company}
-                subtitle={work.title}
-                href={work.href}
-                badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
-                duration={calcDuration(work.start, work.end ?? "Present")}
-                description={work.description}
-                location={work.location}
-              />
-            </BlurFade>
-          ))}
+          {DATA.work.map((work, id) => {
+            const key = WORK_KEYS[work.company] ?? "";
+            return (
+              <BlurFade key={work.company} delay={id * 0.03} inView>
+                <ResumeCard
+                  logoUrl={work.logoUrl}
+                  altText={work.company}
+                  title={work.company}
+                  subtitle={key ? t(`work.${key}.title` as keyof Translations) : work.title}
+                  href={work.href}
+                  badges={work.badges}
+                  period={`${work.start} - ${work.end ?? "Present"}`}
+                  duration={calcDuration(work.start, work.end ?? "Present")}
+                  description={key ? t(`work.${key}.description` as keyof Translations) : work.description}
+                  location={work.location}
+                />
+              </BlurFade>
+            );
+          })}
         </div>
       </section>
 
       {/* Education */}
-      <section id="education" aria-label="Education">
+      <section id="education" aria-label={t("education.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <SectionHeading>Education</SectionHeading>
+            <SectionHeading>{t("education.title")}</SectionHeading>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade key={education.school} delay={id * 0.03} inView>
@@ -111,17 +148,17 @@ export default function Page() {
                 duration={calcDuration(education.start, education.end)}
                 description={
                   <>
-                    {education.degree}
+                    {t("education.cujae.degree")}
                     {"thesis" in education && education.thesis && (
                       <span className="block mt-1.5">
-                        Thesis:{" "}
+                        {t("thesis.label")}:{" "}
                         <a
                           href={education.thesis.repository}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
                         >
-                          Repository
+                          {t("thesis.repository")}
                         </a>
                         {" · "}
                         <a
@@ -130,7 +167,7 @@ export default function Page() {
                           rel="noopener noreferrer"
                           className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
                         >
-                          Download PDF
+                          {t("thesis.download")}
                         </a>
                       </span>
                     )}
@@ -143,10 +180,10 @@ export default function Page() {
       </section>
 
       {/* Skills */}
-      <section id="skills" aria-label="Technologies">
+      <section id="skills" aria-label={t("skills.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <SectionHeading>Technologies</SectionHeading>
+            <SectionHeading>{t("skills.title")}</SectionHeading>
           </BlurFade>
           <BlurFade inView>
             <div className="text-center items-center justify-center flex flex-wrap gap-1">
@@ -154,7 +191,7 @@ export default function Page() {
                 fallback={
                   <div className="flex items-center justify-center h-64 w-full">
                     <div className="animate-pulse text-muted-foreground text-sm">
-                      Loading skills...
+                      {t("skills.loading")}
                     </div>
                   </div>
                 }
@@ -167,94 +204,93 @@ export default function Page() {
       </section>
 
       {/* Projects */}
-      <section id="projects" aria-label="Projects">
+      <section id="projects" aria-label={t("projects.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <SectionHeading>Projects</SectionHeading>
+            <SectionHeading>{t("projects.title")}</SectionHeading>
           </BlurFade>
           <BlurFade inView>
             <p className="text-pretty text-sm text-muted-foreground">
-              I&apos;ve worked on a variety of projects, from desktop apps to
-              complex web platforms. Here are some of my favorites. Check out{" "}
+              {t("projects.subtitle").split("{github}")[0]}
               <a
                 className="text-foreground/70 font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
                 href="https://github.com/EduardoProfe666"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                my GitHub
-              </a>{" "}
-              to find more.
+                GitHub
+              </a>
+              {t("projects.subtitle").split("{github}")[1]}
             </p>
           </BlurFade>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
-            {DATA.projects.map((project, id) => (
-              <BlurFade key={project.title} delay={id * 0.04} inView>
-                <ProjectCard
-                  href={project.href}
-                  title={project.title}
-                  description={project.description}
-                  dates={project.dates}
-                  tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
-                />
-              </BlurFade>
-            ))}
+            {DATA.projects.map((project, id) => {
+              const key = PROJECT_KEYS[project.title] ?? "";
+              return (
+                <BlurFade key={project.title} delay={id * 0.04} inView>
+                  <ProjectCard
+                    href={project.href}
+                    title={project.title}
+                    description={key ? t(`project.${key}.description` as keyof Translations) : project.description}
+                    dates={project.dates}
+                    tags={project.technologies}
+                    image={project.image}
+                    video={project.video}
+                    links={project.links}
+                  />
+                </BlurFade>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Events */}
-      <section id="events" aria-label="Events">
+      <section id="events" aria-label={t("events.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade inView>
-            <SectionHeading>Events &amp; Competitions</SectionHeading>
+            <SectionHeading>{t("events.title")}</SectionHeading>
           </BlurFade>
           <BlurFade inView>
             <p className="text-pretty text-sm text-muted-foreground">
-              Throughout my journey, I&apos;ve participated in{" "}
-              <span className="font-medium text-foreground/80">{DATA.events.length}+ competitive events</span>
-              —from{" "}
-              <span className="font-medium text-foreground/80">ICPC</span>
-              {" "}programming contests at the Caribbean level to university
-              hackathons and academic awards.
+              {t("events.subtitle").replace("{count}", String(DATA.events.length) + "+")}
             </p>
           </BlurFade>
           <BlurFade inView>
             <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
-              {DATA.events.map((event, id) => (
-                <BlurFade key={event.title + event.dates} delay={id * 0.04} inView>
-                  <EventCard
-                    title={event.title}
-                    description={event.description}
-                    location={event.location}
-                    dates={event.dates}
-                    image={event.image}
-                    links={event.links}
-                  />
-                </BlurFade>
-              ))}
+              {DATA.events.map((event, id) => {
+                const key = EVENT_KEYS[`${event.title}-${event.dates}`] ?? "";
+                return (
+                  <BlurFade key={event.title + event.dates} delay={id * 0.04} inView>
+                    <EventCard
+                      title={event.title}
+                      description={key ? t(`event.${key}.description` as keyof Translations) : event.description}
+                      location={event.location}
+                      dates={event.dates}
+                      image={event.image}
+                      links={event.links}
+                    />
+                  </BlurFade>
+                );
+              })}
             </ul>
           </BlurFade>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" aria-label="Contact">
+      <section id="contact" aria-label={t("contact.chip")}>
         <div className="flex flex-col items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-16">
           <BlurFade inView>
             <div className="space-y-4">
               <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
-                Contact
+                {t("contact.chip")}
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
-                Let&apos;s work together
+                {t("contact.heading")}
               </h2>
               <p className="mx-auto max-w-[500px] text-pretty text-muted-foreground md:text-lg/relaxed">
-                Have a project in mind or just want to say hi? I&apos;m always
-                open to new opportunities and collaborations.
+                {t("contact.description")}
               </p>
             </div>
           </BlurFade>
@@ -265,7 +301,7 @@ export default function Page() {
                 className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground text-background px-8 py-3.5 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
               >
                 <DATA.contact.social.Email.icon className="size-4 group-hover/cta:rotate-12 transition-transform duration-300" />
-                Send me an email
+                {t("contact.cta")}
               </Link>
               <div className="flex items-center gap-3">
                 {Object.entries(DATA.contact.social)
