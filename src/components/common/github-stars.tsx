@@ -32,9 +32,9 @@ export function GitHubStars({ repo }: { repo: string }) {
   if (stars === null) return null;
 
   return (
-    <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-      <Star className="size-3 fill-yellow-500 text-yellow-500" />
-      {formatStars(stars)}
+    <span className="group/stars inline-flex items-center gap-1 text-[11px] text-muted-foreground/70 bg-secondary/50 px-2 py-0.5 rounded-full border border-border/50 hover:border-yellow-500/30 hover:bg-yellow-500/5 transition-all duration-300 cursor-default">
+      <Star className="size-3 fill-yellow-500/70 text-yellow-500/70 group-hover/stars:fill-yellow-500 group-hover/stars:text-yellow-500 group-hover/stars:scale-110 transition-all duration-300" />
+      <span className="tabular-nums group-hover/stars:text-foreground/80 transition-colors duration-300">{formatStars(stars)}</span>
     </span>
   );
 }

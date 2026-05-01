@@ -243,7 +243,7 @@ export const DATA = {
     {
       title: "🌌 Custom API",
       href: "https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/",
-      dates: "2022 - Present",
+      dates: "November 2022",
       active: true,
       description:
         "Java API project featuring visual components (Java Swing), logical functionalities, and utilities.",
