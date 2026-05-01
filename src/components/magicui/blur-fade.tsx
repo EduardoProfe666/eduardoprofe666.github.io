@@ -24,12 +24,12 @@ const BlurFade = ({
   children,
   className,
   variant,
-  duration = 0.4,
+  duration = 0.3,
   delay = 0,
-  yOffset = 8,
+  yOffset = 6,
   inView = false,
   inViewMargin = "-50px",
-  blur = "6px",
+  blur = "4px",
 }: BlurFadeProps) => {
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
@@ -47,9 +47,9 @@ const BlurFade = ({
       animate={isInView ? "visible" : "hidden"}
       variants={combinedVariants}
       transition={{
-        delay: 0.04 + delay,
+        delay,
         duration,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        ease: [0.25, 0.4, 0.25, 1],
       }}
       className={className}
     >

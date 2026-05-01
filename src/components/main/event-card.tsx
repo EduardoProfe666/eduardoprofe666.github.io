@@ -31,28 +31,28 @@ export function EventCard({
   return (
     <li className="relative ml-10 py-4 group">
       <div className="absolute -left-16 top-4 flex items-center justify-center">
-        <div className="absolute size-3 -left-[22.5px] top-5 rounded-full border-2 border-border bg-background group-hover:border-foreground/40 transition-colors duration-300" />
-        <Avatar className="border size-12 ring-2 ring-transparent group-hover:ring-border/30 transition-all duration-300">
+        <div className="absolute size-2.5 -left-[22px] top-5 rounded-full border-2 border-border bg-background group-hover:border-foreground/50 group-hover:scale-125 transition-all duration-200" />
+        <Avatar className="size-12 border shadow-sm group-hover:shadow-md transition-shadow duration-200">
           <AvatarImage
             src={image}
             alt={title}
             className="object-contain"
             loading="lazy"
           />
-          <AvatarFallback>{title[0]}</AvatarFallback>
+          <AvatarFallback className="text-xs font-bold">{title[0]}</AvatarFallback>
         </Avatar>
       </div>
-      <div className="flex flex-1 flex-col justify-start gap-1.5 rounded-lg p-3 -ml-3 hover:bg-muted/30 transition-colors duration-300">
+      <div className="flex flex-1 flex-col justify-start gap-1.5 rounded-xl p-3 -ml-3 hover:bg-accent/30 transition-colors duration-200">
         <h2 className="font-semibold leading-none text-sm">{title}</h2>
         <div className="flex items-center gap-3 flex-wrap">
           {dates && (
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground/70">
               <Calendar className="size-3" />
               {dates}
             </span>
           )}
           {location && (
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground/70">
               <MapPin className="size-3" />
               {location}
             </span>
@@ -67,7 +67,7 @@ export function EventCard({
           <div className="mt-2 flex flex-row flex-wrap items-start gap-1.5">
             {links.map((link, idx) => (
               <Link href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
-                <Badge className="flex gap-1.5 px-2 py-1 text-[10px] hover:shadow-sm transition-shadow">
+                <Badge className="flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full hover:shadow-sm transition-all duration-200 hover:scale-[1.02]">
                   {link.icon}
                   {link.title}
                 </Badge>

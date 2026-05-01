@@ -9,13 +9,12 @@ import {
   AvatarImage,
 } from "@/components/common/avatar";
 import { DATA } from "@/data/resume";
+import { calcDuration } from "@/lib/duration";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
 
 const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
-
-const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
@@ -26,7 +25,7 @@ export default function Page() {
           <div className="gap-4 flex justify-between items-center">
             <div className="flex-col flex flex-1 space-y-2">
               <BlurFadeText
-                delay={BLUR_FADE_DELAY}
+                delay={0.05}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none text-balance"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
@@ -37,11 +36,11 @@ export default function Page() {
               </BlurFadeText>
               <BlurFadeText
                 className="max-w-[600px] text-pretty text-muted-foreground md:text-lg"
-                delay={BLUR_FADE_DELAY * 2}
+                delay={0.1}
                 text={DATA.description}
               />
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <BlurFade delay={0.1}>
               <Avatar className="size-28 border-2 shadow-xl ring-4 ring-border/20 hover:ring-border/40 transition-all duration-500">
                 <AvatarImage
                   alt={DATA.name}
@@ -57,10 +56,10 @@ export default function Page() {
 
       {/* About */}
       <section id="about" aria-label="About Me">
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade delay={0.15}>
           <h2 className="text-xl font-bold mb-2">About Me</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+        <BlurFade delay={0.2}>
           <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed">
             <Markdown>{DATA.summary}</Markdown>
           </div>
@@ -70,16 +69,11 @@ export default function Page() {
       {/* Work */}
       <section id="work" aria-label="Work Experience">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+          <BlurFade delay={0.25}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
-            <BlurFade
-              key={work.company}
-              delay={BLUR_FADE_DELAY * 7 + id * 0.05}
-              inView
-              inViewMargin="-100px"
-            >
+            <BlurFade key={work.company} delay={id * 0.03} inView>
               <ResumeCard
                 logoUrl={work.logoUrl}
                 altText={work.company}
@@ -88,6 +82,7 @@ export default function Page() {
                 href={work.href}
                 badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
+                duration={calcDuration(work.start, work.end ?? "Present")}
                 description={work.description}
                 location={work.location}
               />
@@ -99,21 +94,17 @@ export default function Page() {
       {/* Education */}
       <section id="education" aria-label="Education">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 8}>
+          <BlurFade inView>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 9 + id * 0.05}
-              inView
-              inViewMargin="-100px"
-            >
+            <BlurFade key={education.school} delay={id * 0.03} inView>
               <ResumeCard
                 logoUrl={education.logoUrl}
                 altText={education.school}
                 title={education.school}
                 period={`${education.start} - ${education.end}`}
+                duration={calcDuration(education.start, education.end)}
                 description={
                   <>
                     {education.degree}
@@ -150,10 +141,10 @@ export default function Page() {
       {/* Skills */}
       <section id="skills" aria-label="Technologies">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+          <BlurFade inView>
             <h2 className="text-xl font-bold">Technologies</h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 11} inView inViewMargin="-100px">
+          <BlurFade inView>
             <div className="text-center items-center justify-center flex flex-wrap gap-1">
               <Suspense
                 fallback={
@@ -173,8 +164,8 @@ export default function Page() {
 
       {/* Projects */}
       <section id="projects" aria-label="Projects">
-        <div className="space-y-12 w-full py-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 12} inView inViewMargin="-100px">
+        <div className="space-y-10 w-full py-6">
+          <BlurFade inView>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
@@ -200,12 +191,7 @@ export default function Page() {
           </BlurFade>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto">
             {DATA.projects.map((project, id) => (
-              <BlurFade
-                key={project.title}
-                delay={BLUR_FADE_DELAY * 13 + id * 0.05}
-                inView
-                inViewMargin="-80px"
-              >
+              <BlurFade key={project.title} delay={id * 0.04} inView>
                 <ProjectCard
                   href={project.href}
                   title={project.title}
@@ -224,8 +210,8 @@ export default function Page() {
 
       {/* Events */}
       <section id="events" aria-label="Events">
-        <div className="space-y-12 w-full py-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 14} inView inViewMargin="-100px">
+        <div className="space-y-10 w-full py-6">
+          <BlurFade inView>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
@@ -241,15 +227,10 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 15} inView inViewMargin="-100px">
+          <BlurFade inView>
             <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
               {DATA.events.map((event, id) => (
-                <BlurFade
-                  key={event.title + event.dates}
-                  delay={BLUR_FADE_DELAY * 16 + id * 0.05}
-                  inView
-                  inViewMargin="-50px"
-                >
+                <BlurFade key={event.title + event.dates} delay={id * 0.03} inView>
                   <EventCard
                     title={event.title}
                     description={event.description}
@@ -268,12 +249,12 @@ export default function Page() {
       {/* Contact */}
       <section id="contact" aria-label="Contact">
         <div className="flex flex-col items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-16">
-          <BlurFade delay={BLUR_FADE_DELAY * 17} inView inViewMargin="-100px">
+          <BlurFade inView>
             <div className="space-y-4">
               <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
                 Contact
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
                 Let&apos;s work together
               </h2>
               <p className="mx-auto max-w-[500px] text-pretty text-muted-foreground md:text-lg/relaxed">
@@ -282,7 +263,7 @@ export default function Page() {
               </p>
             </div>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 18} inView inViewMargin="-100px">
+          <BlurFade delay={0.05} inView>
             <div className="flex flex-col items-center gap-5">
               <Link
                 href={DATA.contact.social.Email.url}

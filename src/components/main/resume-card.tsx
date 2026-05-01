@@ -5,7 +5,7 @@ import {
 } from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import { Card, CardContent, CardHeader } from "@/components/common/card";
-import { ChevronRight, MapPin, Briefcase } from "lucide-react";
+import { ChevronRight, MapPin, Briefcase, Clock } from "lucide-react";
 import Link from "next/link";
 
 interface ResumeCardProps {
@@ -16,6 +16,7 @@ interface ResumeCardProps {
   href?: string;
   badges?: readonly string[];
   period: string;
+  duration?: string;
   description?: React.ReactNode;
   location?: string;
 }
@@ -28,22 +29,23 @@ export const ResumeCard = ({
   href,
   badges,
   period,
+  duration,
   description,
   location,
 }: ResumeCardProps) => {
   const content = (
-    <Card className="flex gap-4 border border-transparent hover:border-border/50 hover:shadow-md transition-all duration-300 p-4 group">
-      <div className="flex-none">
-        <Avatar className="border size-12 bg-muted-background dark:bg-foreground ring-2 ring-transparent group-hover:ring-border/30 transition-all duration-300">
+    <Card className="flex gap-4 hover:border hover:border-border hover:shadow-lg hover:bg-accent/30 transition-all duration-200 p-4 group rounded-xl">
+      <div className="flex-none pt-0.5">
+        <Avatar className="size-12 border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md transition-shadow duration-200">
           <AvatarImage
             src={logoUrl}
             alt={altText}
             className="object-contain"
           />
-          <AvatarFallback>{altText[0]}</AvatarFallback>
+          <AvatarFallback className="text-xs font-bold">{altText[0]}</AvatarFallback>
         </Avatar>
       </div>
-      <div className="flex-grow flex flex-col min-w-0">
+      <div className="flex-grow flex flex-col min-w-0 gap-1">
         <CardHeader>
           <div className="flex items-start justify-between gap-x-2">
             <div className="min-w-0">
@@ -54,7 +56,7 @@ export const ResumeCard = ({
                     {badges.map((badge, index) => (
                       <Badge
                         variant="secondary"
-                        className="text-[10px] px-1.5 py-0"
+                        className="text-[10px] px-1.5 py-0 rounded-full"
                         key={index}
                       >
                         {badge}
@@ -63,29 +65,37 @@ export const ResumeCard = ({
                   </span>
                 )}
                 {href && (
-                  <ChevronRight className="size-4 ml-1 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
+                  <ChevronRight className="size-4 ml-1 translate-x-0 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100" />
                 )}
               </h3>
               {subtitle && (
                 <div className="flex items-center gap-1.5 mt-1">
-                  <Briefcase className="size-3 text-muted-foreground flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">{subtitle}</span>
+                  <Briefcase className="size-3 text-muted-foreground/70 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground/90 font-medium">{subtitle}</span>
                 </div>
               )}
               {location && (
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <MapPin className="size-3 text-muted-foreground flex-shrink-0" />
-                  <span className="text-xs text-muted-foreground">{location}</span>
+                  <MapPin className="size-3 text-muted-foreground/70 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground/70">{location}</span>
                 </div>
               )}
             </div>
-            <div className="text-xs tabular-nums text-muted-foreground text-right whitespace-nowrap flex-shrink-0">
-              {period}
+            <div className="flex-shrink-0 mt-0.5 text-right">
+              <div className="text-[11px] tabular-nums text-muted-foreground/70 whitespace-nowrap transition-all duration-200 group-hover:hidden">
+                {period}
+              </div>
+              {duration && (
+                <div className="hidden items-center gap-1 text-[11px] font-medium text-foreground/80 whitespace-nowrap group-hover:flex">
+                  <Clock className="size-3 flex-shrink-0" />
+                  {duration}
+                </div>
+              )}
             </div>
           </div>
         </CardHeader>
         {description && (
-          <CardContent className="mt-2 text-xs sm:text-sm text-pretty leading-relaxed">
+          <CardContent className="text-xs sm:text-sm text-pretty leading-relaxed text-muted-foreground">
             {description}
           </CardContent>
         )}
@@ -95,11 +105,11 @@ export const ResumeCard = ({
 
   if (href) {
     return (
-      <Link href={href} className="block cursor-pointer" target="_blank" rel="noopener noreferrer">
+      <Link href={href} className="block" target="_blank" rel="noopener noreferrer">
         {content}
       </Link>
     );
   }
 
-  return <div className="block">{content}</div>;
+  return content;
 };

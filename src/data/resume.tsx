@@ -185,7 +185,7 @@ export const DATA = {
       href: "https://cujae.cu",
       degree: "Computer Engineering Graduate - Gold Title Honors",
       logoUrl: "/work/cujae.avif",
-      start: "2022",
+      start: "April 2022",
       end: "March 2025",
       thesis: {
         repository: "https://repositorio.cujae.edu.cu/items/4fafa995-04f7-4c3e-ba52-8f375b4b0129",
