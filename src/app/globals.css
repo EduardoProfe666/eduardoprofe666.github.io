@@ -158,6 +158,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  :focus-visible {
+    @apply outline-2 outline-ring outline-offset-2;
+  }
+  ::selection {
+    @apply bg-foreground/10;
+  }
 }
 
 h3 code {
