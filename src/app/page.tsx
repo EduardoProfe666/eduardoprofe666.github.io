@@ -1,13 +1,9 @@
 import { EventCard } from "@/components/main/event-card";
 import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/main/project-card";
 import { ResumeCard } from "@/components/main/resume-card";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/common/avatar";
+import { AvatarFlip } from "@/components/main/avatar-flip";
+import { HeroTitle } from "@/components/main/hero-title";
 import { DATA } from "@/data/resume";
 import { calcDuration } from "@/lib/duration";
 import Link from "next/link";
@@ -38,18 +34,12 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-6 flex justify-between items-center">
             <div className="flex-col flex flex-1 space-y-3">
-              <BlurFadeText
-                delay={0}
-                characterDelay={0.025}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none text-balance"
-                yOffset={10}
-                animateByCharacter
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
-              >
-                <span className="inline-block origin-[70%_70%] hover:animate-wave cursor-default">
-                  👋
-                </span>
-              </BlurFadeText>
+              <BlurFade delay={0.05}>
+                <HeroTitle
+                  name={DATA.name.split(" ")[0]}
+                  alias="EduardoProfe666"
+                />
+              </BlurFade>
               <BlurFade delay={0.4}>
                 <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
                   {DATA.description}
@@ -57,18 +47,11 @@ export default function Page() {
               </BlurFade>
             </div>
             <BlurFade delay={0.3}>
-              <div className="relative group/avatar cursor-default">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-foreground/5 to-foreground/10 opacity-0 group-hover/avatar:opacity-100 blur-md transition-opacity duration-700" />
-                <Avatar className="relative size-28 border-2 shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-500 ease-out">
-                  <AvatarImage
-                    alt={DATA.name}
-                    src={DATA.avatarUrl}
-                    loading="eager"
-                    className="group-hover/avatar:brightness-105 transition-[filter] duration-500"
-                  />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
-              </div>
+              <AvatarFlip
+                src={DATA.avatarUrl}
+                alt={DATA.name}
+                fallback={DATA.initials}
+              />
             </BlurFade>
           </div>
         </div>
