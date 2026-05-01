@@ -27,7 +27,7 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-2">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
+                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none text-balance"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
               >
@@ -36,7 +36,7 @@ export default function Page() {
                 </span>
               </BlurFadeText>
               <BlurFadeText
-                className="max-w-[600px] text-muted-foreground md:text-lg"
+                className="max-w-[600px] text-pretty text-muted-foreground md:text-lg"
                 delay={BLUR_FADE_DELAY * 2}
                 text={DATA.description}
               />
@@ -180,10 +180,10 @@ export default function Page() {
                 <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
                   My Projects
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
                   Check out my latest work
                 </h2>
-                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-lg/relaxed">
+                <p className="mx-auto max-w-[600px] text-pretty text-muted-foreground md:text-lg/relaxed">
                   From web apps to bots and tools. Check out{" "}
                   <a
                     className="text-blue-500 font-medium hover:underline underline-offset-4"
@@ -231,10 +231,10 @@ export default function Page() {
                 <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium">
                   Events
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
                   I love to compete
                 </h2>
-                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-lg/relaxed">
+                <p className="mx-auto max-w-[600px] text-pretty text-muted-foreground md:text-lg/relaxed">
                   {DATA.events.length}+ events ranging from ICPC competitions to
                   university hackathons and awards.
                 </p>
@@ -276,7 +276,7 @@ export default function Page() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Let&apos;s work together
               </h2>
-              <p className="mx-auto max-w-[500px] text-muted-foreground md:text-lg/relaxed">
+              <p className="mx-auto max-w-[500px] text-pretty text-muted-foreground md:text-lg/relaxed">
                 Have a project in mind or just want to say hi? I&apos;m always
                 open to new opportunities and collaborations.
               </p>

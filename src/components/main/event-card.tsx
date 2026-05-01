@@ -59,7 +59,7 @@ export function EventCard({
           )}
         </div>
         {description && (
-          <p className="text-sm text-muted-foreground leading-relaxed mt-0.5">
+          <p className="text-sm text-pretty text-muted-foreground leading-relaxed mt-0.5">
             {description}
           </p>
         )}

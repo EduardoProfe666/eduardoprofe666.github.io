@@ -85,7 +85,7 @@ export const ResumeCard = ({
           </div>
         </CardHeader>
         {description && (
-          <CardContent className="mt-2 text-xs sm:text-sm leading-relaxed">
+          <CardContent className="mt-2 text-xs sm:text-sm text-pretty leading-relaxed">
             {description}
           </CardContent>
         )}
