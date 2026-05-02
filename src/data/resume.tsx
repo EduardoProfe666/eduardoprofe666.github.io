@@ -219,7 +219,7 @@ export const DATA = {
     },
     {
       title: "⚡ UNE Unwrapped",
-      href: "https://une-unwrapped-habana.vercel.app",
+      href: "https://une-unwrapped.vercel.app",
       dates: "December 2025",
       active: true,
       description:
@@ -233,7 +233,7 @@ export const DATA = {
         },
         {
           type: "Website",
-          href: "https://une-unwrapped-habana.vercel.app",
+          href: "https://une-unwrapped.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
       ],
