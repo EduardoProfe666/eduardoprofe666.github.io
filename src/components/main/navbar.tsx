@@ -16,20 +16,18 @@ import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/main/language-switcher";
 import { useTranslation } from "@/i18n/provider";
-import { locales } from "@/i18n/index";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+/** `false` during SSR and the hydration pass, `true` afterwards. */
+const noopSubscribe = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const { locale, t } = useTranslation();
-  const { theme } = useTheme();
-  const currentLang = locales.find((l) => l.code === locale);
+  // The dock reads the theme and the selected locale, neither of which the
+  // server knows, so it renders only after hydration.
+  const mounted = useSyncExternalStore(noopSubscribe, onClient, onServer);
+  const { t } = useTranslation();
 
   if (!mounted) return null;
 
@@ -54,7 +52,7 @@ export default function Navbar() {
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Resume</p>
+              <p>{t("nav.resume")}</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>
@@ -72,7 +70,7 @@ export default function Navbar() {
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Github</p>
+              <p>{t("nav.github")}</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>

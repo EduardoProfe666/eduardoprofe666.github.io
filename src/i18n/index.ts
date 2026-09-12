@@ -1,7 +1,5 @@
-export type { Locale, Translations } from "./types";
+export type { Locale, TranslationKey, Translations } from "./types";
 export { I18nProvider, useTranslation } from "./provider";
-export { default as en } from "./en";
-export { default as es } from "./es";
 
 export interface LocaleConfig {
   code: string;

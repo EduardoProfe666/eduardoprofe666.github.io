@@ -4,27 +4,27 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
-  useState,
+  useMemo,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
-import type { Locale, Translations } from "./types";
+import type { Locale, TranslationKey, Translations } from "./types";
 import en from "./en";
 import es from "./es";
 import fr from "./fr";
 import de from "./de";
 import it from "./it";
 
-const translations: Record<string, Translations> = {
-  en,
-  es,
-  fr,
-  de,
-  it,
-};
+const translations: Record<Locale, Translations> = { en, es, fr, de, it };
 
-function getTranslations(locale: Locale): Translations {
-  return translations[locale] ?? en;
+const LOCALES = Object.keys(translations) as Locale[];
+
+const COOKIE_NAME = "locale";
+const ONE_YEAR = 60 * 60 * 24 * 365;
+const DEFAULT_LOCALE: Locale = "en";
+
+function isLocale(value: string | undefined): value is Locale {
+  return value !== undefined && (LOCALES as string[]).includes(value);
 }
 
 function getCookie(name: string): string | undefined {
@@ -35,60 +35,63 @@ function getCookie(name: string): string | undefined {
   return match ? decodeURIComponent(match[1]) : undefined;
 }
 
-function setCookie(name: string, value: string, maxAge: number) {
-  document.cookie = `${name}=${encodeURIComponent(value)};path=/;max-age=${maxAge};SameSite=Lax`;
+/**
+ * The cookie is the single source of truth for the selected locale, read
+ * through `useSyncExternalStore`.
+ *
+ * The previous version mirrored it into `useState` and copied it across in an
+ * effect, which meant an extra render after hydration on every page load — and
+ * it is the pattern React's `set-state-in-effect` lint rule exists to catch.
+ */
+const listeners = new Set<() => void>();
+
+function subscribe(onStoreChange: () => void) {
+  listeners.add(onStoreChange);
+  return () => {
+    listeners.delete(onStoreChange);
+  };
 }
 
-const COOKIE_NAME = "locale";
-const ONE_YEAR = 60 * 60 * 24 * 365;
+function readLocale(): Locale {
+  const saved = getCookie(COOKIE_NAME);
+  return isLocale(saved) ? saved : DEFAULT_LOCALE;
+}
+
+/** The server has no cookie jar, so SSG always renders the default locale. */
+function readServerLocale(): Locale {
+  return DEFAULT_LOCALE;
+}
 
 interface I18nContextValue {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: (key: keyof Translations) => string;
+  t: (key: TranslationKey) => string;
 }
 
-const I18nContext = createContext<I18nContextValue>({
-  locale: "en",
-  setLocale: () => {},
-  t: (key) => key,
-});
+const I18nContext = createContext<I18nContextValue | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+  const locale = useSyncExternalStore(subscribe, readLocale, readServerLocale);
 
-  useEffect(() => {
-    const saved = getCookie(COOKIE_NAME);
-    if (saved && ["en", "es", "fr", "de", "it"].includes(saved)) {
-      setLocaleState(saved as Locale);
-    }
-  }, []);
-
-  const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-    setCookie(COOKIE_NAME, newLocale, ONE_YEAR);
+  const setLocale = useCallback((next: Locale) => {
+    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(next)};path=/;max-age=${ONE_YEAR};SameSite=Lax`;
+    for (const listener of listeners) listener();
   }, []);
 
   const t = useCallback(
-    (key: keyof Translations): string => {
-      const dict = getTranslations(locale);
-      if (key in dict) {
-        return dict[key];
-      }
-      // Fallback to English
-      return en[key] ?? key;
-    },
+    (key: TranslationKey): string => translations[locale][key] ?? en[key] ?? key,
     [locale]
   );
 
-  return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </I18nContext.Provider>
+  const value = useMemo(
+    () => ({ locale, setLocale, t }),
+    [locale, setLocale, t]
   );
+
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
-export function useTranslation() {
+export function useTranslation(): I18nContextValue {
   const context = useContext(I18nContext);
   if (!context) {
     throw new Error("useTranslation must be used within an I18nProvider");

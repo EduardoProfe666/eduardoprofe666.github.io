@@ -6,7 +6,6 @@ import {
 import { Badge } from "@/components/common/badge";
 import { Card, CardContent, CardHeader } from "@/components/common/card";
 import { ChevronRight, MapPin, Briefcase, Clock } from "lucide-react";
-import Link from "next/link";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -33,8 +32,8 @@ export const ResumeCard = ({
   description,
   location,
 }: ResumeCardProps) => {
-  const content = (
-    <Card className="flex gap-4 hover:border hover:border-border hover:shadow-lg hover:bg-accent/30 transition-all duration-300 ease-out p-4 group rounded-xl hover:-translate-y-0.5">
+  return (
+    <Card className="relative flex gap-4 hover:border hover:border-border hover:shadow-lg hover:bg-accent/30 transition-all duration-300 ease-out p-4 group rounded-xl hover:-translate-y-0.5">
       <div className="flex-none pt-0.5">
         <Avatar className="size-12 border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
           <AvatarImage
@@ -50,7 +49,18 @@ export const ResumeCard = ({
           <div className="flex items-start justify-between gap-x-2">
             <div className="min-w-0">
               <h3 className="inline-flex items-center font-semibold text-sm leading-tight group-hover:text-foreground transition-colors duration-300">
-                {title}
+                {href ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="after:absolute after:inset-0 after:rounded-xl after:content-['']"
+                  >
+                    {title}
+                  </a>
+                ) : (
+                  title
+                )}
                 {badges && badges.length > 0 && (
                   <span className="inline-flex gap-x-1 pl-2">
                     {badges.map((badge, index) => (
@@ -106,14 +116,4 @@ export const ResumeCard = ({
       </div>
     </Card>
   );
-
-  if (href) {
-    return (
-      <Link href={href} className="block" target="_blank" rel="noopener noreferrer">
-        {content}
-      </Link>
-    );
-  }
-
-  return content;
 };

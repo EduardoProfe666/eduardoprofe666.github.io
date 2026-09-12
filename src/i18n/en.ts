@@ -2,7 +2,7 @@ import { Translations } from "./types";
 
 const en: Translations = {
   // UI
-  "hero.greeting": "Hi, I'm Eduardo",
+  "hero.greeting": "Hi, I'm",
   "hero.description":
     "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
   "about.title": "About",
@@ -29,19 +29,20 @@ const en: Translations = {
   "thesis.label": "Thesis",
   "thesis.repository": "Repository",
   "thesis.download": "Download",
+  "date.present": "Present",
   "duration.andCounting": "and counting",
   "duration.year": "yr",
   "duration.years": "yrs",
-  "duration.month": "mo",
-  "duration.months": "mos",
+  "duration.month": "month",
+  "duration.months": "months",
   "timeago.thisMonth": "this month",
-  "timeago.ago": "ago",
+  "timeago.ago": "{value} ago",
   "timeago.andCounting": "and counting",
 
   // Work entries
   "work.aikoders.title": "Fullstack Team Lead | AI Engineer | DevOps",
   "work.aikoders.description":
-    "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), and Easy Cargo Express (ecommerce logistics). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native, shipped to both Google Play Store and Apple App Store.",
+    "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), Easy Cargo Express (ecommerce logistics), and Nitida (cleaning company management). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, Railway, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native and Expo, shipped to both Google Play Store and Apple App Store.",
   "work.codes.title": "Backend Developer",
   "work.codes.description":
     "Developed the backend for the transnational e-commerce platform srmercado.com, implementing a microservices architecture in .NET based on Clean Architecture principles, CQRS, and event-driven communication using RabbitMQ. I managed storage and content delivery infrastructure via AWS (S3 and CloudFront CDN), later leading the migration to an on-premise solution with MinIO to meet strict data sovereignty requirements. Additionally, I ensured the platform's financial operability by integrating multiple international payment gateways—including Monei, PayNoPain (PayLands), and RedSys—guaranteeing secure and efficient cross-border transaction flows.",

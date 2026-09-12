@@ -1,15 +1,24 @@
 import { Icons } from "@/components/main/icons";
 
+/**
+ * Structural résumé data: identifiers, dates, links and assets.
+ *
+ * Every human-readable string (job titles, descriptions, the degree name) lives
+ * in `src/i18n/*` and is looked up by the `id` declared here. Keeping the prose
+ * in exactly one place is what stops the English copy in this file from drifting
+ * away from `src/i18n/en.ts`.
+ *
+ * Dates are stored as `YYYY-MM` and formatted per locale at render time (see
+ * `src/lib/duration.ts`). They used to be English month names printed verbatim,
+ * so a Spanish visitor still read "May 2024 - September 2026". An `end` of
+ * `null` means the role is still ongoing.
+ */
 export const DATA = {
   name: "Eduardo González",
   initials: "EG",
   url: "https://eduardoprofe666.github.io",
   location: "Havana, CU",
   locationLink: "https://www.google.com/maps/place/havana",
-  description:
-    "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
-  summary:
-    "I'm a **Computer Engineering** graduate with **Gold Title honors** from [CUJAE](/#education) and over **4 years of experience** building software across the full stack. I currently lead development teams and architect enterprise solutions integrating **AI, automation workflows, and cloud infrastructure** (AWS, DigitalOcean, Vercel). My background spans from [backend-heavy distributed systems](/#work) to [frontend engineering](/#work), with hands-on DevOps and infrastructure skills including **Docker, CI/CD pipelines, and cloud deployments**. I thrive in fast-paced environments and enjoy mentoring teams, competing in [programming events](/#events), and pushing the boundaries of [modern technologies](/#skills).",
   avatarUrl: "/me.avif",
   skill_slugs: [
     "python",
@@ -18,6 +27,7 @@ export const DATA = {
     "openjdk",
     "dotnet",
     "react",
+    "railway",
     "nextdotjs",
     "gitlab",
     "nuxt",
@@ -71,136 +81,118 @@ export const DATA = {
 
   work: [
     {
+      id: "aikoders",
       company: "AIKoders LLC",
       badges: [],
       href: "https://aikoders.tech/",
       location: "Miami, Florida, USA",
-      title: "Fullstack Team Lead | AI Engineer | DevOps",
       logoUrl: "/work/aikoders.avif",
-      start: "December 2025",
-      end: "Present",
-      description:
-        "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), and Easy Cargo Express (ecommerce logistics). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native, shipped to both Google Play Store and Apple App Store.",
+      start: "2025-12",
+      end: null,
     },
     {
+      id: "codes",
       company: "Codes SRL",
       badges: [],
       href: "https://www.codestic.net/",
       location: "Havana, CU",
-      title: "Backend Developer",
       logoUrl: "/work/codes.avif",
-      start: "May 2025",
-      end: "January 2026",
-      description:
-        "Developed the backend for the transnational e-commerce platform srmercado.com, implementing a microservices architecture in .NET based on Clean Architecture principles, CQRS, and event-driven communication using RabbitMQ. I managed storage and content delivery infrastructure via AWS (S3 and CloudFront CDN), later leading the migration to an on-premise solution with MinIO to meet strict data sovereignty requirements. Additionally, I ensured the platform's financial operability by integrating multiple international payment gateways—including Monei, PayNoPain (PayLands), and RedSys—guaranteeing secure and efficient cross-border transaction flows.",
+      start: "2025-05",
+      end: "2026-01",
     },
     {
+      id: "emsifarma",
       company: "EMSI FARMA TECH",
       badges: [],
       href: "https://www.emsifarma.com",
       location: "Havana, CU",
-      title: "Software Engineer",
       logoUrl: "/work/emsifarma.avif",
-      start: "March 2025",
-      end: "December 2025",
-      description:
-        "Driven the digital transformation toward Industry 4.0 by developing an integrated MES/SCADA system using .NET and Next.js, incorporating WSO2 Identity Server to ensure robust and secure identity management. Additionally, I led the optimization of legal workflows and complex case management by implementing agentic solutions with n8n. This initiative automated critical processes for multi-sector companies, significantly increasing operational efficiency through the deployment of intelligent, automated workflows."
+      start: "2025-03",
+      end: "2025-12",
     },
     {
+      id: "ecos",
       company: "Ecos Productions",
       badges: [],
       href: "https://www.ecosvideos.com",
       location: "Mayabeque, CU",
-      title: "Fullstack Developer",
       logoUrl: "/work/ecos.avif",
-      start: "March 2025",
-      end: "June 2025",
-      description:
-        "Leaded the development of the Gesel system for the Cuban Law Firm Association, implementing a comprehensive legal management solution using Angular.js, Tailwind CSS, Express.js, and MySQL. Focus on improving legal workflow efficiency and case management.",
+      start: "2025-03",
+      end: "2025-06",
     },
     {
+      id: "medialityc",
       company: "Medialityc",
       badges: [],
       href: "https://github.com/medialityc/",
       location: "Havana, CU",
-      title: "Backend Developer / Project Manager",
       logoUrl: "/work/medialityc.avif",
-      start: "October 2024",
-      end: "June 2025",
-      description:
-        "Developed backend solutions for company projects while leading full-stack development teams. Responsible for technical decision-making, team mentoring, and ensuring project delivery excellence across multiple development teams.",
+      start: "2024-10",
+      end: "2025-06",
     },
     {
+      id: "aica",
       company: "AICA+ Pharmaceutical Laboratories",
+      badges: [],
       href: "https://aica.cu",
-      badges: [],
       location: "Havana, CU",
-      title: "Software Engineer",
       logoUrl: "/work/aica.avif",
-      start: "May 2024",
-      end: "Present",
-      description:
-        "Developed a .NET and Razor Pages web application for document management in the Quality Management Department, integrating PostgreSQL and MinIO. Successfully implemented a Production Assurance Strategy system using Nest.JS and Next.JS that optimizes production considering product constraints, resources, and storage limitations, utilizing PostgreSQL and MongoDB.",
+      start: "2024-05",
+      end: "2026-09",
     },
     {
+      id: "cujae-prof",
       company: "Faculty of Computer Engineering at CUJAE",
-      href: "https://cujae.cu",
       badges: [],
+      href: "https://cujae.cu",
       location: "Havana, CU",
-      title: "Teaching Assistant / Professor",
       logoUrl: "/work/cujae.avif",
-      start: "January 2023",
-      end: "March 2025",
-      description:
-        "Taught first and second-year Computer Engineering courses, including Introduction to Programming, Interface Design and Testing, Object-Oriented Programming, and Data Structures. Also taught Web Programming for third-year Computer Engineering students.",
+      start: "2023-01",
+      end: "2025-03",
     },
     {
+      id: "alsoftpro",
       company: "AlsoftPro",
       badges: [],
       href: "https://www.directoriocubano.info/empresas/alsoftpro/",
       location: "Havana, CU",
-      title: "Software Engineer",
       logoUrl: "/work/alsofpro.avif",
-      start: "December 2023",
-      end: "July 2024",
-      description:
-        "Co-developed the backend for two modules (Contracting and Services) for ALCOM, Havana's Water Company, using Django and Django Rest Framework.",
+      start: "2023-12",
+      end: "2024-07",
     },
     {
+      id: "cujae-econ",
       company: "CUJAE Economics Department",
-      href: "https://cujae.cu",
       badges: [],
+      href: "https://cujae.cu",
       location: "Havana, CU",
-      title: "Accountant E",
       logoUrl: "/work/cujae.avif",
-      start: "June 2021",
-      end: "April 2022",
-      description:
-        "Managed inventory systems, accounting, and conducted audits of university warehouses and assets.",
+      start: "2021-06",
+      end: "2022-04",
     },
   ],
   education: [
     {
+      id: "cujae",
       school: "CUJAE",
       href: "https://cujae.cu",
-      degree: "Computer Engineering Graduate - Gold Title Honors (GPA: 5.0/5.0)",
       logoUrl: "/work/cujae.avif",
-      start: "April 2022",
-      end: "March 2025",
+      start: "2022-04",
+      end: "2025-03",
       thesis: {
-        repository: "https://repositorio.cujae.edu.cu/items/4fafa995-04f7-4c3e-ba52-8f375b4b0129",
-        download: "https://repositorio.cujae.edu.cu/server/api/core/bitstreams/a105cbae-d41c-4fde-b1b3-81cc6c99e315/content",
+        repository:
+          "https://repositorio.cujae.edu.cu/items/4fafa995-04f7-4c3e-ba52-8f375b4b0129",
+        download:
+          "https://repositorio.cujae.edu.cu/server/api/core/bitstreams/a105cbae-d41c-4fde-b1b3-81cc6c99e315/content",
       },
     },
   ],
   projects: [
     {
+      id: "sudoku",
       title: "🔢 Sudoku Play",
       href: "https://sudoku-play.onrender.com",
-      dates: "August 2024",
-      active: true,
-      description:
-        "Simple Sudoku game developed as an installable Progressive Web App with online/offline functionality",
+      date: "2024-08",
       technologies: ["HTML", "CSS", "JS"],
       links: [
         {
@@ -218,12 +210,10 @@ export const DATA = {
       video: "",
     },
     {
+      id: "une",
       title: "⚡ UNE Unwrapped",
       href: "https://une-unwrapped.vercel.app",
-      dates: "December 2025",
-      active: true,
-      description:
-        "A website for displaying statistics about UNE's public Telegram channel in Havana",
+      date: "2025-12",
       technologies: ["Python", "Telethon", "React.js"],
       links: [
         {
@@ -241,12 +231,10 @@ export const DATA = {
       video: "",
     },
     {
+      id: "api",
       title: "🌌 Custom API",
       href: "https://eduardoprofe666.github.io/api-personalizada-wiki-vuepress/",
-      dates: "November 2022",
-      active: true,
-      description:
-        "Java API project featuring visual components (Java Swing), logical functionalities, and utilities.",
+      date: "2022-11",
       technologies: ["Java", "Java Swing"],
       links: [
         {
@@ -264,11 +252,10 @@ export const DATA = {
       video: "",
     },
     {
+      id: "weather",
       title: "🌤️ Weather App",
       href: "https://the-cool-weather-app.onrender.com/",
-      dates: "April 2025",
-      active: true,
-      description: "Weather App powered by Open-Meteo",
+      date: "2025-04",
       technologies: ["Next.js", "Tailwind", "OpenMeteo"],
       links: [
         {
@@ -286,11 +273,10 @@ export const DATA = {
       video: "",
     },
     {
+      id: "anime",
       title: "⚔️ Download Anime Free Bot",
       href: "https://t.me/descargar_anime_free_bot",
-      dates: "July 2024",
-      active: true,
-      description: "Telegram bot for downloading Spanish-subtitled anime",
+      date: "2024-07",
       technologies: ["Python", "Web Scrapping", "Telegram API"],
       links: [
         {
@@ -308,12 +294,10 @@ export const DATA = {
       video: "",
     },
     {
+      id: "password",
       title: "🔐 Password Security Toolkit",
       href: "https://password-security-toolkit.onrender.com/",
-      dates: "March 2024",
-      active: true,
-      description:
-        "A set of tools for password security, including a password generator, strength checker, and entropy calculator.",
+      date: "2024-03",
       technologies: ["React", "Password", "Tailwind"],
       links: [
         {
@@ -333,41 +317,41 @@ export const DATA = {
   ],
   events: [
     {
+      id: "icpc2024",
       title: "ICPC Caribbean",
       dates: "2024",
       location: "Caribbean",
-      description:
-        "Winner of the ICPC programming competition at the Caribbean level. Qualified for the next round at Latin America level",
+      // Declared here rather than sniffed out of the description: the card used
+      // to match /winner|first place/ against text that is translated, so the
+      // trophy only ever appeared in English.
+      award: true,
       image: "/logos/icpc.avif",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
     {
+      id: "icpc2023",
       title: "ICPC Caribbean",
       dates: "2023",
       location: "Caribbean",
-      description:
-        "Honorable mention in the ICPC programming competition at the Caribbean level.",
+      award: false,
       image: "/logos/icpc.avif",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
     {
+      id: "copa2023",
       title: "Copa Cujae",
       dates: "2023",
       location: "Cujae, Havana",
-      description: "First Place in the event with my team Error404",
+      award: true,
       image: "/work/cujae.avif",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
       links: [],
     },
     {
+      id: "yuca",
       title: "Yuca Awards",
       dates: "2022 - 2023",
       location: "Cujae, Havana",
-      description:
-        "First Place award for educational programming videos and resources.",
-      icon: "/work/cujae.avif",
+      award: true,
       image: "/work/cujae.avif",
       links: [
         {
@@ -384,3 +368,8 @@ export const DATA = {
     },
   ],
 } as const;
+
+export type WorkId = (typeof DATA.work)[number]["id"];
+export type ProjectId = (typeof DATA.projects)[number]["id"];
+export type EventId = (typeof DATA.events)[number]["id"];
+export type EducationId = (typeof DATA.education)[number]["id"];

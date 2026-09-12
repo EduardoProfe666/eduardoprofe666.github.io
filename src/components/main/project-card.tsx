@@ -8,6 +8,7 @@ import {
 } from "@/components/common/card";
 import { GitHubStars } from "@/components/common/github-stars";
 import { TimeAgo } from "@/components/common/time-ago";
+import type { YearMonth } from "@/lib/duration";
 import { cn } from "@/lib/utils";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -19,7 +20,7 @@ interface Props {
   title: string;
   href?: string;
   description: string;
-  dates: string;
+  date: YearMonth;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -47,7 +48,7 @@ export const ProjectCard = React.memo(function ProjectCard({
   title,
   href,
   description,
-  dates,
+  date,
   tags,
   link,
   image,
@@ -108,7 +109,7 @@ export const ProjectCard = React.memo(function ProjectCard({
           {githubRepo && <GitHubStars repo={githubRepo} />}
         </div>
         <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-          <TimeAgo dates={dates} />
+          <TimeAgo date={date} />
         </div>
         <div className="hidden font-sans text-xs underline print:visible">
           {link?.replace("https://", "").replace("www.", "").replace("/", "")}

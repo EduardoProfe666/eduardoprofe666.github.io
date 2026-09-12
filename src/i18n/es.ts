@@ -2,7 +2,7 @@ import { Translations } from "./types";
 
 const es: Translations = {
   // UI
-  "hero.greeting": "Hola, soy Eduardo",
+  "hero.greeting": "Hola, soy",
   "hero.description":
     "Líder de Equipo Fullstack e Ingeniero de IA con más de 4 años de experiencia. Construyendo soluciones escalables con stacks modernos, integración de IA y prácticas DevOps.",
   "about.title": "Sobre mí",
@@ -29,20 +29,21 @@ const es: Translations = {
   "thesis.label": "Tesis",
   "thesis.repository": "Repositorio",
   "thesis.download": "Descargar",
+  "date.present": "Actualidad",
   "duration.andCounting": "y contando",
   "duration.year": "año",
   "duration.years": "años",
   "duration.month": "mes",
   "duration.months": "meses",
   "timeago.thisMonth": "este mes",
-  "timeago.ago": "atrás",
+  "timeago.ago": "hace {value}",
   "timeago.andCounting": "y contando",
 
   // Work entries
   "work.aikoders.title":
     "Líder de Equipo Fullstack | Ingeniero de IA | DevOps",
   "work.aikoders.description":
-    "Liderando la arquitectura y el desarrollo full-stack de múltiples plataformas en producción que sirven a cientos de usuarios, incluyendo EasySalon (gestión de salones), Guest Concierge AI (asistente de IA para anfitriones) y Easy Cargo Express (logística de comercio electrónico). Gestionando y mentoreando múltiples equipos de desarrollo multifuncionales en roles de frontend, backend, móvil e IA. Responsable del pipeline completo de DevOps e infraestructura, optimizando despliegues en AWS, DigitalOcean y Vercel. Construyendo flujos de automatización agénticos multiplataforma con n8n para conectar servicios de IA con la lógica de negocio principal. Integrando pasarelas de pago (Clover, Stripe, Square) en sistemas en producción. Desarrollando aplicaciones móviles nativas con React Native, publicadas tanto en Google Play Store como en Apple App Store.",
+    "Liderando la arquitectura y el desarrollo full-stack de múltiples plataformas en producción que sirven a cientos de usuarios, incluyendo EasySalon (gestión de salones), Guest Concierge AI (asistente de IA para anfitriones) Easy Cargo Express (logística de comercio electrónico) y Nitida (gestión de empresas de limpieza). Gestionando y mentoreando múltiples equipos de desarrollo multifuncionales en roles de frontend, backend, móvil e IA. Responsable del pipeline completo de DevOps e infraestructura, optimizando despliegues en AWS, DigitalOcean, Railway y Vercel. Construyendo flujos de automatización agénticos multiplataforma con n8n para conectar servicios de IA con la lógica de negocio principal. Integrando pasarelas de pago (Clover, Stripe, Square) en sistemas en producción. Desarrollando aplicaciones móviles nativas con React Native y Expo, publicadas tanto en Google Play Store como en Apple App Store.",
   "work.codes.title": "Desarrollador Backend",
   "work.codes.description":
     "Desarrollé el backend para la plataforma de comercio electrónico transnacional srmercado.com, implementando una arquitectura de microservicios en .NET basada en principios de Arquitectura Limpia, CQRS y comunicación dirigida por eventos usando RabbitMQ. Gestioné la infraestructura de almacenamiento y distribución de contenido mediante AWS (S3 y CloudFront CDN), liderando posteriormente la migración a una solución on-premise con MinIO para cumplir con estrictos requisitos de soberanía de datos. Además, aseguré la operabilidad financiera de la plataforma integrando múltiples pasarelas de pago internacionales—incluyendo Monei, PayNoPain (PayLands) y RedSys—garantizando flujos de transacciones transfronterizas seguros y eficientes.",

@@ -13,6 +13,8 @@ interface Props {
   dates: string;
   location: string;
   image?: string;
+  /** Renders the trophy and the gold timeline marker. */
+  award?: boolean;
   links?: readonly {
     icon: React.ReactNode;
     title: string;
@@ -26,16 +28,16 @@ export function EventCard({
   dates,
   location,
   image,
+  award = false,
   links,
 }: Props) {
-  const isWin = /winner|first place|1st/i.test(description);
 
   return (
     <li className="relative ml-10 py-4 group">
       {/* Avatar + timeline dot */}
       <div className="absolute -left-16 top-4 flex items-center justify-center">
         <div className={`absolute -left-[23.5px] top-1/2 -translate-y-1/2 z-10 size-3 rounded-full border-2 transition-all duration-300 ${
-          isWin
+          award
             ? "border-yellow-500/50 bg-yellow-500/20 group-hover:border-yellow-500 group-hover:bg-yellow-500/40 group-hover:shadow-[0_0_8px_rgba(234,179,8,0.4)]"
             : "border-border bg-background group-hover:border-foreground/40 group-hover:bg-foreground/5"
         } group-hover:scale-125`} />
@@ -56,7 +58,7 @@ export function EventCard({
           <h2 className="font-semibold leading-none text-sm group-hover:translate-x-0.5 transition-transform duration-300">
             {title}
           </h2>
-          {isWin && (
+          {award && (
             <Trophy className="size-3.5 text-yellow-500/60 group-hover:text-yellow-500 group-hover:rotate-[-8deg] group-hover:scale-110 transition-all duration-300" />
           )}
         </div>

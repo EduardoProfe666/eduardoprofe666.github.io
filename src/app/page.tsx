@@ -8,41 +8,12 @@ import { AvatarFlip } from "@/components/main/avatar-flip";
 import { HeroTitle } from "@/components/main/hero-title";
 import { DATA } from "@/data/resume";
 import { useTranslation } from "@/i18n/provider";
-import type { Translations } from "@/i18n/types";
-import { calcDuration } from "@/lib/duration";
+import { calcDuration, formatPeriod } from "@/lib/duration";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
 
 const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
-
-const WORK_KEYS: Record<string, string> = {
-  "AIKoders LLC": "aikoders",
-  "Codes SRL": "codes",
-  "EMSI FARMA TECH": "emsifarma",
-  "Ecos Productions": "ecos",
-  Medialityc: "medialityc",
-  "AICA+ Pharmaceutical Laboratories": "aica",
-  "Faculty of Computer Engineering at CUJAE": "cujae-prof",
-  AlsoftPro: "alsoftpro",
-  "CUJAE Economics Department": "cujae-econ",
-};
-
-const PROJECT_KEYS: Record<string, string> = {
-  "🔢 Sudoku Play": "sudoku",
-  "⚡ UNE Unwrapped": "une",
-  "🌌 Custom API": "api",
-  "🌤️ Weather App": "weather",
-  "⚔️ Download Anime Free Bot": "anime",
-  "🔐 Password Security Toolkit": "password",
-};
-
-const EVENT_KEYS: Record<string, string> = {
-  "ICPC Caribbean-2024": "icpc2024",
-  "ICPC Caribbean-2023": "icpc2023",
-  "Copa Cujae-2023": "copa2023",
-  "Yuca Awards-2022 - 2023": "yuca",
-};
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -59,7 +30,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function Page() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-14">
@@ -70,6 +41,7 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-3">
               <BlurFade delay={0.05}>
                 <HeroTitle
+                  greeting={t("hero.greeting")}
                   name={DATA.name.split(" ")[0]}
                   alias="EduardoProfe666"
                 />
@@ -109,25 +81,22 @@ export default function Page() {
           <BlurFade delay={0.25}>
             <SectionHeading>{t("work.title")}</SectionHeading>
           </BlurFade>
-          {DATA.work.map((work, id) => {
-            const key = WORK_KEYS[work.company] ?? "";
-            return (
-              <BlurFade key={work.company} delay={id * 0.03} inView>
-                <ResumeCard
-                  logoUrl={work.logoUrl}
-                  altText={work.company}
-                  title={work.company}
-                  subtitle={key ? t(`work.${key}.title` as keyof Translations) : work.title}
-                  href={work.href}
-                  badges={work.badges}
-                  period={`${work.start} - ${work.end ?? "Present"}`}
-                  duration={calcDuration(work.start, work.end ?? "Present")}
-                  description={key ? t(`work.${key}.description` as keyof Translations) : work.description}
-                  location={work.location}
-                />
-              </BlurFade>
-            );
-          })}
+          {DATA.work.map((work, index) => (
+            <BlurFade key={work.id} delay={index * 0.03} inView>
+              <ResumeCard
+                logoUrl={work.logoUrl}
+                altText={work.company}
+                title={work.company}
+                subtitle={t(`work.${work.id}.title`)}
+                href={work.href}
+                badges={work.badges}
+                period={formatPeriod(work.start, work.end, locale, t)}
+                duration={calcDuration(work.start, work.end, t)}
+                description={t(`work.${work.id}.description`)}
+                location={work.location}
+              />
+            </BlurFade>
+          ))}
         </div>
       </section>
 
@@ -137,18 +106,18 @@ export default function Page() {
           <BlurFade inView>
             <SectionHeading>{t("education.title")}</SectionHeading>
           </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade key={education.school} delay={id * 0.03} inView>
+          {DATA.education.map((education, index) => (
+            <BlurFade key={education.id} delay={index * 0.03} inView>
               <ResumeCard
                 logoUrl={education.logoUrl}
                 altText={education.school}
                 title={education.school}
                 href={"https://cujae.edu.cu/"}
-                period={`${education.start} - ${education.end}`}
-                duration={calcDuration(education.start, education.end)}
+                period={formatPeriod(education.start, education.end, locale, t)}
+                duration={calcDuration(education.start, education.end, t)}
                 description={
                   <>
-                    {t("education.cujae.degree")}
+                    {t(`education.${education.id}.degree`)}
                     {"thesis" in education && education.thesis && (
                       <span className="block mt-1.5">
                         {t("thesis.label")}:{" "}
@@ -224,23 +193,20 @@ export default function Page() {
             </p>
           </BlurFade>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
-            {DATA.projects.map((project, id) => {
-              const key = PROJECT_KEYS[project.title] ?? "";
-              return (
-                <BlurFade key={project.title} delay={id * 0.04} inView>
-                  <ProjectCard
-                    href={project.href}
-                    title={project.title}
-                    description={key ? t(`project.${key}.description` as keyof Translations) : project.description}
-                    dates={project.dates}
-                    tags={project.technologies}
-                    image={project.image}
-                    video={project.video}
-                    links={project.links}
-                  />
-                </BlurFade>
-              );
-            })}
+            {DATA.projects.map((project, index) => (
+              <BlurFade key={project.id} delay={index * 0.04} inView>
+                <ProjectCard
+                  href={project.href}
+                  title={project.title}
+                  description={t(`project.${project.id}.description`)}
+                  date={project.date}
+                  tags={project.technologies}
+                  image={project.image}
+                  video={project.video}
+                  links={project.links}
+                />
+              </BlurFade>
+            ))}
           </div>
         </div>
       </section>
@@ -258,21 +224,19 @@ export default function Page() {
           </BlurFade>
           <BlurFade inView>
             <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
-              {DATA.events.map((event, id) => {
-                const key = EVENT_KEYS[`${event.title}-${event.dates}`] ?? "";
-                return (
-                  <BlurFade key={event.title + event.dates} delay={id * 0.04} inView>
-                    <EventCard
-                      title={event.title}
-                      description={key ? t(`event.${key}.description` as keyof Translations) : event.description}
-                      location={event.location}
-                      dates={event.dates}
-                      image={event.image}
-                      links={event.links}
-                    />
-                  </BlurFade>
-                );
-              })}
+              {DATA.events.map((event, index) => (
+                <BlurFade key={event.id} delay={index * 0.04} inView>
+                  <EventCard
+                    title={event.title}
+                    description={t(`event.${event.id}.description`)}
+                    location={event.location}
+                    dates={event.dates}
+                    image={event.image}
+                    award={event.award}
+                    links={event.links}
+                  />
+                </BlurFade>
+              ))}
             </ul>
           </BlurFade>
         </div>

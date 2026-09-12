@@ -18,6 +18,9 @@ export const OptimizedImage = React.memo(function OptimizedImage({
   priority = false,
 }: OptimizedImageProps) {
   return (
+    // `output: export` serves unoptimized images, so next/image would only add
+    // a wrapper with no optimizer behind it.
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}

@@ -241,6 +241,28 @@ video {
   content-visibility: auto;
 }
 
+/*
+ * Theme transition (magicui/animated-theme-toggler).
+ *
+ * The default cross-fade is disabled so the component's own clip-path reveal is
+ * the only thing animating, and the collapsed clip-path is pinned in CSS so
+ * Firefox never paints the incoming theme unclipped between the snapshot and
+ * the JS animation.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html[data-magicui-theme-vt="active"]::view-transition-new(root) {
+  clip-path: var(--magicui-theme-vt-clip-from);
+}
+
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 400ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

@@ -4,11 +4,13 @@ import { useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface HeroTitleProps {
+  /** Localized greeting; the name is appended to it. */
+  greeting: string;
   name: string;
   alias: string;
 }
 
-export function HeroTitle({ name, alias }: HeroTitleProps) {
+export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
   const [showAlias, setShowAlias] = useState(false);
   const clickCount = useRef(0);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -32,7 +34,7 @@ export function HeroTitle({ name, alias }: HeroTitleProps) {
       className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none text-balance cursor-default select-none"
       onClick={handleClick}
     >
-      <span>Hi, I&apos;m </span>
+      <span>{greeting} </span>
       <AnimatePresence mode="wait">
         <motion.span
           key={displayName}

@@ -1,22 +1,31 @@
 "use client";
 
-import { Button } from "@/components/common/button";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
+import { buttonVariants } from "@/components/common/button";
+import { useTranslation } from "@/i18n/provider";
+import { cn } from "@/lib/utils";
 
+/**
+ * Wires magicui's animated toggler to `next-themes` in controlled mode, so the
+ * library stays the single owner of persistence and system-preference syncing
+ * while the component owns the View Transition wipe.
+ */
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const { t } = useTranslation();
 
   return (
-    <Button
-      variant="ghost"
-      type="button"
-      size="icon"
-      className="px-2 cursor-pointer"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-    >
-      <SunIcon className="h-[1.2rem] w-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
-      <MoonIcon className="hidden h-[1.2rem] w-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
-    </Button>
+    <AnimatedThemeToggler
+      theme={resolvedTheme === "dark" ? "dark" : "light"}
+      onThemeChange={setTheme}
+      variant="circle"
+      aria-label={t("nav.theme")}
+      title={t("nav.theme")}
+      className={cn(
+        buttonVariants({ variant: "ghost", size: "icon" }),
+        "px-2 cursor-pointer text-neutral-800 dark:text-neutral-200"
+      )}
+    />
   );
 }

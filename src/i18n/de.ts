@@ -2,7 +2,7 @@ import { Translations } from "./types";
 
 const de: Translations = {
   // UI
-  "hero.greeting": "Hallo, ich bin Eduardo",
+  "hero.greeting": "Hallo, ich bin",
   "hero.description":
     "Fullstack-Teamleiter & KI-Ingenieur mit über 4 Jahren Erfahrung. Ich entwickle skalierbare Lösungen mit modernen Stacks, KI-Integration und DevOps-Praktiken.",
   "about.title": "Über mich",
@@ -30,19 +30,20 @@ const de: Translations = {
   "thesis.label": "Abschlussarbeit",
   "thesis.repository": "Repository",
   "thesis.download": "Herunterladen",
+  "date.present": "Heute",
   "duration.andCounting": "und mehr",
   "duration.year": "J.",
   "duration.years": "J.",
   "duration.month": "Mon.",
   "duration.months": "Mon.",
   "timeago.thisMonth": "diesen Monat",
-  "timeago.ago": "vor",
+  "timeago.ago": "vor {value}",
   "timeago.andCounting": "und mehr",
 
   // Work entries
   "work.aikoders.title": "Fullstack-Teamleiter | KI-Ingenieur | DevOps",
   "work.aikoders.description":
-    "Leitung der Architektur und Fullstack-Entwicklung mehrerer Produktionsplattformen mit Hunderten von Nutzern, darunter EasySalon (Salonverwaltung), Guest Concierge AI (KI-Assistent für Gastgeber) und Easy Cargo Express (E-Commerce-Logistik). Führung und Mentoring mehrerer funktionsübergreifender Entwicklungsteams in den Bereichen Frontend, Backend, Mobile und KI. Verantwortung für die gesamte DevOps- und Infrastruktur-Pipeline — Optimierung der Deployments auf AWS, DigitalOcean und Vercel. Erstellung plattformübergreifender agentischer Automatisierungs-Workflows mit n8n zur Verbindung von KI-Diensten mit der Kerngeschäftslogik. Integration von Zahlungsgateways (Clover, Stripe, Square) in Produktionssysteme. Entwicklung nativer mobiler Anwendungen mit React Native, veröffentlicht im Google Play Store und Apple App Store.",
+    "Leitung der Architektur und Fullstack-Entwicklung mehrerer Produktionsplattformen mit Hunderten von Nutzern, darunter EasySalon (Salonverwaltung), Guest Concierge AI (KI-Assistent für Gastgeber) Easy Cargo Express (E-Commerce-Logistik) und Nitida (Verwaltung von Reinigungsfirmen). Führung und Mentoring mehrerer funktionsübergreifender Entwicklungsteams in den Bereichen Frontend, Backend, Mobile und KI. Verantwortung für die gesamte DevOps- und Infrastruktur-Pipeline — Optimierung der Deployments auf AWS, DigitalOcean, Railway und Vercel. Erstellung plattformübergreifender agentischer Automatisierungs-Workflows mit n8n zur Verbindung von KI-Diensten mit der Kerngeschäftslogik. Integration von Zahlungsgateways (Clover, Stripe, Square) in Produktionssysteme. Entwicklung nativer mobiler Anwendungen mit React Native und Expo, veröffentlicht im Google Play Store und Apple App Store.",
   "work.codes.title": "Backend-Entwickler",
   "work.codes.description":
     "Entwicklung des Backends für die transnationale E-Commerce-Plattform srmercado.com mit Implementierung einer Microservices-Architektur in .NET basierend auf Clean Architecture-Prinzipien, CQRS und ereignisgesteuerter Kommunikation über RabbitMQ. Verwaltung der Speicher- und Content-Delivery-Infrastruktur über AWS (S3 und CloudFront CDN), anschließend Leitung der Migration zu einer On-Premise-Lösung mit MinIO zur Erfüllung strenger Datensouveränitätsanforderungen. Integration mehrerer internationaler Zahlungsgateways — darunter Monei, PayNoPain (PayLands) und RedSys — zur Gewährleistung sicherer und effizienter grenzüberschreitender Transaktionsflüsse.",
