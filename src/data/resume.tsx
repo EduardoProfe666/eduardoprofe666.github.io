@@ -85,7 +85,7 @@ export const DATA = {
       company: "AIKoders LLC",
       badges: [],
       href: "https://aikoders.tech/",
-      location: "Miami, Florida, USA",
+      location: "Cape Coral, Florida, USA",
       logoUrl: "/work/aikoders.avif",
       start: "2025-12",
       end: null,
