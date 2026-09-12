@@ -130,3 +130,6 @@ dist
 .pnp.*
 /.idea
 /.claude
+
+# RenderCV build artifacts; the PDF is written to public/resume.pdf
+cv/output/

@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+#
+# Source of `public/resume.pdf`, rendered with RenderCV (https://rendercv.com).
+#
+# The PDF used to be committed without its source, so the only way to change a
+# date was to re-typeset the whole document by hand. Regenerate it with:
+#
+#   rendercv render cv/Eduardo_Gonzalez_CV.yaml
+#
+# The output is written straight to `public/resume.pdf`, which is what the dock's
+# résumé button links to.
+
+cv:
+  name: Eduardo González
+  location: Havana, Cuba
+  email: eduardoglezdev@gmail.com
+  phone: "+5355839297"
+  website: https://eduardoprofe666.github.io/
+  social_networks:
+    - network: LinkedIn
+      username: eduardoprofe666
+    - network: GitHub
+      username: EduardoProfe666
+
+  sections:
+    Resume:
+      - Computer Engineer with 4+ years of experience in Backend (.NET, Nest.js, FastAPI, Django, Spring Boot) and Frontend (Nuxt.js, Next.js, Angular, Astro).
+      - Expert in automation using n8n for integrations with WhatsApp, Telegram, Vapi, and Google Services.
+      - Focused on building scalable systems and solving technical challenges with efficient solutions.
+
+    Education:
+      - institution: CUJAE
+        area: Computer Engineering
+        location: Havana, Cuba
+        start_date: 2022-04
+        end_date: 2025-03
+        highlights:
+          - Graduated with highest honors (Gold Degree), GPA 5.0, and multiple academic awards.
+          - Competed for 3 years in university programming contests like the ICPC, consistently ranking in the top positions.
+          - "Thesis: Production Assurance Strategy System for AICA+ Pharmaceutical Laboratories."
+
+    Experience:
+      - company: AIKoders LLC
+        position: Fullstack Team Lead | AI Engineer | DevOps
+        location: Cape Coral, Florida, USA
+        start_date: 2025-12
+        end_date: present
+        highlights:
+          - "Lead the architecture and full-stack development of multiple production platforms serving hundreds of users: **EasySalon** (salon management), **Guest Concierge AI** (AI assistant for hosts), **Easy Cargo Express** (e-commerce logistics), and **Nitida** (cleaning company management)."
+          - Manage and mentor cross-functional development teams across frontend, backend, mobile, and AI roles, and own the complete DevOps and infrastructure pipeline with deployments across AWS, DigitalOcean, Railway, and Vercel.
+          - Build cross-platform agentic automation workflows with n8n to bridge AI services with core business logic.
+          - Integrated the Clover, Stripe, and Square payment gateways into production systems.
+          - Develop native mobile applications with React Native and Expo, shipped to both the Apple App Store and Google Play Store.
+
+      - company: Codes SRL
+        position: Backend Technical Lead
+        location: Havana, Cuba
+        start_date: 2025-05
+        end_date: 2026-01
+        highlights:
+          - Developed the backend of the e-commerce platform for Cuba with purchases from abroad srmercado.com.
+          - The project was developed in .NET using CQRS, Clean Architecture, and Event-Driven Architecture with RabbitMQ.
+          - Used AWS S3 and AWS CDN for file storage and distribution, later migrating to on-premise with MinIO at the client's request.
+          - Integrated payment gateways Monei, PayNoPain (PayLands), and Redsys.
+
+      - company: EMSI FARMA TECH
+        position: FullStack Software Engineer
+        location: Havana, Cuba
+        start_date: 2025-03
+        end_date: 2025-12
+        highlights:
+          - Worked on the development of a MES/SCADA system for Industry 4.0 using .NET and Next.js, integrating WSO2 Identity Server.
+          - Optimized legal workflows and case management by implementing agentic solutions with n8n to automate processes in multi-sector companies.
+
+      - company: Ecos Productions
+        position: FullStack Developer
+        location: Havana, Cuba
+        start_date: 2025-03
+        end_date: 2025-06
+        highlights:
+          - Worked on the development of the Gesel system for the Cuban Law Firms Association, a legal management solution built with Angular.js, Tailwind CSS, Express.js, and MySQL.
+
+      - company: AICA+ Pharmaceutical Laboratories
+        position: Software Engineer
+        location: Havana, Cuba
+        start_date: 2024-05
+        end_date: 2026-09
+        highlights:
+          - Developed **Aica Docs**, an auditable document management system for the company using .NET, Razor Pages, PostgreSQL, and MinIO.
+          - Co-developed **EAP**, the Production Assurance Strategy System, which determines if drug demand can be met given a set of constraints, based on uncommitted warehouse resources. Used technologies .NET, Nest.js, Next.js, PostgreSQL, and MongoDB.
+          - Implemented the **SM+** chatbot with n8n, allowing users to query the current status of medicines produced by the company using natural language and generate reports, with configurable security and access levels due to data confidentiality.
+
+      - company: Medialityc
+        position: Backend Developer | Project Manager
+        location: Havana, Cuba
+        start_date: 2024-10
+        end_date: 2025-06
+        highlights:
+          - Led the initial backend development of **ZasExpress**, a shipping platform for Cuba. The project was built in .NET using a microservices architecture, where I contributed to the Identity Server and Tracking solutions.
+          - Developed a platform for historical analysis of currency prices in Cuba, both formal and informal markets. Built with Next.js and PostgreSQL.
+          - Led the development team for **Reymani**, a platform for selling food products where the parent company acted as an intermediary between supplier restaurants and customers.
+          - Developed the backend of **Asere Food**, an e-commerce platform for selling food and combos in Cuba. Built with Nest.js and integrated Tropipay and Zelle payment gateways.
+          - Built the backend of **Con Mireya**, a public directory for promoting websites, WhatsApp groups, and Telegram channels. Used FastAPI and implemented a metadata extraction engine for links.
+          - Developed the backend of **Tienda Catálogo**, a customizable e-commerce platform for clients. Built with Spring Boot and integrated AI services for product description suggestions.
+
+      - company: AlsoftPro
+        position: Django Backend Developer
+        location: Havana, Cuba
+        start_date: 2023-12
+        end_date: 2024-07
+        highlights:
+          - Co-developed the backend for the Contracting and Services modules of ALCOM (Havana Water Company) using Django Rest Framework, building robust APIs to support company operations.
+
+      - company: Faculty of Computer Engineering, CUJAE
+        position: Professor
+        location: Havana, Cuba
+        start_date: 2023-01
+        end_date: 2025-03
+        highlights:
+          - Taught Computer Engineering courses
+          - Introduction to Programming (1st year)
+          - Interface Design and Testing (1st year)
+          - Object-Oriented Programming (1st year)
+          - Data Structures (2nd year)
+          - Web Programming (3rd year)
+
+    Skills:
+      - label: Backend
+        details: .NET, Nest.js, Spring Boot, FastAPI, Django
+      - label: DB
+        details: PostgreSQL, MongoDB, MySQL, SQLServer, MariaDB, Sqlite, Redis
+      - label: ORM
+        details: Entity Framework Core, Dapper, TypeORM, Prisma, Sequelize, SQLAlchemy, SQLModel
+      - label: Frontend
+        details: React.js, Next.js, Vue.js, Nuxt.js, Angular, Astro, Tailwind
+      - label: Mobile
+        details: React Native, Expo, Apple App Store, Google Play Store
+      - label: Cloud & Infrastructure
+        details: AWS S3, AWS CDN, DigitalOcean, Railway, Vercel, MinIO, RabbitMQ, Docker, Portainer
+      - label: Devops
+        details: Git, Github Actions, Gitlab CI/CD
+      - label: Agents
+        details: n8n, Claude, Telegram API, Whatsapp API, Evolution API, Vapi, Google Services
+      - label: Testing
+        details: Jest, Cypress, Playwright, xUnit, NUnit, Pytest, JUnit
+      - label: Project Management & Communication
+        details: Slack, Redmine, Trello
+      - label: Language
+        details: English C1, Spanish C2
+      - label: Legals
+        details: Cuban and Spanish Dual Citizenship. Cuban and Spanish Passports.
+
+design:
+  theme: engineeringresumes
+  # Tightened from the theme defaults (0.7in margins, 0.6em line spacing) so the
+  # CV still lands on two pages now that AIKoders is on it. Anything looser
+  # spills a third page that holds nothing but the Skills block.
+  page:
+    top_margin: 0.5in
+    bottom_margin: 0.5in
+    left_margin: 0.55in
+    right_margin: 0.55in
+  typography:
+    line_spacing: 0.5em
+
+settings:
+  current_date: today
+  render_command:
+    output_folder: output
+    pdf_path: ../public/resume.pdf
+    dont_generate_markdown: true
+    dont_generate_html: true
+    dont_generate_png: true
+  pdf_title: Resume
