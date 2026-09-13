@@ -37,14 +37,12 @@ export const ResumeCard = ({
             from JavaScript, so the first card's logo was invisible to the
             preload scanner and only started downloading ~2.7s in, which made it
             the Largest Contentful Paint. `lazy` still loads in-viewport images
-            straight away and skips the ones further down the page. */}
+            straight away and skips the ones further down the page.
+
+            No initial behind the image: Radix unmounted its fallback once the
+            logo loaded, and these logos have transparent backgrounds, so a
+            permanent one showed through. `alt` still covers a failed load. */}
         <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 grid place-items-center text-xs font-bold"
-          >
-            {altText[0]}
-          </span>
           {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
               serves unoptimized images, so next/image would add nothing here. */}
           <img
