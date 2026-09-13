@@ -136,7 +136,7 @@ export default function Navbar() {
             <TooltipContent>
               <p className="flex items-center gap-1.5">
                 {t("cmd.open")}
-                <kbd className="rounded border border-primary-foreground/25 px-1 text-2xs">
+                <kbd className="rounded-sm border border-primary-foreground/25 px-1 text-2xs">
                   ⌘K
                 </kbd>
               </p>

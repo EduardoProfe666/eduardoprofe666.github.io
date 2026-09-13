@@ -45,7 +45,7 @@ export const ResumeCard = ({
             No initial behind the image: Radix unmounted its fallback once the
             logo loaded, and these logos have transparent backgrounds, so a
             permanent one showed through. `alt` still covers a failed load. */}
-        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm transition-[transform,box-shadow] duration-400 ease-state group-hover:shadow-md group-hover:scale-[1.06]">
+        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground elevate-1 transition-[transform,box-shadow] duration-400 ease-state group-hover:elevate-2 group-hover:scale-[1.06]">
           {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
               serves unoptimized images, so next/image would add nothing here. */}
           <img

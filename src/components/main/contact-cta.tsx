@@ -86,7 +86,7 @@ export function ContactCta() {
       data-sfx="none"
       onClick={copy}
       title={DATA.contact.email}
-      className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-state hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
+      className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-state hover:bg-foreground/90 hover:elevate-3 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
     >
       <span className="relative grid size-4 place-items-center">
         <AnimatePresence initial={false}>

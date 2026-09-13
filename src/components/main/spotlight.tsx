@@ -438,7 +438,7 @@ export function Spotlight() {
           >
             {mode === "search" ? (
               <>
-                <div className="flex items-center gap-3 border-b border-border/60 px-4">
+                <div className="flex items-center gap-3 border-b border-border px-4">
                   <Search className="size-4 shrink-0 text-muted-foreground" />
                   <input
                     ref={inputRef}
@@ -463,7 +463,7 @@ export function Spotlight() {
                     aria-label={t("cmd.placeholder")}
                     className="h-13 w-full bg-transparent py-4 text-sm outline-none placeholder:text-muted-foreground"
                   />
-                  <kbd className="hidden shrink-0 rounded-md border border-border/70 bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70 sm:block">
+                  <kbd className="hidden shrink-0 rounded-md border border-border bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70 sm:block">
                     esc
                   </kbd>
                 </div>
@@ -498,7 +498,7 @@ export function Spotlight() {
                           <Icon className="size-4 shrink-0 text-muted-foreground" />
                           <span className="flex-1 truncate">{item.label}</span>
                           {item.hint && (
-                            <kbd className="shrink-0 rounded-md border border-border/70 bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70">
+                            <kbd className="shrink-0 rounded-md border border-border bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70">
                               {item.hint}
                             </kbd>
                           )}
@@ -525,7 +525,7 @@ export function Spotlight() {
                         {row.keys.map((key) => (
                           <kbd
                             key={key}
-                            className="min-w-6 text-center rounded-md border border-border/70 bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70"
+                            className="min-w-6 text-center rounded-md border border-border bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70"
                           >
                             {key}
                           </kbd>
@@ -537,7 +537,7 @@ export function Spotlight() {
                 <p className="mt-4 flex items-center justify-center gap-1.5 text-2xs text-muted-foreground">
                   <Check className="size-3" />
                   {t("keys.close")}
-                  <kbd className="rounded-md border border-border/70 bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70">
+                  <kbd className="rounded-md border border-border bg-background px-1.5 py-0.5 text-2xs font-medium text-foreground/70">
                     esc
                   </kbd>
                 </p>

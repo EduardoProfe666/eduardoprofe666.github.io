@@ -339,9 +339,9 @@ export function AnimatedThemeToggler({
       {...props}
     >
       {isDark ? (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <Sun className="size-4" />
       ) : (
-        <Moon className="h-[1.2rem] w-[1.2rem]" />
+        <Moon className="size-4" />
       )}
     </button>
   );

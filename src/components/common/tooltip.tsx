@@ -19,7 +19,7 @@ const TooltipContent = React.forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded-lg bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground shadow-lg shadow-black/10",
+      "z-50 overflow-hidden rounded-lg bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground elevate-2",
       // Radix measures where the tooltip sits relative to its trigger and
       // hands back a transform origin. Scaling from there makes the label look
       // like it grew out of the icon rather than appearing next to it.

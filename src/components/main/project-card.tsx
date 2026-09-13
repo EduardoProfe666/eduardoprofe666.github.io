@@ -133,7 +133,7 @@ export const ProjectCard = React.memo(function ProjectCard({
               <Badge
                 className={cn(
                   "px-2 py-0.5 text-2xs font-medium rounded-full",
-                  "hover:scale-105 hover:shadow-sm",
+                  "hover:scale-105 hover:elevate-1",
                   "opacity-70 group-hover:opacity-100"
                 )}
                 variant="secondary"
@@ -157,7 +157,7 @@ export const ProjectCard = React.memo(function ProjectCard({
                 <Badge
                   className={cn(
                     "flex gap-1.5 px-2.5 py-1 text-2xs rounded-full",
-                    "hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100",
+                    "hover:scale-105 hover:elevate-2 hover:-translate-y-0.5 active:scale-95 active:duration-100",
                     "opacity-80 group-hover:opacity-100"
                   )}
                   style={{ transitionDelay: `${Math.min(idx, 4) * 25}ms` }}

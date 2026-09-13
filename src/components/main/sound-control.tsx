@@ -251,7 +251,7 @@ export function SoundControl() {
             transition={{ type: "spring", stiffness: 640, damping: 20, mass: 0.5 }}
             className="inline-flex"
           >
-            <Icon className="size-[1.15rem]" />
+            <Icon className="size-4" />
           </m.span>
         </AnimatePresence>
       </button>

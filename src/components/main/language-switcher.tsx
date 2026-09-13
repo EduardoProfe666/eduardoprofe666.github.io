@@ -90,6 +90,10 @@ export function LanguageSwitcher() {
         aria-expanded={isOpen}
       >
         {CurrentFlag && (
+          // `size-5`, not `size-4` like the glyphs beside it: a flag is 3:2, so a
+          // 16px box would paint it only 10.7px tall and it would read as the
+          // runt of the dock. At 20 the flag covers 20x13.3 — 266 square pixels
+          // against a 16px glyph’s 256, which is the match your eye actually makes.
           <CurrentFlag className="size-5" />
         )}
       </button>
@@ -137,7 +141,7 @@ export function LanguageSwitcher() {
                   }}
                 >
                   {FlagIcon && (
-                    <FlagIcon className="size-5 flex-shrink-0 rounded-[2px] shadow-sm transition-transform duration-400 ease-spring group-hover:scale-110" />
+                    <FlagIcon className="size-5 flex-shrink-0 rounded-xs elevate-1 transition-transform duration-400 ease-spring group-hover:scale-110" />
                   )}
                   <div className="flex-1 text-left transition-transform duration-240 ease-state group-hover:translate-x-0.5">
                     <span className="text-sm font-semibold leading-tight">

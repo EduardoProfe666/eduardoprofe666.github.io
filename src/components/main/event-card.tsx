@@ -43,7 +43,7 @@ export function EventCard({
             ? "border-yellow-500/50 bg-yellow-500/20 group-hover:border-yellow-500 group-hover:bg-yellow-500/40 group-hover:shadow-[0_0_8px_rgba(234,179,8,0.4)]"
             : "border-border bg-background group-hover:border-foreground/40 group-hover:bg-foreground/5"
         } group-hover:scale-125`} />
-        <Avatar className="size-12 border shadow-sm transition-[transform,box-shadow] duration-400 ease-state group-hover:shadow-lg group-hover:scale-[1.06]">
+        <Avatar className="size-12 border elevate-1 transition-[transform,box-shadow] duration-400 ease-state group-hover:elevate-2 group-hover:scale-[1.06]">
           <AvatarImage
             src={image}
             alt={title}
@@ -91,7 +91,7 @@ export function EventCard({
             {links.map((link, idx) => (
               <Link href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
                 <Badge
-                  className="flex gap-1.5 px-2.5 py-1 text-2xs rounded-full hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100"
+                  className="flex gap-1.5 px-2.5 py-1 text-2xs rounded-full hover:scale-105 hover:elevate-2 hover:-translate-y-0.5 active:scale-95 active:duration-100"
                   style={{ transitionDelay: `${Math.min(idx, 4) * 25}ms` }}
                 >
                   {link.icon}

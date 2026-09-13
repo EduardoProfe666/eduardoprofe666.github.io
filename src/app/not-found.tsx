@@ -69,7 +69,7 @@ export default function NotFound() {
       >
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-240 ease-state"
+          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3 text-sm font-medium hover:bg-foreground/90 hover:elevate-3 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-240 ease-state"
         >
           <Home className="size-4 group-hover:scale-110 transition-transform duration-240 ease-state" />
           {t("notFound.cta")}

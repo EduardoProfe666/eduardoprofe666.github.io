@@ -71,7 +71,7 @@ export default function Page() {
           <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
         <BlurFade eager delay={entrance(ENTRANCE.aboutBody)}>
-          <div className="mt-3 prose max-w-full text-pretty hyphenate font-sans text-base text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-240 [&_a]:ease-state [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-[width] [&_a]:after:duration-240 [&_a]:after:ease-state [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-240 [&_strong]:ease-state [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
+          <div className="mt-3 prose max-w-full text-pretty hyphenate font-sans text-base text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-240 [&_a]:ease-state [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-[width] [&_a]:after:duration-240 [&_a]:after:ease-state [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-240 [&_strong]:ease-state [&_strong]:hover:text-foreground">
             <Markdown>{t("about.summary")}</Markdown>
           </div>
         </BlurFade>
@@ -231,7 +231,7 @@ export default function Page() {
             </p>
           </BlurFade>
           <BlurFade inView>
-            <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
+            <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border">
               {DATA.events.map((event, index) => (
                 <BlurFade as="li" key={event.id} delay={sibling(index)} inView>
                   <EventCard
@@ -255,7 +255,7 @@ export default function Page() {
         <div className="flex flex-col items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-16">
           <BlurFade inView>
             <div className="space-y-4">
-              <div className="inline-block cursor-default rounded-full bg-foreground px-4 py-1.5 text-sm font-medium text-background transition-all duration-400 ease-spring hover:scale-105 hover:shadow-lg">
+              <div className="inline-block cursor-default rounded-full bg-foreground px-4 py-1.5 text-sm font-medium text-background transition-all duration-400 ease-spring hover:scale-105 hover:elevate-2">
                 {t("contact.chip")}
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
@@ -281,7 +281,7 @@ export default function Page() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-240 ease-state hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
+                      className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-240 ease-state hover:bg-muted hover:border-foreground/20 hover:elevate-2 hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
                       aria-label={name}
                     >
                       <social.icon className="size-4 transition-transform duration-400 ease-spring group-hover/social:scale-110" />

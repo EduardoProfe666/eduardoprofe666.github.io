@@ -210,7 +210,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
                   initial HTML and waited 3.2s after hydration before even
                   requesting it — which made this the Largest Contentful Paint.
                   The initials sit behind it as a no-JS fallback. */}
-              <span className="relative flex size-28 shrink-0 overflow-hidden rounded-full border-2 border-border shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-400 ease-state">
+              <span className="relative flex size-28 shrink-0 overflow-hidden rounded-full border-2 border-border elevate-3 ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:elevate-3 group-hover/avatar:scale-[1.03] transition-all duration-400 ease-state">
                 <span
                   aria-hidden="true"
                   className="absolute inset-0 grid place-items-center bg-muted text-sm font-medium"
@@ -235,7 +235,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
             <div
               aria-hidden="true"
               style={{ ...faceStyle, transform: "rotateY(180deg)" }}
-              className="size-28 rounded-full border-2 border-amber-300/60 dark:border-amber-700/40 shadow-xl ring-4 ring-amber-200/20 dark:ring-amber-800/15 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-amber-950 dark:via-yellow-950 dark:to-orange-950 flex items-center justify-center cursor-pointer"
+              className="size-28 rounded-full border-2 border-amber-300/60 dark:border-amber-700/40 elevate-3 ring-4 ring-amber-200/20 dark:ring-amber-800/15 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-amber-950 dark:via-yellow-950 dark:to-orange-950 flex items-center justify-center cursor-pointer"
             >
               <span className="text-5xl drop-shadow-md select-none">🎩</span>
             </div>
