@@ -2,25 +2,25 @@ import { Translations } from "./types";
 
 const en: Translations = {
   // UI
-  "hero.greeting": "Hi, I'm",
+  "hero.greeting": "Hi, I’m",
   "hero.description":
     "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
   "about.title": "About",
   "about.summary":
-    "I'm a **Computer Engineering** graduate with **Gold Title honors** from [CUJAE](/#education) and over **4 years of experience** building software across the full stack. I currently lead development teams and architect enterprise solutions integrating **AI, automation workflows, and cloud infrastructure** (AWS, DigitalOcean, Vercel). My background spans from [backend-heavy distributed systems](/#work) to [frontend engineering](/#work), with hands-on DevOps and infrastructure skills including **Docker, CI/CD pipelines, and cloud deployments**. I thrive in fast-paced environments and enjoy mentoring teams, competing in [programming events](/#events), and pushing the boundaries of [modern technologies](/#skills).",
+    "I’m a **Computer Engineering** graduate with **Gold Title honors** from [CUJAE](/#education) and over **4 years of experience** building software across the full stack. I currently lead development teams and architect enterprise solutions integrating **AI, automation workflows, and cloud infrastructure** (AWS, DigitalOcean, Vercel). My background spans from [backend-heavy distributed systems](/#work) to [frontend engineering](/#work), with hands-on DevOps and infrastructure skills including **Docker, CI/CD pipelines, and cloud deployments**. I thrive in fast-paced environments and enjoy mentoring teams, competing in [programming events](/#events), and pushing the boundaries of [modern technologies](/#skills).",
   "work.title": "Work Experience",
   "education.title": "Education",
   "skills.title": "Skills",
   "skills.loading": "Loading skills...",
   "projects.title": "My Projects",
   "projects.subtitle":
-    "I've worked on a variety of projects. Here are a few of my favorites. You can see more on my {github}.",
+    "I’ve worked on a variety of projects. Here are a few of my favorites. You can see more on my {github}.",
   "events.title": "Events",
-  "events.subtitle": "I've participated in {count} events and competitions.",
+  "events.subtitle": "I’ve participated in {count} events and competitions.",
   "contact.chip": "Contact",
   "contact.heading": "Get in Touch",
   "contact.description":
-    "Want to chat? Just shoot me a message and I'll respond whenever I can.",
+    "Want to chat? Just shoot me a message and I’ll respond whenever I can.",
   "contact.cta": "Send me an email",
   "nav.resume": "Resume",
   "nav.github": "GitHub",
@@ -65,7 +65,7 @@ const en: Translations = {
     "Leading architecture and full-stack development of multiple production platforms serving hundreds of users, including EasySalon (salon management), Guest Concierge AI (host AI assistant), Easy Cargo Express (ecommerce logistics), and Nitida (cleaning company management). Managing and mentoring multiple cross-functional development teams across frontend, backend, mobile, and AI roles. Owning the complete DevOps and infrastructure pipeline—optimizing deployments across AWS, DigitalOcean, Railway, and Vercel. Building cross-platform agentic automation workflows with n8n to bridge AI services with core business logic. Integrating payment gateways (Clover, Stripe, Square) into production systems. Developing native mobile applications with React Native and Expo, shipped to both Google Play Store and Apple App Store.",
   "work.codes.title": "Backend Developer",
   "work.codes.description":
-    "Developed the backend for the transnational e-commerce platform srmercado.com, implementing a microservices architecture in .NET based on Clean Architecture principles, CQRS, and event-driven communication using RabbitMQ. I managed storage and content delivery infrastructure via AWS (S3 and CloudFront CDN), later leading the migration to an on-premise solution with MinIO to meet strict data sovereignty requirements. Additionally, I ensured the platform's financial operability by integrating multiple international payment gateways—including Monei, PayNoPain (PayLands), and RedSys—guaranteeing secure and efficient cross-border transaction flows.",
+    "Developed the backend for the transnational e-commerce platform srmercado.com, implementing a microservices architecture in .NET based on Clean Architecture principles, CQRS, and event-driven communication using RabbitMQ. I managed storage and content delivery infrastructure via AWS (S3 and CloudFront CDN), later leading the migration to an on-premise solution with MinIO to meet strict data sovereignty requirements. Additionally, I ensured the platform’s financial operability by integrating multiple international payment gateways—including Monei, PayNoPain (PayLands), and RedSys—guaranteeing secure and efficient cross-border transaction flows.",
   "work.emsifarma.title": "Software Engineer",
   "work.emsifarma.description":
     "Driven the digital transformation toward Industry 4.0 by developing an integrated MES/SCADA system using .NET and Next.js, incorporating WSO2 Identity Server to ensure robust and secure identity management. Additionally, I led the optimization of legal workflows and complex case management by implementing agentic solutions with n8n. This initiative automated critical processes for multi-sector companies, significantly increasing operational efficiency through the deployment of intelligent, automated workflows.",
@@ -83,7 +83,7 @@ const en: Translations = {
     "Taught first and second-year Computer Engineering courses, including Introduction to Programming, Interface Design and Testing, Object-Oriented Programming, and Data Structures. Also taught Web Programming for third-year Computer Engineering students.",
   "work.alsoftpro.title": "Software Engineer",
   "work.alsoftpro.description":
-    "Co-developed the backend for two modules (Contracting and Services) for ALCOM, Havana's Water Company, using Django and Django Rest Framework.",
+    "Co-developed the backend for two modules (Contracting and Services) for ALCOM, Havana’s Water Company, using Django and Django Rest Framework.",
   "work.cujae-econ.title": "Accountant E",
   "work.cujae-econ.description":
     "Managed inventory systems, accounting, and conducted audits of university warehouses and assets.",
@@ -96,7 +96,7 @@ const en: Translations = {
   "project.sudoku.description":
     "Simple Sudoku game developed as an installable Progressive Web App with online/offline functionality",
   "project.une.description":
-    "A website for displaying statistics about UNE's public Telegram channel in Havana",
+    "A website for displaying statistics about UNE’s public Telegram channel in Havana",
   "project.api.description":
     "Java API project featuring visual components (Java Swing), logical functionalities, and utilities.",
   "project.weather.description": "Weather App powered by Open-Meteo",
@@ -107,7 +107,7 @@ const en: Translations = {
 
   // 404
   "notFound.title": "Page not found",
-  "notFound.description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+  "notFound.description": "The page you’re looking for doesn’t exist or has been moved. Let’s get you back on track.",
   "notFound.cta": "Back to home",
 
   // Events

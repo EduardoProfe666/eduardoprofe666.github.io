@@ -36,6 +36,17 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
+  /*
+   * Fine print: badges, dates, keyboard chips.
+   *
+   * These were written as `text-[10px]` in ten places and `text-[11px]` in five
+   * — two arbitrary sizes doing one job, neither of them on the scale. One step
+   * at 11px, which is the more legible of the two and still clearly subordinate
+   * to `text-xs`.
+   */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.15rem;
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -196,7 +207,14 @@
     /* Safari enlarges text when the phone is rotated unless this is pinned. */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    text-rendering: optimizeSpeed;
+    /*
+       `optimizeSpeed` was here, and it switches kerning and common ligatures
+       off — the browser's fast path, at the cost of the two things that make
+       Inter look set rather than typed. The saving is meaningless on a page
+       this size; ask for them explicitly instead.
+    */
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* Inter is a variable font with an optical size axis. */
@@ -223,6 +241,32 @@
   time,
   .tabular-nums {
     font-variant-numeric: tabular-nums;
+  }
+
+  /*
+   * Hyphenation, for the one language that actually wants it.
+   *
+   * Measured at 320px, turning it off costs: German 7.0%, Italian 3.6%,
+   * Spanish 2.5%, French 2.0%, English 1.7%. German is two to four times
+   * everyone else, which is what you would expect from a language that builds
+   * words like Vertragsmanagement — and German readers expect the hyphens.
+   *
+   * English is where it does the least good and the most harm: it was breaking
+   * "logistics" across lines, and cutting srmercado.com into "srmerca-do.com",
+   * which reads as though the hyphen were part of the address. No language
+   * needs it to avoid overflow — `overflow-wrap` below does that job — so
+   * everywhere else keeps its words whole.
+   */
+  .hyphenate {
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+
+  html[lang="de"] .hyphenate {
+    hyphens: auto;
+    -webkit-hyphenate-limit-before: 4;
+    -webkit-hyphenate-limit-after: 4;
+    hyphenate-limit-chars: 8 4 4;
   }
 
   :focus-visible {

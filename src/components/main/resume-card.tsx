@@ -64,7 +64,7 @@ export const ResumeCard = ({
         <CardHeader>
           <div className="flex items-start justify-between gap-x-2">
             <div className="min-w-0">
-              <h3 className="inline-flex items-center font-semibold text-sm leading-tight group-hover:text-foreground transition-colors duration-240 ease-state">
+              <h3 className="inline-flex items-center text-balance font-semibold text-sm leading-tight group-hover:text-foreground transition-colors duration-240 ease-state">
                 {href ? (
                   <a
                     href={href}
@@ -82,7 +82,7 @@ export const ResumeCard = ({
                     {badges.map((badge, index) => (
                       <Badge
                         variant="secondary"
-                        className="text-[10px] px-1.5 py-0 rounded-full group-hover:bg-secondary/80"
+                        className="text-2xs px-1.5 py-0 rounded-full group-hover:bg-secondary/80"
                         key={index}
                       >
                         {badge}
@@ -109,10 +109,10 @@ export const ResumeCard = ({
             </div>
             <div className="flex-shrink-0 mt-0.5 h-[18px] overflow-hidden">
               <div className="flex flex-col transition-transform duration-400 ease-spring group-hover:-translate-y-[18px]">
-                <div className="h-[18px] flex items-center justify-end text-[11px] tabular-nums text-muted-foreground whitespace-nowrap">
+                <div className="h-[18px] flex items-center justify-end text-2xs tabular-nums text-muted-foreground whitespace-nowrap">
                   {period}
                 </div>
-                <div className="h-[18px] flex items-center justify-end gap-1.5 text-[11px] font-medium text-foreground/80 whitespace-nowrap">
+                <div className="h-[18px] flex items-center justify-end gap-1.5 text-2xs font-medium text-foreground/80 whitespace-nowrap">
                   {duration && (
                     <>
                       <Clock className="size-3 flex-shrink-0" />
@@ -125,7 +125,7 @@ export const ResumeCard = ({
           </div>
         </CardHeader>
         {description && (
-          <CardContent className="text-xs sm:text-sm text-pretty leading-relaxed text-muted-foreground group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
+          <CardContent className="text-xs sm:text-sm text-pretty hyphenate leading-relaxed text-muted-foreground group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
             {description}
           </CardContent>
         )}

@@ -19,7 +19,7 @@ const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="group/heading relative w-fit cursor-default text-xl font-bold tracking-tight">
+    <h2 className="group/heading relative w-fit cursor-default text-balance text-xl font-bold tracking-tight">
       <span className="inline-flex items-center">
         <span className="inline-block w-0 select-none overflow-hidden font-mono text-lg text-muted-foreground opacity-0 transition-all duration-400 ease-spring group-hover/heading:w-[1.2em] group-hover/heading:opacity-60">
           #
@@ -71,7 +71,7 @@ export default function Page() {
           <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
         <BlurFade eager delay={entrance(ENTRANCE.aboutBody)}>
-          <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-240 [&_a]:ease-state [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-[width] [&_a]:after:duration-240 [&_a]:after:ease-state [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-240 [&_strong]:ease-state [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
+          <div className="mt-3 prose max-w-full text-pretty hyphenate font-sans text-base text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-240 [&_a]:ease-state [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-[width] [&_a]:after:duration-240 [&_a]:after:ease-state [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-240 [&_strong]:ease-state [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
             <Markdown>{t("about.summary")}</Markdown>
           </div>
         </BlurFade>
@@ -200,7 +200,7 @@ export default function Page() {
               {t("projects.subtitle").split("{github}")[1]}
             </p>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
             {DATA.projects.map((project, index) => (
               <BlurFade key={project.id} delay={sibling(index)} inView>
                 <ProjectCard

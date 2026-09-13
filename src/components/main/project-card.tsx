@@ -120,7 +120,7 @@ export const ProjectCard = React.memo(function ProjectCard({
         <div className="hidden font-sans text-xs underline print:visible">
           {link?.replace("https://", "").replace("www.", "").replace("/", "")}
         </div>
-        <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert leading-relaxed">
+        <div className="prose max-w-full text-pretty hyphenate font-sans text-xs text-muted-foreground dark:prose-invert leading-relaxed">
           <Markdown>{description}</Markdown>
         </div>
       </CardHeader>
@@ -132,7 +132,7 @@ export const ProjectCard = React.memo(function ProjectCard({
             {tags.map((tag, i) => (
               <Badge
                 className={cn(
-                  "px-2 py-0.5 text-[10px] font-medium rounded-full",
+                  "px-2 py-0.5 text-2xs font-medium rounded-full",
                   "hover:scale-105 hover:shadow-sm",
                   "opacity-70 group-hover:opacity-100"
                 )}
@@ -156,7 +156,7 @@ export const ProjectCard = React.memo(function ProjectCard({
               <Link href={linkItem.href} key={idx} target="_blank" rel="noopener noreferrer">
                 <Badge
                   className={cn(
-                    "flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full",
+                    "flex gap-1.5 px-2.5 py-1 text-2xs rounded-full",
                     "hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100",
                     "opacity-80 group-hover:opacity-100"
                   )}

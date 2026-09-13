@@ -57,7 +57,7 @@ export function EventCard({
       {/* Content */}
       <div className="flex flex-1 flex-col justify-start gap-1.5 rounded-xl p-3 -ml-3 transition-[transform,background-color] duration-240 ease-state hover:bg-accent/30 hover:-translate-y-0.5">
         <div className="flex items-center gap-2">
-          <h2 className="font-semibold leading-none text-sm transition-transform duration-240 ease-state group-hover:translate-x-0.5">
+          <h2 className="text-balance font-semibold leading-none text-sm transition-transform duration-240 ease-state group-hover:translate-x-0.5">
             {title}
           </h2>
           {award && (
@@ -81,7 +81,7 @@ export function EventCard({
         </div>
 
         {description && (
-          <p className="text-sm text-pretty text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
+          <p className="text-sm text-pretty hyphenate text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
             {description}
           </p>
         )}
@@ -91,7 +91,7 @@ export function EventCard({
             {links.map((link, idx) => (
               <Link href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
                 <Badge
-                  className="flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100"
+                  className="flex gap-1.5 px-2.5 py-1 text-2xs rounded-full hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100"
                   style={{ transitionDelay: `${Math.min(idx, 4) * 25}ms` }}
                 >
                   {link.icon}

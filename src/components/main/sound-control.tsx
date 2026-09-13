@@ -177,7 +177,7 @@ export function SoundControl() {
             transition={{ type: "spring", stiffness: 520, damping: 22, mass: 0.6 }}
             className="material material-dense absolute bottom-full left-1/2 z-50 mb-3 flex origin-bottom -translate-x-1/2 flex-col items-center gap-2 rounded-full px-2 py-2.5"
           >
-            <span className="text-[10px] font-semibold tabular-nums leading-none text-muted-foreground">
+            <span className="text-2xs font-semibold tabular-nums leading-none text-muted-foreground">
               {percent}
             </span>
             <div
