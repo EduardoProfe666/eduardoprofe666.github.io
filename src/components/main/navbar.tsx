@@ -2,7 +2,7 @@
 
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/main/mode-toggle";
-import { SoundToggle } from "@/components/main/sound-toggle";
+import { SoundControl } from "@/components/main/sound-control";
 import { buttonVariants } from "@/components/common/button";
 import { Separator } from "@/components/common/separator";
 import {
@@ -16,7 +16,6 @@ import { FileText } from "lucide-react";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/main/language-switcher";
-import { feedbackTick } from "@/lib/feedback";
 import { useTranslation } from "@/i18n/provider";
 import { useSyncExternalStore } from "react";
 
@@ -61,7 +60,6 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 download
                 aria-label={t("nav.resume")}
-                onClick={feedbackTick}
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "size-12"
@@ -81,7 +79,6 @@ export default function Navbar() {
               <Link
                 href="https://github.com/EduardoProfe666"
                 aria-label={t("nav.github")}
-                onClick={feedbackTick}
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "size-12"
@@ -103,7 +100,6 @@ export default function Navbar() {
                 <Link
                   href={social.url}
                   aria-label={name}
-                  onClick={feedbackTick}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-12"
@@ -123,7 +119,7 @@ export default function Navbar() {
           <ModeToggle />
         </DockIcon>
         <DockIcon>
-          <SoundToggle />
+          <SoundControl />
         </DockIcon>
         <DockIcon>
           <LanguageSwitcher />

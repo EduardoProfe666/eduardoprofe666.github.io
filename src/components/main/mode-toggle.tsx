@@ -24,6 +24,7 @@ export function ModeToggle() {
         setTheme(next);
       }}
       variant="circle"
+      data-sfx="none"
       aria-label={t("nav.theme")}
       title={t("nav.theme")}
       className={cn(

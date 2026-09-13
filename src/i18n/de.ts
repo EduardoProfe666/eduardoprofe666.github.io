@@ -28,6 +28,7 @@ const de: Translations = {
   "nav.theme": "Design wechseln",
   "nav.soundOn": "Ton einschalten",
   "nav.soundOff": "Ton ausschalten",
+  "nav.volume": "Lautstärke",
   "nav.language": "Sprache",
   "thesis.label": "Abschlussarbeit",
   "thesis.repository": "Repository",

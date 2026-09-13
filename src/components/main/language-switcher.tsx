@@ -5,7 +5,7 @@ import { useTranslation } from "@/i18n/provider";
 import { locales } from "@/i18n/index";
 import type { Locale } from "@/i18n/types";
 import { buttonVariants } from "@/components/common/button";
-import { feedbackTick } from "@/lib/feedback";
+import { feedbackSweep } from "@/lib/feedback";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { US, ES, FR, DE, IT } from "country-flag-icons/react/3x2";
@@ -50,6 +50,7 @@ export function LanguageSwitcher() {
   }, [isOpen]);
 
   function closePanel() {
+    feedbackSweep(false);
     setIsClosing(true);
     setTimeout(() => {
       setIsOpen(false);
@@ -62,7 +63,6 @@ export function LanguageSwitcher() {
       closePanel();
       return;
     }
-    feedbackTick();
     setLocale(code);
     closePanel();
   }
@@ -77,10 +77,14 @@ export function LanguageSwitcher() {
           buttonVariants({ variant: "ghost", size: "icon" }),
           "size-12 cursor-pointer"
         )}
+        data-sfx="none"
         onClick={() => {
-          feedbackTick();
-          if (isOpen) closePanel();
-          else setIsOpen(true);
+          if (isOpen) {
+            closePanel();
+          } else {
+            feedbackSweep(true);
+            setIsOpen(true);
+          }
         }}
         aria-label={t("nav.language")}
         aria-expanded={isOpen}
@@ -97,7 +101,7 @@ export function LanguageSwitcher() {
             "absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56",
             // Same glass as the dock it grows out of, and scaled from its
             // bottom edge so it reads as unfolding from the button.
-            "material overflow-hidden rounded-2xl origin-bottom",
+            "material material-dense overflow-hidden rounded-2xl origin-bottom",
             "transition-all duration-200 ease-glide",
             isClosing
               ? "translate-y-1 scale-95 opacity-0"

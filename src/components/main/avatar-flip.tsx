@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { feedbackSwoosh, feedbackTick } from "@/lib/feedback";
+import { feedbackCoin } from "@/lib/feedback";
 
 interface AvatarFlipProps {
   src: string;
@@ -75,8 +75,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
 
     setReducedMotion(prefersReducedMotion);
     setFlips((count) => count + 1);
-    if (prefersReducedMotion) feedbackTick();
-    else feedbackSwoosh();
+    feedbackCoin(prefersReducedMotion);
 
     // Honouring the preference means no spin at all: the faces just swap.
     if (prefersReducedMotion) return;

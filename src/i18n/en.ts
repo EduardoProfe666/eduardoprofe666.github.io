@@ -27,6 +27,7 @@ const en: Translations = {
   "nav.theme": "Toggle theme",
   "nav.soundOn": "Turn sound on",
   "nav.soundOff": "Turn sound off",
+  "nav.volume": "Volume",
   "nav.language": "Language",
   "thesis.label": "Thesis",
   "thesis.repository": "Repository",

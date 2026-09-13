@@ -261,6 +261,24 @@
   }
 
   /*
+   * The same glass, denser.
+   *
+   * The dock can afford to be see-through: it is wide, and it sits over a
+   * strip where the page has already been faded out. A small panel floats over
+   * live text, and at the dock's opacity a paragraph reads straight through it.
+   *
+   * Declared after `.material` and with a matching `.dark` rule, so it wins in
+   * both themes — equal specificity is decided by source order.
+   */
+  .material-dense {
+    background-color: hsl(var(--background) / 0.94);
+  }
+
+  .dark .material-dense {
+    background-color: hsl(var(--background) / 0.9);
+  }
+
+  /*
    * Card surface: a hairline that does not thicken on hover (which would shift
    * the contents by a pixel), and a shadow that grows outwards rather than
    * darkening, the way a real object casts more shadow as it lifts.

@@ -1,4 +1,5 @@
 import { BackToTop } from "@/components/main/back-to-top";
+import { FeedbackListener } from "@/components/main/feedback-listener";
 import { MotionProvider } from "@/components/main/motion-provider";
 import { HtmlLang } from "@/components/main/html-lang";
 import { JsonLd } from "@/components/common/json-ld";
@@ -202,6 +203,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <I18nProvider>
             <HtmlLang />
+            <FeedbackListener />
             <MotionProvider>
               <TooltipProvider delayDuration={100}>
                 {children}

@@ -10,7 +10,6 @@ import { DATA } from "@/data/resume";
 import { useTranslation } from "@/i18n/provider";
 import { calcDuration, formatPeriod } from "@/lib/duration";
 import { ENTRANCE, entrance, sibling } from "@/lib/entrance";
-import { feedbackTick } from "@/lib/feedback";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
@@ -270,7 +269,6 @@ export default function Page() {
             <BlurFade delay={sibling(1)} inView>
               <Link
                 href={DATA.contact.social.Email.url}
-                onClick={feedbackTick}
                 className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-glide hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
               >
                 <DATA.contact.social.Email.icon className="size-4 transition-transform duration-500 ease-spring group-hover/cta:rotate-12 group-hover/cta:scale-110" />
@@ -288,7 +286,6 @@ export default function Page() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={feedbackTick}
                       className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-400 ease-glide hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
                       aria-label={name}
                     >

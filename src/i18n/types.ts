@@ -31,6 +31,7 @@ interface UiTranslations {
   "nav.theme": string;
   "nav.soundOn": string;
   "nav.soundOff": string;
+  "nav.volume": string;
   "nav.language": string;
   "thesis.label": string;
   "thesis.repository": string;

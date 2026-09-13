@@ -2,7 +2,7 @@
 
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
-import { feedbackTick } from "@/lib/feedback";
+import { feedbackSweep } from "@/lib/feedback";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -16,10 +16,11 @@ export function BackToTop() {
   return (
     <button
       onClick={() => {
-        feedbackTick();
+        feedbackSweep(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
       aria-label="Back to top"
+      data-sfx="none"
       // Same glass as the dock: the two are the only things floating over the
       // page, so they should be made of the same stuff. It also scales in
       // rather than only fading, which reads as arriving instead of appearing.

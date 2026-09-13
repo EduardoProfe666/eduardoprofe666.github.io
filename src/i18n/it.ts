@@ -27,6 +27,7 @@ const it: Translations = {
   "nav.theme": "Cambia tema",
   "nav.soundOn": "Attiva l'audio",
   "nav.soundOff": "Disattiva l'audio",
+  "nav.volume": "Volume",
   "nav.language": "Lingua",
   "thesis.label": "Tesi",
   "thesis.repository": "Repository",
