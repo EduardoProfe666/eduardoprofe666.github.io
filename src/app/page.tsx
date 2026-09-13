@@ -9,6 +9,8 @@ import { HeroTitle } from "@/components/main/hero-title";
 import { DATA } from "@/data/resume";
 import { useTranslation } from "@/i18n/provider";
 import { calcDuration, formatPeriod } from "@/lib/duration";
+import { ENTRANCE, entrance, sibling } from "@/lib/entrance";
+import { feedbackTick } from "@/lib/feedback";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
@@ -17,14 +19,14 @@ const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="group/heading text-xl font-bold cursor-default relative w-fit">
+    <h2 className="group/heading relative w-fit cursor-default text-xl font-bold tracking-tight">
       <span className="inline-flex items-center">
-        <span className="inline-block w-0 overflow-hidden opacity-0 group-hover/heading:w-[1.2em] group-hover/heading:opacity-60 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-muted-foreground font-mono text-lg select-none">
+        <span className="inline-block w-0 select-none overflow-hidden font-mono text-lg text-muted-foreground opacity-0 transition-all duration-400 ease-spring group-hover/heading:w-[1.2em] group-hover/heading:opacity-60">
           #
         </span>
         {children}
       </span>
-      <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-foreground/25 rounded-full transition-all duration-500 ease-out group-hover/heading:w-full" />
+      <span className="absolute -bottom-1 left-0 h-0.5 w-0 origin-left rounded-full bg-foreground/25 transition-[width] duration-500 ease-glide group-hover/heading:w-full" />
     </h2>
   );
 }
@@ -39,20 +41,20 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-6 flex justify-between items-center">
             <div className="flex-col flex flex-1 space-y-3">
-              <BlurFade eager delay={0.05}>
+              <BlurFade eager delay={entrance(ENTRANCE.heroTitle)}>
                 <HeroTitle
                   greeting={t("hero.greeting")}
                   name={DATA.name.split(" ")[0]}
                   alias="EduardoProfe666"
                 />
               </BlurFade>
-              <BlurFade eager delay={0.4}>
+              <BlurFade eager delay={entrance(ENTRANCE.heroDescription)}>
                 <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
                   {t("hero.description")}
                 </p>
               </BlurFade>
             </div>
-            <BlurFade eager delay={0.3}>
+            <BlurFade eager delay={entrance(ENTRANCE.heroAvatar)}>
               <AvatarFlip
                 src={DATA.avatarUrl}
                 alt={DATA.name}
@@ -65,10 +67,10 @@ export default function Page() {
 
       {/* About */}
       <section id="about" aria-label={t("about.title")}>
-        <BlurFade eager delay={0.15}>
+        <BlurFade eager delay={entrance(ENTRANCE.aboutHeading)}>
           <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
-        <BlurFade eager delay={0.2}>
+        <BlurFade eager delay={entrance(ENTRANCE.aboutBody)}>
           <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-all [&_a]:after:duration-300 [&_a]:after:ease-out [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-300 [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
             <Markdown>{t("about.summary")}</Markdown>
           </div>
@@ -78,11 +80,16 @@ export default function Page() {
       {/* Work */}
       <section id="work" aria-label={t("work.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade eager delay={0.25}>
+          <BlurFade eager delay={entrance(ENTRANCE.workHeading)}>
             <SectionHeading>{t("work.title")}</SectionHeading>
           </BlurFade>
           {DATA.work.map((work, index) => (
-            <BlurFade key={work.id} eager={index === 0} delay={index * 0.03} inView>
+            <BlurFade
+              key={work.id}
+              eager={index === 0}
+              delay={index === 0 ? entrance(ENTRANCE.workFirstCard) : sibling(index)}
+              inView
+            >
               <ResumeCard
                 priority={index === 0}
                 logoUrl={work.logoUrl}
@@ -108,7 +115,7 @@ export default function Page() {
             <SectionHeading>{t("education.title")}</SectionHeading>
           </BlurFade>
           {DATA.education.map((education, index) => (
-            <BlurFade key={education.id} delay={index * 0.03} inView>
+            <BlurFade key={education.id} delay={sibling(index)} inView>
               <ResumeCard
                 logoUrl={education.logoUrl}
                 altText={education.school}
@@ -195,7 +202,7 @@ export default function Page() {
           </BlurFade>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto mt-3">
             {DATA.projects.map((project, index) => (
-              <BlurFade key={project.id} delay={index * 0.04} inView>
+              <BlurFade key={project.id} delay={sibling(index)} inView>
                 <ProjectCard
                   href={project.href}
                   title={project.title}
@@ -226,7 +233,7 @@ export default function Page() {
           <BlurFade inView>
             <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
               {DATA.events.map((event, index) => (
-                <BlurFade as="li" key={event.id} delay={index * 0.04} inView>
+                <BlurFade as="li" key={event.id} delay={sibling(index)} inView>
                   <EventCard
                     title={event.title}
                     description={t(`event.${event.id}.description`)}
@@ -248,7 +255,7 @@ export default function Page() {
         <div className="flex flex-col items-center justify-center gap-8 px-4 text-center md:px-6 w-full py-16">
           <BlurFade inView>
             <div className="space-y-4">
-              <div className="inline-block rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-medium hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-default">
+              <div className="inline-block cursor-default rounded-full bg-foreground px-4 py-1.5 text-sm font-medium text-background transition-all duration-400 ease-spring hover:scale-105 hover:shadow-lg">
                 {t("contact.chip")}
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-balance leading-tight">
@@ -259,33 +266,38 @@ export default function Page() {
               </p>
             </div>
           </BlurFade>
-          <BlurFade delay={0.05} inView>
-            <div className="flex flex-col items-center gap-5">
+          <div className="flex flex-col items-center gap-5">
+            <BlurFade delay={sibling(1)} inView>
               <Link
                 href={DATA.contact.social.Email.url}
-                className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground text-background px-8 py-3.5 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+                onClick={feedbackTick}
+                className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-glide hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
               >
-                <DATA.contact.social.Email.icon className="size-4 group-hover/cta:rotate-12 transition-transform duration-300" />
+                <DATA.contact.social.Email.icon className="size-4 transition-transform duration-500 ease-spring group-hover/cta:rotate-12 group-hover/cta:scale-110" />
                 {t("contact.cta")}
               </Link>
-              <div className="flex items-center gap-3">
-                {Object.entries(DATA.contact.social)
-                  .filter(([name]) => name !== "Email")
-                  .map(([name, social]) => (
+            </BlurFade>
+            {/* One reveal per icon rather than one for the row, so they land
+                left to right on the same cadence as every other list. */}
+            <div className="flex items-center gap-3">
+              {Object.entries(DATA.contact.social)
+                .filter(([name]) => name !== "Email")
+                .map(([name, social], index) => (
+                  <BlurFade key={name} delay={sibling(index + 2)} inView>
                     <Link
-                      key={name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/social flex items-center justify-center size-11 rounded-full border border-border bg-background hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 transition-all duration-300"
+                      onClick={feedbackTick}
+                      className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-400 ease-glide hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
                       aria-label={name}
                     >
-                      <social.icon className="size-4 group-hover/social:scale-110 transition-transform duration-300" />
+                      <social.icon className="size-4 transition-transform duration-500 ease-spring group-hover/social:scale-110" />
                     </Link>
-                  ))}
-              </div>
+                  </BlurFade>
+                ))}
             </div>
-          </BlurFade>
+          </div>
         </div>
       </section>
     </main>

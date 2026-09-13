@@ -25,6 +25,8 @@ const en: Translations = {
   "nav.resume": "Resume",
   "nav.github": "GitHub",
   "nav.theme": "Toggle theme",
+  "nav.soundOn": "Turn sound on",
+  "nav.soundOff": "Turn sound off",
   "nav.language": "Language",
   "thesis.label": "Thesis",
   "thesis.repository": "Repository",

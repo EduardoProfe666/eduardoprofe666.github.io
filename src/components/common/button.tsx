@@ -5,7 +5,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  // The press scale is the whole reason this is here: without it a click has no
+  // acknowledgement until the page has already reacted. It springs back over
+  // 300ms but collapses in 100, because the touch has to feel immediate while
+  // the release can afford to be graceful.
+  //
+  // No `focus-visible:ring` override: the page has a single focus style, set
+  // once in globals.css, and a second one here would only be inconsistent.
+  "inline-flex select-none items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-[transform,background-color,color,box-shadow,opacity] duration-300 ease-glide active:scale-[0.94] active:duration-100 disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100",
   {
     variants: {
       variant: {

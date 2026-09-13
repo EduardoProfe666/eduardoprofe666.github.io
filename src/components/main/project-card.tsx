@@ -61,8 +61,7 @@ export const ProjectCard = React.memo(function ProjectCard({
   return (
     <Card
       className={cn(
-        "flex flex-col overflow-hidden border border-border/40 hover:border-border/80 transition-all duration-500 ease-out h-full group rounded-xl",
-        "hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]",
+        "surface group flex h-full flex-col overflow-hidden rounded-2xl",
         "hover:-translate-y-1.5",
         className
       )}
@@ -82,21 +81,21 @@ export const ProjectCard = React.memo(function ProjectCard({
             muted
             playsInline
             preload="none"
-            className="pointer-events-none mx-auto h-48 w-full object-cover object-top group-hover:scale-[1.06] transition-transform duration-700 ease-out"
+            className="pointer-events-none mx-auto h-48 w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
           />
         )}
         {image && (
           <OptimizedImage
             src={image}
             alt={title}
-            className="h-48 w-full object-cover object-top group-hover:scale-[1.06] transition-transform duration-700 ease-out"
+            className="h-48 w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
           />
         )}
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {/* Arrow indicator */}
-        <div className="absolute top-3 right-3 size-8 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg">
-          <ArrowUpRight className="size-4 text-foreground" />
+        <div className="material absolute top-3 right-3 flex size-8 scale-75 items-center justify-center rounded-full opacity-0 transition-all duration-400 ease-spring group-hover:scale-100 group-hover:opacity-100">
+          <ArrowUpRight className="size-4 text-foreground transition-transform duration-500 ease-glide group-hover:rotate-45" />
         </div>
       </Link>
 
@@ -127,7 +126,7 @@ export const ProjectCard = React.memo(function ProjectCard({
               <Badge
                 className={cn(
                   "px-2 py-0.5 text-[10px] font-medium rounded-full",
-                  "transition-all duration-300 hover:scale-105 hover:shadow-sm",
+                  "hover:scale-105 hover:shadow-sm",
                   "opacity-70 group-hover:opacity-100"
                 )}
                 variant="secondary"
@@ -150,14 +149,14 @@ export const ProjectCard = React.memo(function ProjectCard({
                 <Badge
                   className={cn(
                     "flex gap-1.5 px-2.5 py-1 text-[10px] rounded-full",
-                    "transition-all duration-300 hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95",
+                    "hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100",
                     "opacity-80 group-hover:opacity-100"
                   )}
                   style={{ transitionDelay: `${idx * 50}ms` }}
                 >
                   {linkItem.icon}
                   {linkItem.type}
-                  <ExternalLink className="size-2.5 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-40 group-hover:translate-x-0" />
+                  <ExternalLink className="size-2.5 -translate-x-1 opacity-0 transition-all duration-500 ease-glide group-hover:translate-x-0 group-hover:opacity-40" />
                 </Badge>
               </Link>
             ))}

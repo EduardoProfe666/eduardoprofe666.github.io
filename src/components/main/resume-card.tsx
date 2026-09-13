@@ -31,7 +31,10 @@ export const ResumeCard = ({
   priority = false,
 }: ResumeCardProps) => {
   return (
-    <Card className="relative flex gap-4 hover:border hover:border-border hover:shadow-lg hover:bg-accent/30 transition-all duration-300 ease-out p-4 group rounded-xl hover:-translate-y-0.5">
+    // `surface` draws the hairline as a shadow. The previous `hover:border`
+    // added a real 1px border on hover, which grew the card by two pixels and
+    // nudged every line of text inside it.
+    <Card className="surface group relative flex gap-4 rounded-xl p-4 hover:bg-accent/25 hover:-translate-y-0.5 active:scale-[0.995] active:duration-100">
       <div className="flex-none pt-0.5">
         {/* A plain <img> rather than Radix's Avatar: that one mounts the image
             from JavaScript, so the first card's logo was invisible to the
@@ -42,7 +45,7 @@ export const ResumeCard = ({
             No initial behind the image: Radix unmounted its fallback once the
             logo loaded, and these logos have transparent backgrounds, so a
             permanent one showed through. `alt` still covers a failed load. */}
-        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm transition-[transform,box-shadow] duration-500 ease-glide group-hover:shadow-md group-hover:scale-[1.06]">
           {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
               serves unoptimized images, so next/image would add nothing here. */}
           <img
@@ -79,7 +82,7 @@ export const ResumeCard = ({
                     {badges.map((badge, index) => (
                       <Badge
                         variant="secondary"
-                        className="text-[10px] px-1.5 py-0 rounded-full group-hover:bg-secondary/80 transition-colors duration-300"
+                        className="text-[10px] px-1.5 py-0 rounded-full group-hover:bg-secondary/80"
                         key={index}
                       >
                         {badge}
@@ -88,7 +91,7 @@ export const ResumeCard = ({
                   </span>
                 )}
                 {href && (
-                  <ChevronRight className="size-4 ml-1 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+                  <ChevronRight className="size-4 ml-1 -translate-x-1 opacity-0 transition-all duration-500 ease-glide group-hover:translate-x-0 group-hover:opacity-100" />
                 )}
               </h3>
               {subtitle && (
@@ -105,7 +108,7 @@ export const ResumeCard = ({
               )}
             </div>
             <div className="flex-shrink-0 mt-0.5 h-[18px] overflow-hidden">
-              <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[18px]">
+              <div className="flex flex-col transition-transform duration-500 ease-spring group-hover:-translate-y-[18px]">
                 <div className="h-[18px] flex items-center justify-end text-[11px] tabular-nums text-muted-foreground whitespace-nowrap">
                   {period}
                 </div>

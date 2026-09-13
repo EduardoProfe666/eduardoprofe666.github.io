@@ -40,6 +40,24 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  /*
+   * Motion vocabulary.
+   *
+   * Three curves for the whole page, so nothing moves in a way the rest of the
+   * page has not already taught you to expect:
+   *
+   *   glide  — the deceleration curve Apple uses for sheets and page
+   *            transitions. Leaves fast, lands slowly, never bounces. The
+   *            default for anything that travels a distance.
+   *   spring — a small overshoot, for things that should feel like objects:
+   *            a badge popping, an icon settling.
+   *   soft   — a symmetrical ease for properties with no direction, like
+   *            colour and opacity, where an aggressive curve reads as a flicker.
+   */
+  --ease-glide: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-soft: cubic-bezier(0.25, 0.4, 0.25, 1);
+
   --animate-wave: wave 1.5s infinite;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -155,90 +173,146 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchors and the skip link land clear of the dock. */
+    scroll-padding-bottom: 6rem;
+    /* iOS paints a grey box over whatever you tap; ours have their own
+       pressed state, so the default only fights with it. */
+    -webkit-tap-highlight-color: transparent;
+    /* Safari enlarges text when the phone is rotated unless this is pinned. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Inter is a variable font with an optical size axis. */
+    font-optical-sizing: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
-  :focus-visible {
-    @apply outline-2 outline-ring outline-offset-2;
+
+  /* Drops the legacy 300ms wait before a tap counts as a click, without
+     taking pinch-zoom away. */
+  a,
+  button,
+  summary,
+  label,
+  [role="button"] {
+    touch-action: manipulation;
   }
+
+  /* Dates and counters must not reflow as their digits change. */
+  time,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring) / 0.7);
+    outline-offset: 3px;
+  }
+
   ::selection {
     @apply bg-foreground/10;
   }
 }
 
-h3 code {
-  @apply text-lg! md:text-xl!;
-}
+@layer components {
+  /*
+   * Chrome material.
+   *
+   * The dock and the back-to-top button are the only surfaces that float above
+   * the page, so they share one recipe rather than each inventing its own:
+   *
+   *   - a translucent, over-saturated blur. The saturation boost is what makes
+   *     a macOS toolbar read as glass instead of as a grey rectangle: colour
+   *     from whatever is behind bleeds through instead of being washed out.
+   *   - a hairline edge drawn as a 0.5px spread shadow, which stays a hairline
+   *     at any zoom level where a 1px border would round up to two.
+   *   - a specular highlight along the top edge, and a shadow in two layers —
+   *     a tight one for contact, a wide one for distance.
+   */
+  .material {
+    background-color: hsl(var(--background) / 0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-color: transparent;
+    box-shadow:
+      0 0 0 0.5px hsl(var(--foreground) / 0.08),
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.75),
+      0 1px 2px hsl(var(--foreground) / 0.04),
+      0 8px 24px -6px hsl(var(--foreground) / 0.1),
+      0 24px 48px -16px hsl(var(--foreground) / 0.08);
+  }
 
-pre {
-  @apply px-0! rounded-lg overflow-x-auto py-4;
-}
+  .dark .material {
+    background-color: hsl(var(--background) / 0.6);
+    box-shadow:
+      0 0 0 0.5px hsl(0 0% 100% / 0.1),
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.07),
+      0 8px 24px -6px hsl(0 0% 0% / 0.6),
+      0 24px 48px -16px hsl(0 0% 0% / 0.45);
+  }
 
-pre [data-line] {
-  @apply px-4;
-}
+  /*
+   * Card surface: a hairline that does not thicken on hover (which would shift
+   * the contents by a pixel), and a shadow that grows outwards rather than
+   * darkening, the way a real object casts more shadow as it lifts.
+   */
+  .surface {
+    box-shadow:
+      0 0 0 0.5px hsl(var(--foreground) / 0.07),
+      0 1px 2px hsl(var(--foreground) / 0.03);
+    transition:
+      box-shadow 0.5s var(--ease-glide),
+      transform 0.5s var(--ease-glide),
+      background-color 0.4s var(--ease-soft);
+  }
 
-code {
-  @apply text-sm md:text-base leading-loose!;
-}
+  .surface:hover {
+    box-shadow:
+      0 0 0 0.5px hsl(var(--foreground) / 0.12),
+      0 2px 4px hsl(var(--foreground) / 0.04),
+      0 12px 28px -10px hsl(var(--foreground) / 0.16);
+  }
 
-pre > code {
-  counter-reset: line;
-}
+  .dark .surface {
+    box-shadow:
+      0 0 0 0.5px hsl(0 0% 100% / 0.08),
+      0 1px 2px hsl(0 0% 0% / 0.4);
+  }
 
-code[data-theme*=" "],
-code[data-theme*=" "] span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
-}
-
-@media (prefers-color-scheme: dark) {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-    background-color: var(--shiki-dark-bg);
+  .dark .surface:hover {
+    box-shadow:
+      0 0 0 0.5px hsl(0 0% 100% / 0.14),
+      0 2px 4px hsl(0 0% 0% / 0.4),
+      0 12px 28px -10px hsl(0 0% 0% / 0.55);
   }
 }
 
-code[data-line-numbers] {
-  counter-reset: line;
-}
+/*
+ * Reduce Transparency (macOS Accessibility, and its equivalents elsewhere).
+ *
+ * Someone who has asked the system for opaque chrome should get opaque chrome
+ * here too. Dropping the blur also drops its cost on the machines most likely
+ * to have turned it on.
+ */
+@media (prefers-reduced-transparency: reduce) {
+  .material {
+    background-color: hsl(var(--background));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 
-code[data-line-numbers] > [data-line]::before {
-  counter-increment: line;
-  content: counter(line);
-  @apply inline-block w-4 mr-4 text-right text-gray-500;
-}
-
-code {
-  counter-reset: line;
-}
-
-code > [data-line]::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
-}
-
-code[data-line-numbers-max-digits="2"] > [data-line]::before {
-  width: 2rem;
-}
-
-code[data-line-numbers-max-digits="3"] > [data-line]::before {
-  width: 3rem;
-}
-
-* {
-  scroll-behavior: smooth;
-}
-
-img,
-video {
-  content-visibility: auto;
+  .dark .material {
+    background-color: hsl(var(--background));
+  }
 }
 
 /*
@@ -289,23 +363,61 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
 }
 
 .animate-blur-in {
-  animation: blur-in 0.4s cubic-bezier(0.25, 0.4, 0.25, 1) both;
+  animation: blur-in 0.4s var(--ease-glide) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/*
+ * Reading progress.
+ *
+ * A scroll-driven animation: the browser ties the keyframes to the document's
+ * own scroll position, so there is no listener, no rAF loop and nothing to
+ * recalculate on resize. Browsers without `animation-timeline` skip the
+ * `@supports` block and the hairline simply never appears.
+ */
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
-html {
-  text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--border)) transparent;
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    transform-origin: 0 50%;
+    animation: scroll-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/*
+ * Images fade in once they have actually decoded, instead of snapping in a
+ * band at a time. Never applied to the portrait or the first logo: those are
+ * inside the first screen, and holding them at `opacity: 0` until `load` fires
+ * would push Largest Contentful Paint out by the length of the fade.
+ */
+img[data-reveal] {
+  opacity: 0;
+  transform: scale(1.015);
+  transition:
+    opacity 0.5s var(--ease-soft),
+    transform 0.7s var(--ease-glide);
+}
+
+img[data-reveal][data-loaded="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+img,
+video {
+  content-visibility: auto;
 }
 
 ::-webkit-scrollbar {
@@ -323,4 +435,24 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* The fade is what makes these visible, so it cannot be reduced away. */
+  img[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -4,7 +4,10 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  // `focus:` never fired here — a <div> is not focusable — so the ring it asked
+  // for was dead weight. Interactive badges are wrapped in a link, which the
+  // page's own focus style already covers.
+  "inline-flex select-none items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-[transform,background-color,color,box-shadow] duration-300 ease-glide",
   {
     variants: {
       variant: {

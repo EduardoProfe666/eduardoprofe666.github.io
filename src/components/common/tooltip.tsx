@@ -19,7 +19,13 @@ const TooltipContent = React.forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      "z-50 overflow-hidden rounded-lg bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground shadow-lg shadow-black/10",
+      // Radix measures where the tooltip sits relative to its trigger and
+      // hands back a transform origin. Scaling from there makes the label look
+      // like it grew out of the icon rather than appearing next to it.
+      "[transform-origin:var(--radix-tooltip-content-transform-origin)]",
+      "duration-200 ease-glide animate-in fade-in-0 zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-90 data-[state=closed]:duration-150",
+      "data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1",
       className
     )}
     {...props}

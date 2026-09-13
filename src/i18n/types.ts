@@ -29,6 +29,8 @@ interface UiTranslations {
   "nav.resume": string;
   "nav.github": string;
   "nav.theme": string;
+  "nav.soundOn": string;
+  "nav.soundOff": string;
   "nav.language": string;
   "thesis.label": string;
   "thesis.repository": string;

@@ -188,6 +188,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {/* Reading progress. The keyframes are tied to the document's own
+            scroll timeline in CSS, so there is no listener, no rAF loop and
+            nothing to recompute on resize; browsers without `animation-timeline`
+            never show it at all. */}
+        <div
+          aria-hidden="true"
+          className="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px] bg-foreground/50"
+        />
         <a href="#hero" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:rounded-md focus:text-sm focus:font-medium">
           Skip to content
         </a>

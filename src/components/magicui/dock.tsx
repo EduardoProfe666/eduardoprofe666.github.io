@@ -86,10 +86,13 @@ const DockIcon = ({ className, children }: DockIconProps) => {
     [40, magnification, 40]
   );
 
+    // Slightly heavier and better damped than the magicui default, which
+  // overshoots twice before settling and reads as a wobble rather than as the
+  // icons being pushed aside.
   const width = useSpring(widthSync, {
-    mass: 0.1,
-    stiffness: 150,
-    damping: 12,
+    mass: 0.18,
+    stiffness: 170,
+    damping: 18,
   });
 
   return (
@@ -98,6 +101,9 @@ const DockIcon = ({ className, children }: DockIconProps) => {
       style={{ width }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
+        // The press lands on the icon you actually touched: `:active` reaches
+        // this wrapper from the button inside it.
+        "transition-transform duration-200 ease-glide active:scale-[0.88] active:duration-100",
         className
       )}
     >

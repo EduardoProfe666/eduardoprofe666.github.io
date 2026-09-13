@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { feedbackPop } from "@/lib/feedback";
 import { m, AnimatePresence } from "framer-motion";
 
 interface HeroTitleProps {
@@ -22,6 +23,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
 
     if (clickCount.current >= 3) {
       clickCount.current = 0;
+      feedbackPop();
       setShowAlias((v) => !v);
     }
   }, []);

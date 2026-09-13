@@ -2,6 +2,7 @@
 
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import { feedbackTick } from "@/lib/feedback";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -14,15 +15,21 @@ export function BackToTop() {
 
   return (
     <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() => {
+        feedbackTick();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
       aria-label="Back to top"
-      className={`group fixed bottom-20 right-4 z-40 flex items-center justify-center size-10 rounded-full border border-border bg-background/80 backdrop-blur-sm shadow-md hover:shadow-xl hover:bg-muted hover:border-foreground/20 hover:scale-110 hover:-translate-y-1 active:scale-90 transition-all duration-300 cursor-pointer ${
+      // Same glass as the dock: the two are the only things floating over the
+      // page, so they should be made of the same stuff. It also scales in
+      // rather than only fading, which reads as arriving instead of appearing.
+      className={`material group fixed bottom-24 right-4 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full transition-all duration-500 ease-glide hover:scale-110 hover:-translate-y-0.5 active:scale-90 active:duration-100 ${
         visible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-4 pointer-events-none"
+          ? "translate-y-0 scale-100 opacity-100"
+          : "pointer-events-none translate-y-3 scale-90 opacity-0"
       }`}
     >
-      <ArrowUp className="size-4 group-hover:-translate-y-0.5 transition-transform duration-300" />
+      <ArrowUp className="size-4 transition-transform duration-500 ease-spring group-hover:-translate-y-0.5" />
     </button>
   );
 }

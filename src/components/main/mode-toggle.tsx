@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import { buttonVariants } from "@/components/common/button";
+import { feedbackPop } from "@/lib/feedback";
 import { useTranslation } from "@/i18n/provider";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +19,10 @@ export function ModeToggle() {
   return (
     <AnimatedThemeToggler
       theme={resolvedTheme === "dark" ? "dark" : "light"}
-      onThemeChange={setTheme}
+      onThemeChange={(next) => {
+        feedbackPop();
+        setTheme(next);
+      }}
       variant="circle"
       aria-label={t("nav.theme")}
       title={t("nav.theme")}
