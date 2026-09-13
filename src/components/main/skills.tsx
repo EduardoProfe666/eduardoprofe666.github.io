@@ -5,7 +5,7 @@ import { useCallback, useRef, useState } from "react";
 import { SKILL_ICONS } from "@/data/skill-icons.generated";
 import { ALL_SKILLS, SKILL_GROUPS, type SkillGroupId } from "@/data/skills";
 import { useTranslation } from "@/i18n/provider";
-import { feedbackNote, feedbackPop, feedbackSkillHover } from "@/lib/feedback";
+import { feedbackFilter, feedbackNote, feedbackSkillHover } from "@/lib/feedback";
 import { cn } from "@/lib/utils";
 
 /**
@@ -42,6 +42,24 @@ const STIFFNESS = 300;
 const DAMPING = 24;
 
 type Category = SkillGroupId | "all";
+
+/**
+ * Four notes taken from the tiles a category actually holds, spread across it
+ * and sorted so the roll always rises — the indices climb in grid order but the
+ * scale wraps every fifteen tiles, and without the sort a group straddling the
+ * wrap would drop an octave in the middle of its own chord.
+ */
+function chordFor(category: Category): number[] {
+  const members = ALL_SKILLS.reduce<number[]>((out, skill, index) => {
+    if (category === "all" || skill.group === category) out.push(index);
+    return out;
+  }, []);
+  if (members.length === 0) return [];
+  const picks = [0, 0.34, 0.67, 1].map(
+    (t) => members[Math.round(t * (members.length - 1))]
+  );
+  return [...new Set(picks)].sort((a, b) => (a % 15) - (b % 15));
+}
 
 const CATEGORIES: readonly Category[] = ["all", ...SKILL_GROUPS.map((g) => g.id)];
 
@@ -268,7 +286,7 @@ export function Skills() {
     setCategory(next);
     filter.current = next;
     sounding.current = -1;
-    feedbackPop();
+    feedbackFilter(chordFor(next));
     const el = tabsRef.current?.querySelector<HTMLElement>(`[data-cat="${next}"]`);
     if (el) setPill({ left: el.offsetLeft, width: el.offsetWidth });
   }, []);

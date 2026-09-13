@@ -331,6 +331,35 @@ export function soundNote(index: number, soft = false): void {
 }
 
 /**
+ * A handful of the grid's own notes, rolled.
+ *
+ * Picking a category played the same generic pop as the theme toggle, which
+ * carries no information: every filter sounded like every other filter and like
+ * a setting being flipped. These notes come from the tiles the category
+ * actually contains, so each group has a register of its own — Languages sits
+ * low in the scale because its tiles sit early in the grid, Frontend lands an
+ * octave up because its tiles do.
+ *
+ * Rolled rather than struck together: 55ms apart is slow enough to hear as a
+ * line and fast enough to still be one gesture.
+ */
+export function soundChord(indices: readonly number[]): void {
+  const e = active();
+  if (!e || indices.length === 0) return;
+  const t = e.ctx.currentTime;
+  const out = tap(e, 0.4, 1.6);
+
+  indices.forEach((index, i) => {
+    const at = t + i * 0.055;
+    const freq =
+      PENTATONIC[((index % PENTATONIC.length) + PENTATONIC.length) % PENTATONIC.length];
+    partial(e, out, { at, freq, gain: 0.05, decay: 0.8 });
+    partial(e, out, { at, freq: freq * 2.02, gain: 0.013, decay: 0.32 });
+  });
+  noise(e, out, { at: t, gain: 0.025, decay: 0.02, freq: 2400, q: 1.4 });
+}
+
+/**
  * The coin toss behind the portrait, in four acts, timed against the 2.2s
  * animation in `avatar-flip.tsx`:
  *

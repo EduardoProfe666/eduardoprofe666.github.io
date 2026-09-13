@@ -8,6 +8,7 @@
 import {
   setMasterVolume,
   soundCoin,
+  soundChord,
   soundHover,
   soundNote,
   soundPop,
@@ -129,6 +130,8 @@ const HAPTICS = {
   sweep: [6, 30, 10],
   /** Flick, two slowing spins, then the landing. */
   coin: [14, 110, 9, 150, 7, 1740, 24],
+  /** One tap per note, so the hand feels the same roll the ear does. */
+  filter: [7, 48, 7, 48, 7, 48, 7],
 } as const;
 
 let lastBuzz = 0;
@@ -201,6 +204,12 @@ export function feedbackSweep(up: boolean): void {
 export function feedbackNote(index: number): void {
   soundNote(index);
   vibrate(HAPTICS.step);
+}
+
+/** Picking a category: the notes of the tiles it contains, rolled. */
+export function feedbackFilter(indices: readonly number[]): void {
+  soundChord(indices);
+  vibrate(HAPTICS.filter);
 }
 
 /**
