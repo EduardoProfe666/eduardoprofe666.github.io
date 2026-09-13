@@ -9,6 +9,7 @@ import {
   setMasterVolume,
   soundCoin,
   soundHover,
+  soundNote,
   soundPop,
   soundStep,
   soundSweep,
@@ -194,6 +195,23 @@ export function feedbackStep(levelValue: number): void {
 export function feedbackSweep(up: boolean): void {
   soundSweep(up);
   vibrate(HAPTICS.sweep);
+}
+
+/** A note from the skills grid. Light on the haptics — you will press a lot. */
+export function feedbackNote(index: number): void {
+  soundNote(index);
+  vibrate(HAPTICS.step);
+}
+
+/**
+ * The same note, brushed rather than struck, for passing over a tile.
+ *
+ * No haptic: this fires from cursor movement, and a phone has no cursor to
+ * move. It is also not rate-limited here — the grid only calls it when the
+ * tile under the pointer actually changes, which is its own rate limit.
+ */
+export function feedbackSkillHover(index: number): void {
+  soundNote(index, true);
 }
 
 export function feedbackCoin(short = false): void {

@@ -17,7 +17,13 @@ interface UiTranslations {
   "work.title": string;
   "education.title": string;
   "skills.title": string;
-  "skills.loading": string;
+  "skills.subtitle": string;
+  "skills.all": string;
+  "skills.group.languages": string;
+  "skills.group.frontend": string;
+  "skills.group.backend": string;
+  "skills.group.cloud": string;
+  "skills.group.ai": string;
   "projects.title": string;
   "projects.subtitle": string;
   "events.title": string;

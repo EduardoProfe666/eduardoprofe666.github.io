@@ -452,6 +452,119 @@
 }
 
 /*
+ * The skills grid deforms around the cursor.
+ *
+ * `--near` is written per tile by a spring loop in `skills.tsx` — 0 at the edge
+ * of its reach, 1 under the pointer — and only the shape is derived here, so
+ * the work per frame is a style write and nothing else.
+ *
+ * No transition on `transform`, deliberately, and this is the third time that
+ * line has changed. First it was 110ms, which read as the whole ring dragging
+ * behind the cursor: a new value arrives every frame, so a transition never
+ * finishes one interpolation before the next begins. Then it was zero, which
+ * tracked exactly and read as machinery — no give in it, and the moment your
+ * hand stopped the events stopped and everything froze mid-lift. Neither is a
+ * transition's job. The spring owns the timing now: it has somewhere to be and
+ * takes its own time getting there, including after you stop moving.
+ *
+ * Everything the cursor touches is drawn from the tile's own brand colour, so
+ * approaching a tile does not just raise it — the surface warms, the hairline
+ * takes the colour, and the glow underneath is the mark's own. Thirty-nine
+ * different hovers out of one rule.
+ */
+.skill-tile {
+  /* Each mark ships two colours: its real one, and its real one nudged far
+     enough to clear 3:1 on whichever background it lands on. Monogram tiles set
+     neither, so they fall through to the page's own ink. */
+  --brand: var(--brand-light, hsl(var(--foreground)));
+  --rim: hsl(var(--foreground) / 0.07);
+  --sit: 0 1px 2px hsl(var(--foreground) / 0.06);
+  /*
+   * Clamped. The spring dips below zero as it settles, and a negative
+   * percentage would invalidate every colour below it — the tile would flicker
+   * on its way home. `transform` keeps the raw value, because that dip is the
+   * bounce and the only place it belongs.
+   */
+  --lift: max(0, var(--near, 0));
+
+  position: relative;
+  box-shadow:
+    0 0 0 0.5px var(--rim),
+    var(--sit);
+  transform: translate3d(0, calc(var(--near, 0) * -9px), 0)
+    scale(calc(1 + var(--near, 0) * 0.16));
+  transition: opacity 240ms var(--ease-state);
+}
+
+/* The resting label. Overridden inside the `@supports` block below, which is
+   why it has to come first. */
+.skill-name {
+  color: hsl(var(--muted-foreground));
+}
+
+/*
+ * The brand tint, gated.
+ *
+ * Without the gate the compiler writes a fallback for browsers that lack
+ * `color-mix`, and its idea of degrading `color-mix(brand 9%, transparent)` is
+ * plain `brand` — which would paint every tile as a solid block of its own
+ * colour at rest. Behind `@supports` the fallback never appears at all, and
+ * those browsers keep the plain elevated tile above, which is a perfectly good
+ * thing to be.
+ */
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .skill-tile {
+    background-color: color-mix(
+      in srgb,
+      var(--brand) calc(var(--lift) * 9%),
+      transparent
+    );
+    box-shadow:
+      0 0 0 0.5px color-mix(in srgb, var(--brand) calc(var(--lift) * 55%), var(--rim)),
+      var(--sit),
+      0 calc(var(--lift) * 9px) calc(var(--lift) * 22px) calc(var(--lift) * -7px)
+        color-mix(in srgb, var(--brand) calc(var(--lift) * 45%), transparent);
+  }
+
+  /* From subordinate to fully present, without ever going through an opacity —
+     `--muted-foreground` is already at the contrast floor. */
+  .skill-name {
+    color: color-mix(
+      in srgb,
+      hsl(var(--foreground)) calc(var(--lift) * 100%),
+      hsl(var(--muted-foreground))
+    );
+  }
+}
+
+.dark .skill-tile {
+  --brand: var(--brand-dark, hsl(var(--foreground)));
+  --rim: hsl(0 0% 100% / 0.09);
+  --sit: 0 1px 2px hsl(0 0% 0% / 0.5);
+}
+
+.skill-mark {
+  fill: var(--brand);
+}
+
+.skill-mono {
+  color: var(--brand);
+}
+
+/* The mark grows a little faster than the tile it sits on. Two speeds is what
+   reads as one thing lifting off another rather than a picture being zoomed. */
+.skill-mark,
+.skill-mono {
+  transform: scale(calc(1 + var(--lift) * 0.09));
+}
+
+/* The tile you are actually on grows past the gap, so it paints over its
+   neighbours rather than under whichever one happens to come later. */
+.skill-tile:hover {
+  z-index: 2;
+}
+
+/*
  * Theme transition (magicui/animated-theme-toggler).
  *
  * The default cross-fade is disabled so the component's own clip-path reveal is
@@ -657,7 +770,8 @@ video {
   }
 
   /* Motion that chases the cursor is precisely what this preference is for. */
-  [data-tilt] {
+  [data-tilt],
+  .skill-tile {
     transform: none !important;
   }
 

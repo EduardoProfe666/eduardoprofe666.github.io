@@ -8,6 +8,7 @@ import { AvatarFlip } from "@/components/main/avatar-flip";
 import { HeroTitle } from "@/components/main/hero-title";
 import { ContactCta } from "@/components/main/contact-cta";
 import { DATA } from "@/data/resume";
+import { ALL_SKILLS } from "@/data/skills";
 import { useTranslation } from "@/i18n/provider";
 import { calcDuration, formatPeriod } from "@/lib/duration";
 import { ENTRANCE, entrance, sibling } from "@/lib/entrance";
@@ -15,7 +16,30 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import { lazy, Suspense } from "react";
 
-const LazyIconCloud = lazy(() => import("@/components/magicui/icon-cloud"));
+/**
+ * Split out: the thirty-six brand marks are inlined path data, and none of it
+ * belongs in the bundle that paints the hero. The section sits four screens
+ * down, so the chunk has arrived long before anyone scrolls to it — and the
+ * skeleton below holds exactly the space the real grid will take, so nothing
+ * jumps when it does.
+ */
+const Skills = lazy(() => import("@/components/main/skills"));
+
+function SkillsSkeleton() {
+  return (
+    <div className="flex flex-col gap-4" aria-hidden="true">
+      <div className="h-[30px]" />
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+        {ALL_SKILLS.map((skill) => (
+          <div
+            key={skill.slug}
+            className="elevate-1 aspect-square rounded-2xl opacity-40"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -159,23 +183,18 @@ export default function Page() {
       {/* Skills */}
       <section id="skills" aria-label={t("skills.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade inView>
+          <BlurFade>
             <SectionHeading>{t("skills.title")}</SectionHeading>
           </BlurFade>
-          <BlurFade inView>
-            <div className="text-center items-center justify-center flex flex-wrap gap-1">
-              <Suspense
-                fallback={
-                  <div className="flex items-center justify-center h-64 w-full">
-                    <div className="animate-pulse text-muted-foreground text-sm">
-                      {t("skills.loading")}
-                    </div>
-                  </div>
-                }
-              >
-                <LazyIconCloud iconSlugs={[...DATA.skill_slugs]} />
-              </Suspense>
-            </div>
+          <BlurFade>
+            <p className="text-pretty text-sm text-muted-foreground">
+              {t("skills.subtitle").replace("{count}", String(ALL_SKILLS.length))}
+            </p>
+          </BlurFade>
+          <BlurFade>
+            <Suspense fallback={<SkillsSkeleton />}>
+              <Skills />
+            </Suspense>
           </BlurFade>
         </div>
       </section>

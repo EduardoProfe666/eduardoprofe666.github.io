@@ -294,6 +294,43 @@ export function soundSweep(up: boolean): void {
 }
 
 /**
+ * A struck note, for the skills grid.
+ *
+ * C major pentatonic over three octaves. Pentatonic because the grid is
+ * playable — you will sweep across it — and a pentatonic scale has no interval
+ * in it that can sound like a mistake, whichever order you hit the tiles in.
+ * Pitch climbs in reading order, so running left to right plays a rising line.
+ *
+ * The timbre is a mallet: a fast noise strike for the contact, a fundamental
+ * that rings for a second, and two partials that are slightly sharp of the
+ * harmonics and die much sooner. Perfectly harmonic partials sound like an
+ * organ; a little inharmonicity is what makes it read as something struck.
+ */
+const PENTATONIC = [
+  261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25, 783.99, 880.0,
+  1046.5, 1174.66, 1318.51, 1567.98, 1760.0,
+];
+
+export function soundNote(index: number, soft = false): void {
+  const e = active();
+  if (!e) return;
+  const t = e.ctx.currentTime;
+  // Brushing past a tile and pressing it are the same note, struck harder or
+  // softer. A sweep across the grid lands a dozen of these on top of each
+  // other, so the soft one is a third the level and rings for a third as long
+  // — present, but it cannot pile into mush.
+  const level = soft ? 0.34 : 1;
+  const ring = soft ? 0.34 : 1;
+  const out = tap(e, 0.42, 1.4 * ring + 0.2);
+  const freq = PENTATONIC[((index % PENTATONIC.length) + PENTATONIC.length) % PENTATONIC.length];
+
+  noise(e, out, { at: t, gain: 0.035 * level, decay: 0.022, freq: 2600, q: 1.2 });
+  partial(e, out, { at: t, freq, gain: 0.085 * level, decay: 1.0 * ring });
+  partial(e, out, { at: t, freq: freq * 2.02, gain: 0.022 * level, decay: 0.4 * ring });
+  partial(e, out, { at: t, freq: freq * 3.04, gain: 0.008 * level, decay: 0.18 * ring });
+}
+
+/**
  * The coin toss behind the portrait, in four acts, timed against the 2.2s
  * animation in `avatar-flip.tsx`:
  *

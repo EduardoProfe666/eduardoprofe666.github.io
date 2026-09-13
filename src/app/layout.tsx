@@ -163,11 +163,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Only hosts the page actually talks to at runtime: the icon cloud
-            pulls brand glyphs from Simple Icons, the project cards read star
-            counts from the GitHub API. Fonts are self-hosted by next/font. */}
-        <link rel="preconnect" href="https://cdn.simpleicons.org" />
-        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        {/* The only host the page talks to at runtime: the project cards read
+            star counts from the GitHub API. The brand marks used to come from
+            cdn.simpleicons.org — they are inlined at build time now. Fonts are
+            self-hosted by next/font. */}
         <link rel="preconnect" href="https://api.github.com" />
         {/* The hero portrait is the Largest Contentful Paint element, and it
             lives behind two client components. Preloading makes the request
