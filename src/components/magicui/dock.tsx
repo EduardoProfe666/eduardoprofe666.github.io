@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
-  motion,
+  m,
   MotionValue,
   useMotionValue,
   useSpring,
@@ -46,14 +46,14 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     return (
       <DockContext.Provider value={{ mouseX, magnification, distance }}>
-        <motion.div
+        <m.div
           ref={ref}
           onMouseMove={(e) => mouseX.set(e.pageX)}
           onMouseLeave={() => mouseX.set(Infinity)}
           className={cn(dockVariants({ className }))}
         >
           {children}
-        </motion.div>
+        </m.div>
       </DockContext.Provider>
     );
   }
@@ -93,7 +93,7 @@ const DockIcon = ({ className, children }: DockIconProps) => {
   });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ width }}
       className={cn(
@@ -102,7 +102,7 @@ const DockIcon = ({ className, children }: DockIconProps) => {
       )}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 

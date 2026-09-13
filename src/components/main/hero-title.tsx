@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface HeroTitleProps {
   /** Localized greeting; the name is appended to it. */
@@ -36,7 +36,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
     >
       <span>{greeting} </span>
       <AnimatePresence mode="wait" initial={false}>
-        <motion.span
+        <m.span
           key={displayName}
           initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -45,11 +45,11 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
           className="inline-block"
         >
           {displayName}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
       <span> </span>
       <AnimatePresence mode="wait" initial={false}>
-        <motion.span
+        <m.span
           key={emoji}
           initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -58,7 +58,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
           className={`inline-block ${!showAlias ? "origin-[70%_70%] hover:animate-wave" : "hover:rotate-12 transition-transform duration-300"}`}
         >
           {emoji}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </h1>
   );

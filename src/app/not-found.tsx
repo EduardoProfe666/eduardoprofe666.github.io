@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Home } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
 
@@ -12,7 +12,7 @@ export default function NotFound() {
     <main className="flex flex-col items-center justify-center min-h-[80dvh] text-center px-6 gap-6 select-none">
       {/* 404 + emoji */}
       <div className="relative">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
@@ -20,8 +20,8 @@ export default function NotFound() {
           <span className="block text-[11rem] sm:text-[15rem] font-black leading-none tracking-tighter text-foreground/[0.04]">
             404
           </span>
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           className="absolute inset-0 flex items-center justify-center"
           initial={{ opacity: 0, y: 20, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -31,7 +31,7 @@ export default function NotFound() {
             ease: [0.34, 1.56, 0.64, 1],
           }}
         >
-          <motion.span
+          <m.span
             className="text-7xl sm:text-8xl cursor-default"
             animate={{ rotate: [0, -5, 5, -3, 0] }}
             transition={{
@@ -41,12 +41,12 @@ export default function NotFound() {
             }}
           >
             🫠
-          </motion.span>
-        </motion.div>
+          </m.span>
+        </m.div>
       </div>
 
       {/* Text */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ delay: 0.2, duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
@@ -58,10 +58,10 @@ export default function NotFound() {
         <p className="text-muted-foreground text-pretty leading-relaxed text-sm sm:text-base">
           {t("notFound.description")}
         </p>
-      </motion.div>
+      </m.div>
 
       {/* CTA */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
@@ -73,7 +73,7 @@ export default function NotFound() {
           <Home className="size-4 group-hover:scale-110 transition-transform duration-300" />
           {t("notFound.cta")}
         </Link>
-      </motion.div>
+      </m.div>
     </main>
   );
 }

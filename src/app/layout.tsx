@@ -1,4 +1,5 @@
 import { BackToTop } from "@/components/main/back-to-top";
+import { MotionProvider } from "@/components/main/motion-provider";
 import { HtmlLang } from "@/components/main/html-lang";
 import { JsonLd } from "@/components/common/json-ld";
 import { I18nProvider } from "@/i18n/provider";
@@ -193,11 +194,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <I18nProvider>
             <HtmlLang />
-            <TooltipProvider delayDuration={100}>
-              {children}
-              <Navbar />
-              <BackToTop />
-            </TooltipProvider>
+            <MotionProvider>
+              <TooltipProvider delayDuration={100}>
+                {children}
+                <Navbar />
+                <BackToTop />
+              </TooltipProvider>
+            </MotionProvider>
           </I18nProvider>
         </ThemeProvider>
       </body>

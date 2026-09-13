@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, Variants, UseInViewOptions } from "framer-motion";
+import { m, useInView, Variants, UseInViewOptions } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -45,7 +45,7 @@ const BlurFade = ({
   as = "div",
 }: BlurFadeProps) => {
   const Tag = as === "li" ? "li" : "div";
-  const MotionTag = as === "li" ? motion.li : motion.div;
+  const MotionTag = as === "li" ? m.li : m.div;
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
   const isInView = !inView || inViewResult;
