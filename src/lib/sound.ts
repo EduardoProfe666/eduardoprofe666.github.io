@@ -294,6 +294,24 @@ export function soundSweep(up: boolean): void {
 }
 
 /**
+ * The dock latching under a held finger.
+ *
+ * A catch rather than a note: a short filtered knock for the mechanism closing,
+ * a low body under it, and a bright partial a moment later that confirms it
+ * took. It has to be legible without being an alert — you hear it with a thumb
+ * still on the glass, waiting to be told you may now slide.
+ */
+export function soundArm(): void {
+  const e = active();
+  if (!e) return;
+  const t = e.ctx.currentTime;
+  const out = tap(e, 0.2, 0.35);
+  noise(e, out, { at: t, gain: 0.03, decay: 0.018, freq: 1250, q: 1.1 });
+  partial(e, out, { at: t, freq: 330 * vary(0.01), gain: 0.05, decay: 0.11 });
+  partial(e, out, { at: t + 0.035, freq: 880, gain: 0.022, decay: 0.17 });
+}
+
+/**
  * A struck note, for the skills grid.
  *
  * C major pentatonic over three octaves. Pentatonic because the grid is

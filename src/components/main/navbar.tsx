@@ -33,7 +33,16 @@ export default function Navbar() {
   if (!mounted) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
+    <div
+      className={cn(
+        "pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14",
+        // A `w-max` dock inside a full-width fixed strip is wider than a small
+        // phone, and that made the whole document horizontally scrollable —
+        // the page could be dragged sideways off its own layout. `clip` on the
+        // x axis only, so the icons are still free to lift up out of the row.
+        "overflow-x-clip"
+      )}
+    >
       {/* Content scrolling out of the viewport fades rather than sliding under a
           hard edge. It stops short of the dock on purpose: the glass needs
           something real behind it to blur, which is the whole point of a

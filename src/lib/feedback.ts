@@ -7,6 +7,7 @@
 
 import {
   setMasterVolume,
+  soundArm,
   soundCoin,
   soundChord,
   soundHover,
@@ -132,6 +133,8 @@ const HAPTICS = {
   coin: [14, 110, 9, 150, 7, 1740, 24],
   /** One tap per note, so the hand feels the same roll the ear does. */
   filter: [7, 48, 7, 48, 7, 48, 7],
+  /** Light, then firm: the dock catching. Felt with the thumb already down. */
+  arm: [9, 32, 20],
 } as const;
 
 let lastBuzz = 0;
@@ -221,6 +224,19 @@ export function feedbackFilter(indices: readonly number[]): void {
  */
 export function feedbackSkillHover(index: number): void {
   soundNote(index, true);
+}
+
+/**
+ * The dock has taken the gesture over and will follow the finger from here.
+ *
+ * This is the one cue on the page that answers a question the visitor is
+ * actively holding still to ask, so it gets both senses: the sound says what
+ * happened, the buzz says it happened to *you*, and on a phone in a pocket-lit
+ * room the buzz is the half that arrives.
+ */
+export function feedbackArm(): void {
+  soundArm();
+  vibrate(HAPTICS.arm);
 }
 
 export function feedbackCoin(short = false): void {

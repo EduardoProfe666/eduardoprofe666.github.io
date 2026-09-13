@@ -650,12 +650,24 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
   display: none;
 }
 
-@supports (animation-timeline: scroll()) {
-  .scroll-progress {
-    display: block;
-    transform-origin: 0 50%;
-    animation: scroll-progress linear both;
-    animation-timeline: scroll(root block);
+/*
+ * Phones do not get it.
+ *
+ * A 2px hairline pinned to the top of the viewport is a desktop idea: there is
+ * a window there, and the bar reads as chrome belonging to it. On a phone that
+ * same line sits directly under the status bar — inside the notch cutout on
+ * most of them — where it reads as a rendering fault rather than as progress,
+ * and it competes with the one indicator the OS already draws. The page is
+ * also a single column there, so how far down it you are is never in doubt.
+ */
+@media (min-width: 640px) {
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      display: block;
+      transform-origin: 0 50%;
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
   }
 }
 
@@ -773,6 +785,17 @@ video {
   /* Motion that chases the cursor is precisely what this preference is for. */
   [data-tilt],
   .skill-tile {
+    transform: none !important;
+  }
+
+  /*
+   * The dock's held-finger magnification, for the same reason — but only the
+   * lift. The gesture keeps working: the label still names whatever the finger
+   * is over, and the sound and the buzz still say when it armed and when it
+   * moved on. Someone who asked for less motion asked for less motion, not for
+   * less of the feature.
+   */
+  [data-armed] [data-dock-icon] > span {
     transform: none !important;
   }
 
