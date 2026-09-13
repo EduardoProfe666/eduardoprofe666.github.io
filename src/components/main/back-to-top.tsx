@@ -17,7 +17,10 @@ export function BackToTop() {
     <button
       onClick={() => {
         feedbackSweep(true);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Smoothness comes from `scroll-behavior` in the stylesheet, so the
+        // reduced-motion rule there can switch it off. Hard-coding "smooth"
+        // would ignore that.
+        window.scrollTo({ top: 0, behavior: "auto" });
       }}
       aria-label="Back to top"
       data-sfx="none"

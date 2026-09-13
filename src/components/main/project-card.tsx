@@ -69,28 +69,35 @@ export const ProjectCard = React.memo(function ProjectCard({
       {/* Image area */}
       <Link
         href={href || "#"}
-        className="block overflow-hidden relative"
+        className="relative block h-48 overflow-hidden"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            className="pointer-events-none mx-auto h-48 w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
-          />
-        )}
-        {image && (
-          <OptimizedImage
-            src={image}
-            alt={title}
-            className="h-48 w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
-          />
-        )}
+        {/* The still sits in a frame 14% taller than the card shows, centred,
+            so it can drift as the card crosses the viewport without ever
+            exposing an edge. The parallax lives on this wrapper and the hover
+            scale on the media itself: one element cannot own two competing
+            transforms. */}
+        <div className="parallax-media absolute inset-x-0 -top-[7%] h-[114%]">
+          {video && (
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="pointer-events-none h-full w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
+            />
+          )}
+          {image && (
+            <OptimizedImage
+              src={image}
+              alt={title}
+              className="h-full w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
+            />
+          )}
+        </div>
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {/* Arrow indicator */}

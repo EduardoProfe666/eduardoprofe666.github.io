@@ -12,14 +12,16 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Eduardo González — Fullstack Team Lead & AI Engineer",
     short_name: "Eduardo G.",
     description:
-      "Fullstack Team Lead & AI Engineer with 5+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
+      "Fullstack Team Lead & AI Engineer with 4+ years of experience. Building scalable solutions with modern stacks, AI integration, and DevOps practices.",
     id: "/",
     start_url: "/",
     scope: "/",
     display: "standalone",
     orientation: "portrait-primary",
     background_color: "#ffffff",
-    theme_color: "#171717",
+    // Matches `background_color` and the default theme. The old #171717
+    // was not a colour the site uses anywhere.
+    theme_color: "#ffffff",
     lang: "en",
     dir: "ltr",
     categories: ["portfolio", "technology", "education"],

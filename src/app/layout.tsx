@@ -2,6 +2,8 @@ import { BackToTop } from "@/components/main/back-to-top";
 import { FeedbackListener } from "@/components/main/feedback-listener";
 import { MotionProvider } from "@/components/main/motion-provider";
 import { HtmlLang } from "@/components/main/html-lang";
+import { ThemeColor } from "@/components/main/theme-color";
+import { Spotlight } from "@/components/main/spotlight";
 import { JsonLd } from "@/components/common/json-ld";
 import { I18nProvider } from "@/i18n/provider";
 import Navbar from "@/components/main/navbar";
@@ -35,7 +37,9 @@ const OG_IMAGE = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    // #08090a is `--background` in the dark theme; anything close but not
+    // equal shows as a seam between the page and the browser chrome.
+    { media: "(prefers-color-scheme: dark)", color: "#08090a" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -203,11 +207,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <I18nProvider>
             <HtmlLang />
+            <ThemeColor />
             <FeedbackListener />
             <MotionProvider>
               <TooltipProvider delayDuration={100}>
                 {children}
                 <Navbar />
+                <Spotlight />
                 <BackToTop />
               </TooltipProvider>
             </MotionProvider>

@@ -30,6 +30,9 @@ const SPIN_DEGREES = 900;
  */
 const SPIN_EASING = "cubic-bezier(0.1, 0.82, 0.16, 1.03)";
 
+/** Degrees the portrait leans toward the cursor at the very edge of itself. */
+const MAX_TILT = 11;
+
 const faceStyle: React.CSSProperties = {
   position: "absolute",
   inset: 0,
@@ -57,6 +60,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
   // applies the new angle already knows whether it may animate.
   const [reducedMotion, setReducedMotion] = useState(false);
   const tossRef = useRef<HTMLDivElement>(null);
+  const tiltRef = useRef<HTMLDivElement>(null);
   const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -66,8 +70,39 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
     []
   );
 
+  /**
+   * Written straight to the DOM as custom properties rather than through
+   * state: this runs on every pointer move, and a re-render per frame to set
+   * two numbers would be absurd. CSS does the smoothing.
+   */
+  const setTilt = useCallback((x: number, y: number) => {
+    const node = tiltRef.current;
+    if (!node) return;
+    node.style.setProperty("--tilt-x", `${(-y * MAX_TILT).toFixed(2)}deg`);
+    node.style.setProperty("--tilt-y", `${(x * MAX_TILT).toFixed(2)}deg`);
+    node.style.setProperty("--sheen-x", `${((x + 0.5) * 100).toFixed(1)}%`);
+    node.style.setProperty("--sheen-y", `${((y + 0.5) * 100).toFixed(1)}%`);
+  }, []);
+
+  const handlePointerMove = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      // Touch has no hover, and mid-toss the coin owns the transform.
+      if (event.pointerType !== "mouse" || spinning) return;
+      const rect = tiltRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setTilt(
+        (event.clientX - rect.left) / rect.width - 0.5,
+        (event.clientY - rect.top) / rect.height - 0.5
+      );
+    },
+    [setTilt, spinning]
+  );
+
+  const resetTilt = useCallback(() => setTilt(0, 0), [setTilt]);
+
   const handleClick = useCallback(() => {
     if (spinning) return;
+    resetTilt();
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -115,12 +150,17 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
       ],
       { duration: SPIN_MS, easing: "linear" }
     );
-  }, [spinning]);
+  }, [resetTilt, spinning]);
 
   const showHat = flips % 2 === 1;
 
   return (
-    <div className="relative group/avatar select-none" onClick={handleClick}>
+    <div
+      className="relative group/avatar select-none"
+      onClick={handleClick}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+    >
       {/* Glow */}
       <div
         className={`absolute -inset-3 rounded-full transition-all duration-700 ${
@@ -134,6 +174,21 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
 
       {/* Flight: lift, shrink and motion blur */}
       <div ref={tossRef} className="relative size-28">
+        {/* Tilt scene. Its own perspective, and its own layer: the flight
+            wrapper above carries a `filter` during the toss, and a filter
+            flattens whatever 3D sits inside it. */}
+        <div className="relative size-28" style={{ perspective: "700px" }}>
+          {/* Leans toward the cursor. Quick to follow, slow to come back —
+              chasing should feel attentive, releasing should feel like weight. */}
+          <div
+            ref={tiltRef}
+            data-tilt=""
+            className="relative size-28 transition-transform duration-600 ease-glide group-hover/avatar:duration-150"
+            style={{
+              transform:
+                "rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",
+            }}
+          >
         {/* 3D scene */}
         <div className="relative size-28" style={{ perspective: "1100px" }}>
           <div
@@ -182,6 +237,22 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
             >
               <span className="text-5xl drop-shadow-md select-none">🎩</span>
             </div>
+          </div>
+        </div>
+
+            {/* Specular sheen: a highlight that tracks the cursor across the
+                glass, the way a product shot catches a studio light. It does
+                not rotate with the flip, because a reflection belongs to the
+                room and not to the object. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-10 rounded-full opacity-0 transition-opacity duration-500 ease-soft group-hover/avatar:opacity-100"
+              style={{
+                background:
+                  "radial-gradient(circle at var(--sheen-x, 50%) var(--sheen-y, 50%), hsl(0 0% 100% / 0.45), transparent 58%)",
+                mixBlendMode: "soft-light",
+              }}
+            />
           </div>
         </div>
       </div>

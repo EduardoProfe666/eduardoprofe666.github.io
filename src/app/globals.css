@@ -178,6 +178,10 @@
     scroll-behavior: smooth;
     /* Anchors and the skip link land clear of the dock. */
     scroll-padding-bottom: 6rem;
+    scroll-padding-top: 2rem;
+    /* Reserved permanently, so hiding the scrollbar behind a modal shifts
+       nothing. */
+    scrollbar-gutter: stable;
     /* iOS paints a grey box over whatever you tap; ours have their own
        pressed state, so the default only fights with it. */
     -webkit-tap-highlight-color: transparent;
@@ -415,6 +419,50 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
 }
 
 /*
+ * Scroll-linked motion.
+ *
+ * Apple's product pages do not reveal a thing once and leave it there: the
+ * motion is tied to where you are, so scrolling back up plays it backwards.
+ * `animation-timeline` does exactly that, with no listener and no rAF loop.
+ *
+ * The section reveals are deliberately NOT converted. A scroll timeline
+ * animates each element by its own position, which would throw away the
+ * staggered opening order that `entrance.ts` exists to produce.
+ */
+@keyframes hero-recede {
+  to {
+    opacity: 0.18;
+    transform: scale(0.96) translateY(-12px);
+  }
+}
+
+@keyframes media-parallax {
+  from {
+    transform: translateY(-6%);
+  }
+  to {
+    transform: translateY(6%);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The hero withdraws as you leave it, instead of merely scrolling off. */
+    #hero {
+      animation: hero-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+    }
+
+    /* Project stills drift inside their frame as the card crosses the screen. */
+    .parallax-media {
+      animation: media-parallax linear both;
+      animation-timeline: view();
+    }
+  }
+}
+
+/*
  * Images fade in once they have actually decoded, instead of snapping in a
  * band at a time. Never applied to the portrait or the first logo: those are
  * inside the first screen, and holding them at `opacity: 0` until `load` fires
@@ -466,6 +514,11 @@ video {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Motion that chases the cursor is precisely what this preference is for. */
+  [data-tilt] {
+    transform: none !important;
   }
 
   /* The fade is what makes these visible, so it cannot be reduced away. */

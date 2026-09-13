@@ -6,6 +6,7 @@ import { ProjectCard } from "@/components/main/project-card";
 import { ResumeCard } from "@/components/main/resume-card";
 import { AvatarFlip } from "@/components/main/avatar-flip";
 import { HeroTitle } from "@/components/main/hero-title";
+import { ContactCta } from "@/components/main/contact-cta";
 import { DATA } from "@/data/resume";
 import { useTranslation } from "@/i18n/provider";
 import { calcDuration, formatPeriod } from "@/lib/duration";
@@ -267,13 +268,7 @@ export default function Page() {
           </BlurFade>
           <div className="flex flex-col items-center gap-5">
             <BlurFade delay={sibling(1)} inView>
-              <Link
-                href={DATA.contact.social.Email.url}
-                className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-glide hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
-              >
-                <DATA.contact.social.Email.icon className="size-4 transition-transform duration-500 ease-spring group-hover/cta:rotate-12 group-hover/cta:scale-110" />
-                {t("contact.cta")}
-              </Link>
+              <ContactCta />
             </BlurFade>
             {/* One reveal per icon rather than one for the row, so they land
                 left to right on the same cadence as every other list. */}

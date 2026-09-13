@@ -12,10 +12,11 @@ import {
 } from "@/components/common/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import { FileText } from "lucide-react";
+import { FileText, Search } from "lucide-react";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/main/language-switcher";
+import { openSpotlight } from "@/components/main/spotlight";
 import { useTranslation } from "@/i18n/provider";
 import { useSyncExternalStore } from "react";
 
@@ -115,6 +116,33 @@ export default function Navbar() {
           </DockIcon>
         ))}
         <Separator orientation="vertical" className="mx-0.5 h-6 self-center bg-border/70" />
+        {/* Hidden on phones: the dock already fills a 375px screen, and ⌘K is
+            a keyboard idea anyway. */}
+        <DockIcon className="hidden sm:flex">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                type="button"
+                aria-label={t("cmd.open")}
+                onClick={openSpotlight}
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "size-12"
+                )}
+              >
+                <Search className="size-4" />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="flex items-center gap-1.5">
+                {t("cmd.open")}
+                <kbd className="rounded border border-primary-foreground/25 px-1 text-[10px]">
+                  ⌘K
+                </kbd>
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </DockIcon>
         <DockIcon>
           <ModeToggle />
         </DockIcon>
