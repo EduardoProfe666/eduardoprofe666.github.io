@@ -2,6 +2,7 @@
 
 import { motion, useInView, Variants, UseInViewOptions } from "framer-motion";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 type MarginType = UseInViewOptions["margin"];
 
@@ -18,6 +19,16 @@ interface BlurFadeProps {
   inView?: boolean;
   inViewMargin?: MarginType;
   blur?: string;
+  /**
+   * Reveal with CSS instead of motion, for content inside the first viewport.
+   *
+   * motion renders `opacity: 0` into the static HTML and only animates once
+   * React hydrates, which on mobile delayed the largest element on the page by
+   * several seconds. A CSS animation runs as soon as the browser paints.
+   */
+  eager?: boolean;
+  /** Element to render. The events timeline needs real `<li>` children. */
+  as?: "div" | "li";
 }
 
 const BlurFade = ({
@@ -30,7 +41,11 @@ const BlurFade = ({
   inView = false,
   inViewMargin = "-50px",
   blur = "4px",
+  eager = false,
+  as = "div",
 }: BlurFadeProps) => {
+  const Tag = as === "li" ? "li" : "div";
+  const MotionTag = as === "li" ? motion.li : motion.div;
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
   const isInView = !inView || inViewResult;
@@ -40,8 +55,19 @@ const BlurFade = ({
   };
   const combinedVariants = variant || defaultVariants;
 
+  if (eager) {
+    return (
+      <Tag
+        className={cn("animate-blur-in", className)}
+        style={{ animationDelay: `${delay}s`, animationDuration: `${duration}s` }}
+      >
+        {children}
+      </Tag>
+    );
+  }
+
   return (
-    <motion.div
+    <MotionTag
       ref={ref}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -54,7 +80,7 @@ const BlurFade = ({
       className={className}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 };
 

@@ -1,10 +1,5 @@
 "use client";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/common/avatar";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 interface AvatarFlipProps {
@@ -151,15 +146,30 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
           >
             {/* Front */}
             <div style={faceStyle}>
-              <Avatar className="size-28 border-2 border-border shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-500">
-                <AvatarImage
+              {/* A plain <img>, not Radix's Avatar: that one mounts the image
+                  from JavaScript, so the browser could not discover it in the
+                  initial HTML and waited 3.2s after hydration before even
+                  requesting it — which made this the Largest Contentful Paint.
+                  The initials sit behind it as a no-JS fallback. */}
+              <span className="relative flex size-28 shrink-0 overflow-hidden rounded-full border-2 border-border shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-500">
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 grid place-items-center bg-muted text-sm font-medium"
+                >
+                  {fallback}
+                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
+                    serves unoptimized images, so next/image would add nothing here. */}
+                <img
                   alt={alt}
                   src={src}
-                  loading="eager"
-                  className="group-hover/avatar:brightness-105 transition-[filter] duration-500"
+                  width={256}
+                  height={256}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="relative aspect-square h-full w-full object-cover group-hover/avatar:brightness-105 transition-[filter] duration-500"
                 />
-                <AvatarFallback>{fallback}</AvatarFallback>
-              </Avatar>
+              </span>
             </div>
 
             {/* Back */}

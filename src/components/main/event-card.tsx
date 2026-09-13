@@ -33,7 +33,9 @@ export function EventCard({
 }: Props) {
 
   return (
-    <li className="relative ml-10 py-4 group">
+    // The <li> is provided by the BlurFade wrapper, so that the events <ul>
+    // has list items as its direct children.
+    <div className="relative ml-10 py-4 group">
       {/* Avatar + timeline dot */}
       <div className="absolute -left-16 top-4 flex items-center justify-center">
         <div className={`absolute -left-[23.5px] top-1/2 -translate-y-1/2 z-10 size-3 rounded-full border-2 transition-all duration-300 ${
@@ -101,6 +103,6 @@ export function EventCard({
           </div>
         )}
       </div>
-    </li>
+    </div>
   );
 }

@@ -39,20 +39,20 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-6 flex justify-between items-center">
             <div className="flex-col flex flex-1 space-y-3">
-              <BlurFade delay={0.05}>
+              <BlurFade eager delay={0.05}>
                 <HeroTitle
                   greeting={t("hero.greeting")}
                   name={DATA.name.split(" ")[0]}
                   alias="EduardoProfe666"
                 />
               </BlurFade>
-              <BlurFade delay={0.4}>
+              <BlurFade eager delay={0.4}>
                 <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
                   {t("hero.description")}
                 </p>
               </BlurFade>
             </div>
-            <BlurFade delay={0.3}>
+            <BlurFade eager delay={0.3}>
               <AvatarFlip
                 src={DATA.avatarUrl}
                 alt={DATA.name}
@@ -65,10 +65,10 @@ export default function Page() {
 
       {/* About */}
       <section id="about" aria-label={t("about.title")}>
-        <BlurFade delay={0.15}>
+        <BlurFade eager delay={0.15}>
           <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
-        <BlurFade delay={0.2}>
+        <BlurFade eager delay={0.2}>
           <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-all [&_a]:after:duration-300 [&_a]:after:ease-out [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-300 [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
             <Markdown>{t("about.summary")}</Markdown>
           </div>
@@ -78,12 +78,13 @@ export default function Page() {
       {/* Work */}
       <section id="work" aria-label={t("work.title")}>
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={0.25}>
+          <BlurFade eager delay={0.25}>
             <SectionHeading>{t("work.title")}</SectionHeading>
           </BlurFade>
           {DATA.work.map((work, index) => (
-            <BlurFade key={work.id} delay={index * 0.03} inView>
+            <BlurFade key={work.id} eager={index === 0} delay={index * 0.03} inView>
               <ResumeCard
+                priority={index === 0}
                 logoUrl={work.logoUrl}
                 altText={work.company}
                 title={work.company}
@@ -225,7 +226,7 @@ export default function Page() {
           <BlurFade inView>
             <ul className="mt-3 mb-4 ml-4 divide-y divide-dashed border-l border-border/60">
               {DATA.events.map((event, index) => (
-                <BlurFade key={event.id} delay={index * 0.04} inView>
+                <BlurFade as="li" key={event.id} delay={index * 0.04} inView>
                   <EventCard
                     title={event.title}
                     description={t(`event.${event.id}.description`)}

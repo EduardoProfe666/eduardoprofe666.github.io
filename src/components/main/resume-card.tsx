@@ -1,8 +1,3 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import { Card, CardContent, CardHeader } from "@/components/common/card";
 import { ChevronRight, MapPin, Briefcase, Clock } from "lucide-react";
@@ -18,6 +13,8 @@ interface ResumeCardProps {
   duration?: string;
   description?: React.ReactNode;
   location?: string;
+  /** First card only: its logo is inside the first screen, so it loads eagerly. */
+  priority?: boolean;
 }
 
 export const ResumeCard = ({
@@ -31,18 +28,36 @@ export const ResumeCard = ({
   duration,
   description,
   location,
+  priority = false,
 }: ResumeCardProps) => {
   return (
     <Card className="relative flex gap-4 hover:border hover:border-border hover:shadow-lg hover:bg-accent/30 transition-all duration-300 ease-out p-4 group rounded-xl hover:-translate-y-0.5">
       <div className="flex-none pt-0.5">
-        <Avatar className="size-12 border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
-          <AvatarImage
+        {/* A plain <img> rather than Radix's Avatar: that one mounts the image
+            from JavaScript, so the first card's logo was invisible to the
+            preload scanner and only started downloading ~2.7s in, which made it
+            the Largest Contentful Paint. `lazy` still loads in-viewport images
+            straight away and skips the ones further down the page. */}
+        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 grid place-items-center text-xs font-bold"
+          >
+            {altText[0]}
+          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
+              serves unoptimized images, so next/image would add nothing here. */}
+          <img
             src={logoUrl}
             alt={altText}
-            className="object-contain"
+            width={48}
+            height={48}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
+            decoding="async"
+            className="relative aspect-square h-full w-full object-contain"
           />
-          <AvatarFallback className="text-xs font-bold">{altText[0]}</AvatarFallback>
-        </Avatar>
+        </span>
       </div>
       <div className="flex-grow flex flex-col min-w-0 gap-1">
         <CardHeader>
@@ -81,19 +96,19 @@ export const ResumeCard = ({
               {subtitle && (
                 <div className="flex items-center gap-1.5 mt-1 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300">
                   <Briefcase className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-300" />
-                  <span className="text-xs text-muted-foreground/90 font-medium">{subtitle}</span>
+                  <span className="text-xs text-muted-foreground font-medium">{subtitle}</span>
                 </div>
               )}
               {location && (
                 <div className="flex items-center gap-1.5 mt-0.5 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300 delay-75">
                   <MapPin className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-300" />
-                  <span className="text-xs text-muted-foreground/70">{location}</span>
+                  <span className="text-xs text-muted-foreground">{location}</span>
                 </div>
               )}
             </div>
             <div className="flex-shrink-0 mt-0.5 h-[18px] overflow-hidden">
               <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[18px]">
-                <div className="h-[18px] flex items-center justify-end text-[11px] tabular-nums text-muted-foreground/70 whitespace-nowrap">
+                <div className="h-[18px] flex items-center justify-end text-[11px] tabular-nums text-muted-foreground whitespace-nowrap">
                   {period}
                 </div>
                 <div className="h-[18px] flex items-center justify-end gap-1.5 text-[11px] font-medium text-foreground/80 whitespace-nowrap">

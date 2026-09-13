@@ -38,18 +38,22 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link
+              {/* A plain <a>, not next/link: the router prefetched this static
+                  PDF as if it were a route and requested
+                  `/resume.pdf/__next._tree.txt`, which 404s in the console. */}
+              <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
+                aria-label={t("nav.resume")}
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "size-12"
                 )}
               >
                 <FileText className="size-4" />
-              </Link>
+              </a>
             </TooltipTrigger>
             <TooltipContent>
               <p>{t("nav.resume")}</p>
@@ -61,6 +65,7 @@ export default function Navbar() {
             <TooltipTrigger asChild>
               <Link
                 href="https://github.com/EduardoProfe666"
+                aria-label={t("nav.github")}
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
                   "size-12"
@@ -81,6 +86,7 @@ export default function Navbar() {
               <TooltipTrigger asChild>
                 <Link
                   href={social.url}
+                  aria-label={name}
                   className={cn(
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-12"

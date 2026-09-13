@@ -162,7 +162,17 @@ export default function RootLayout({
             counts from the GitHub API. Fonts are self-hosted by next/font. */}
         <link rel="preconnect" href="https://cdn.simpleicons.org" />
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
-        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="preconnect" href="https://api.github.com" />
+        {/* The hero portrait is the Largest Contentful Paint element, and it
+            lives behind two client components. Preloading makes the request
+            discoverable while the HTML is still parsing. */}
+        <link
+          rel="preload"
+          as="image"
+          href={DATA.avatarUrl}
+          type="image/avif"
+          fetchPriority="high"
+        />
         <meta name="author" content={DATA.name} />
         <meta name="geo.region" content="CU-03" />
         <meta name="geo.placename" content="Havana" />

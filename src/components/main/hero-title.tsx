@@ -35,7 +35,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
       onClick={handleClick}
     >
       <span>{greeting} </span>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={displayName}
           initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
@@ -48,7 +48,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
         </motion.span>
       </AnimatePresence>
       <span> </span>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={emoji}
           initial={{ opacity: 0, scale: 0.5, rotate: -30 }}

@@ -56,8 +56,8 @@ export function JsonLd() {
     image: {
       "@type": "ImageObject",
       url: `${DATA.url}${DATA.avatarUrl}`,
-      width: 1150,
-      height: 1150,
+      width: 256,
+      height: 256,
     },
     description: DESCRIPTION,
     jobTitle: JOB_TITLE,

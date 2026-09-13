@@ -50,9 +50,15 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
     minContrastRatio,
     size: 36,
     aProps: {
-      href: undefined,
+      // These anchors are the <canvas> fallback content — never shown to a
+      // user, but Lighthouse still flagged ~30 of them as uncrawlable because
+      // they had no href. A same-page href satisfies that; `aria-hidden` and
+      // `tabIndex` keep them out of the accessibility tree and the tab order.
+      href: "#skills",
       target: undefined,
       rel: undefined,
+      "aria-hidden": "true",
+      tabIndex: -1,
       onClick: (e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault(),
     },
   });

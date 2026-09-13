@@ -263,6 +263,35 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
   animation-duration: var(--magicui-theme-toggle-vt-duration, 400ms);
 }
 
+/*
+ * Above-the-fold reveal.
+ *
+ * `BlurFade` is a framer-motion component, so it renders `opacity: 0` into the
+ * static HTML and only reveals once React has hydrated. On a throttled mobile
+ * connection that pushed Largest Contentful Paint — the About paragraph — out to
+ * 5.7s while First Contentful Paint was 0.9s. A CSS animation starts at paint
+ * time instead of at hydration, so the same effect costs nothing.
+ *
+ * Only for content inside the first viewport; everything below still uses the
+ * observer, which genuinely needs to know when you scroll to it.
+ */
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.animate-blur-in {
+  animation: blur-in 0.4s cubic-bezier(0.25, 0.4, 0.25, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
