@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import { locales } from "@/i18n/index";
 import type { Locale } from "@/i18n/types";
 import { buttonVariants } from "@/components/common/button";

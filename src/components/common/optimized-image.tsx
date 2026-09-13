@@ -28,9 +28,8 @@ export const OptimizedImage = React.memo(function OptimizedImage({
   const eager = priority || loading === "eager";
 
   return (
-    // `output: export` serves unoptimized images, so next/image would only add
-    // a wrapper with no optimizer behind it.
-    // eslint-disable-next-line @next/next/no-img-element
+    // A plain <img>: the AVIFs in `public/` are already sized and encoded for
+    // the slots they sit in, so there is nothing for an image component to do.
     <img
       src={src}
       alt={alt}

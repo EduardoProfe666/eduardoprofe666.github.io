@@ -1,0 +1,208 @@
+---
+import { Font } from "astro:assets";
+import { DATA } from "@/data/resume";
+import { buildJsonLd } from "@/lib/json-ld";
+import {
+  APPLICATION_NAME,
+  AUTHORS,
+  DESCRIPTION,
+  KEYWORDS,
+  OG_IMAGE,
+  SITE_URL,
+  SOCIAL_HANDLE,
+  THEME_COLOR,
+  TITLE,
+} from "@/lib/seo";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { LOCALE_INIT_SCRIPT } from "@/i18n/store";
+import "@/styles/globals.css";
+
+interface Props {
+  /** Defaults to the site title; a subpage gets `<page> | Eduardo González`. */
+  title?: string;
+  description?: string;
+  /** Only the home page should be indexed; 404 opts out. */
+  noindex?: boolean;
+  /** The above-the-fold images worth making discoverable to the preload scanner. */
+  preloadImages?: ReadonlyArray<{ href: string; type?: string }>;
+}
+
+const {
+  title = TITLE,
+  description = DESCRIPTION,
+  noindex = false,
+  preloadImages = [],
+} = Astro.props;
+
+const jsonLd = buildJsonLd();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content={THEME_COLOR.light}
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content={THEME_COLOR.dark}
+      media="(prefers-color-scheme: dark)"
+    />
+
+    {/*
+      Both settle before the first paint.
+
+      The theme used to be applied by `next-themes` and the `lang` attribute by
+      a React effect, which meant the page painted light-and-English and then
+      corrected itself once hydration finished. Inlined here, there is no
+      window in which either is wrong — and no flash to suppress.
+    */}
+    <script is:inline set:html={THEME_INIT_SCRIPT} />
+    <script is:inline set:html={LOCALE_INIT_SCRIPT} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content={APPLICATION_NAME} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="creator" content={DATA.name} />
+    <meta name="publisher" content={DATA.name} />
+    <meta name="category" content="technology" />
+    <meta name="classification" content="Portfolio" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta name="keywords" content={KEYWORDS.join(",")} />
+
+    {
+      noindex ? (
+        <meta name="robots" content="noindex, follow" />
+      ) : (
+        <>
+          <meta name="robots" content="index, follow" />
+          <meta
+            name="googlebot"
+            content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+          />
+        </>
+      )
+    }
+
+    {
+      AUTHORS.map((author) => (
+        <>
+          <meta name="author" content={author.name} />
+          <link rel="author" href={author.url} />
+        </>
+      ))
+    }
+
+    <meta name="geo.region" content="CU-03" />
+    <meta name="geo.placename" content="Havana" />
+    <meta name="geo.position" content="23.1136;-82.3666" />
+    <meta name="ICBM" content="23.1136, -82.3666" />
+
+    {/*
+      Every translation lives at this one URL, so there is no `hreflang`
+      cluster: a set of alternates that all resolve to the same page is either
+      ignored or reported as an error in Search Console.
+    */}
+    <link rel="canonical" href={SITE_URL} />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:site_name" content={DATA.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:image" content={OG_IMAGE.url} />
+    <meta property="og:image:type" content={OG_IMAGE.type} />
+    <meta property="og:image:width" content={String(OG_IMAGE.width)} />
+    <meta property="og:image:height" content={String(OG_IMAGE.height)} />
+    <meta property="og:image:alt" content={OG_IMAGE.alt} />
+    <meta property="profile:first_name" content="Eduardo" />
+    <meta property="profile:last_name" content="González" />
+    <meta property="profile:username" content="EduardoProfe666" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={SOCIAL_HANDLE} />
+    <meta name="twitter:creator" content={SOCIAL_HANDLE} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={OG_IMAGE.url} />
+    <meta name="twitter:image:type" content={OG_IMAGE.type} />
+    <meta name="twitter:image:width" content={String(OG_IMAGE.width)} />
+    <meta name="twitter:image:height" content={String(OG_IMAGE.height)} />
+    <meta name="twitter:image:alt" content={OG_IMAGE.alt} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    {/*
+      The only host the page talks to at runtime: the project cards read star
+      counts from the GitHub API. The brand marks used to come from
+      cdn.simpleicons.org — they are inlined at build time now — and Inter is
+      self-hosted out of node_modules.
+    */}
+    <link rel="preconnect" href="https://api.github.com" />
+
+    {
+      preloadImages.map(({ href, type }) => (
+        <link
+          rel="preload"
+          as="image"
+          href={href}
+          type={type}
+          fetchpriority="high"
+        />
+      ))
+    }
+
+    {/*
+      Inter ships as seven unicode-range subsets. The browser only downloads
+      the ones a page's characters fall into, so leaving all seven declared
+      costs nothing — but `preload` is unconditional, and preloading all of
+      them fetched 94 KB of Cyrillic, Greek and Vietnamese on every visit.
+
+      The `latin` subset covers all five languages this site is written in,
+      the em dash and the curly apostrophes included; the rest stay declared
+      and unfetched.
+    */}
+    <Font cssVariable="--font-sans" preload />
+
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+  </head>
+
+  <body
+    class="min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6"
+  >
+    {/*
+      Reading progress. The keyframes are tied to the document's own scroll
+      timeline in CSS, so there is no listener, no rAF loop and nothing to
+      recompute on resize; browsers without `animation-timeline` never show it.
+    */}
+    <div
+      aria-hidden="true"
+      class="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px] bg-foreground/50"
+    >
+    </div>
+    <a
+      href="#hero"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:rounded-md focus:text-sm focus:font-medium"
+      >Skip to content</a
+    >
+    <slot />
+  </body>
+</html>

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { DATA } from "@/data/resume";
 import { EASE } from "@/lib/motion";
 import { feedbackPop } from "@/lib/feedback";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 
 /** How long the confirmation stays before the button goes back to asking. */
 const REVERT_MS = 2200;

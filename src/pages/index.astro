@@ -1,0 +1,64 @@
+---
+import Base from "@/layouts/Base.astro";
+import Hero from "@/sections/hero";
+import About from "@/sections/about";
+import Work from "@/sections/work";
+import Education from "@/sections/education";
+import SkillsSection from "@/sections/skills-section";
+import Projects from "@/sections/projects";
+import Events from "@/sections/events";
+import Contact from "@/sections/contact";
+import Chrome from "@/components/main/chrome";
+import { DATA } from "@/data/resume";
+
+/**
+ * One island per section.
+ *
+ * Every one of them is prerendered to HTML at build time, so the document a
+ * crawler reads is the whole page — the same as under `output: "export"`.
+ * What changes is when the JavaScript arrives: the three sections in the
+ * opening sequence hydrate on load because their entrance animation is part of
+ * it, and everything below the fold hydrates as it approaches the viewport.
+ * Scrolling to the bottom and never touching anything costs the skills grid,
+ * the project cards and the events list — nothing more.
+ *
+ * `rootMargin` starts the fetch a screen early so the chunk is there before
+ * the reveal needs it, rather than after.
+ */
+const BELOW_FOLD = { rootMargin: "300px" };
+
+/**
+ * The hero portrait is the Largest Contentful Paint element and the first job
+ * logo is just under it; both sit inside islands, where the preload scanner
+ * cannot see them while the HTML is still parsing.
+ */
+const PRELOAD = [
+  { href: DATA.avatarUrl, type: "image/avif" },
+  { href: DATA.work[0].logoUrl, type: "image/avif" },
+];
+---
+
+<Base preloadImages={PRELOAD}>
+  {/*
+    `gap-14` rather than the `space-y-14` this carried under Next.
+
+    Astro styles `<astro-island>` as `display: contents`, so each `<section>`
+    is promoted to a flex item of `<main>` — but Astro also injects each
+    island's hydration `<script>` as a sibling there. `space-y-*` compiles to
+    `& > :not([hidden]) ~ :not([hidden])`, and a `<script>` is not `[hidden]`,
+    so it counted as a sibling and the hero picked up 56px of margin it never
+    had. A flex `gap` measures between flex items, and a `display: none`
+    element is never one, so the rhythm lands exactly on the sections.
+  */}
+  <main class="flex flex-col min-h-[100dvh] gap-14">
+    <Hero client:load />
+    <About client:load />
+    <Work client:load />
+    <Education client:visible={BELOW_FOLD} />
+    <SkillsSection client:visible={BELOW_FOLD} />
+    <Projects client:visible={BELOW_FOLD} />
+    <Events client:visible={BELOW_FOLD} />
+    <Contact client:visible={BELOW_FOLD} />
+  </main>
+  <Chrome client:only="react" />
+</Base>

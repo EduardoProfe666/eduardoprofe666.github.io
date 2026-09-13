@@ -9,7 +9,7 @@
  *   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
  *     --headless --hide-scrollbars --force-device-scale-factor=2 \
  *     --window-size=1200,630 --virtual-time-budget=12000 \
- *     --screenshot=public/portfolio.png http://localhost:3000/
+ *     --screenshot=public/portfolio.png http://localhost:4321/
  *
  * Captured that way the resample below lands exactly on 1200x630 and the pad is
  * a no-op, so the card is full bleed. Give it a taller screenshot and it still

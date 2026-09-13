@@ -2,7 +2,7 @@
 
 import { Calendar, Clock } from "lucide-react";
 import { useMemo } from "react";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import {
   formatTimeAgo,
   formatYearMonth,

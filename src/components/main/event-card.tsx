@@ -5,7 +5,6 @@ import {
 } from "@/components/common/avatar";
 import { Badge } from "@/components/common/badge";
 import { MapPin, Calendar, ExternalLink, Trophy } from "lucide-react";
-import Link from "next/link";
 
 interface Props {
   title: string;
@@ -89,7 +88,7 @@ export function EventCard({
         {links && links.length > 0 && (
           <div className="mt-1.5 flex flex-row flex-wrap items-start gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity duration-240 ease-state">
             {links.map((link, idx) => (
-              <Link href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
+              <a href={link.href} key={idx} target="_blank" rel="noopener noreferrer">
                 <Badge
                   className="flex gap-1.5 px-2.5 py-1 text-2xs rounded-full hover:scale-105 hover:elevate-2 hover:-translate-y-0.5 active:scale-95 active:duration-100"
                   style={{ transitionDelay: `${Math.min(idx, 4) * 25}ms` }}
@@ -98,7 +97,7 @@ export function EventCard({
                   {link.title}
                   <ExternalLink className="size-2.5 -translate-x-1 opacity-0 transition-all duration-240 ease-state group-hover:translate-x-0 group-hover:opacity-40" />
                 </Badge>
-              </Link>
+              </a>
             ))}
           </div>
         )}

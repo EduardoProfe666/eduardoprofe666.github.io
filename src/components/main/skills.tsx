@@ -4,7 +4,7 @@ import { m } from "framer-motion";
 import { useCallback, useRef, useState } from "react";
 import { SKILL_ICONS } from "@/data/skill-icons.generated";
 import { ALL_SKILLS, SKILL_GROUPS, type SkillGroupId } from "@/data/skills";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import { feedbackFilter, feedbackNote, feedbackSkillHover } from "@/lib/feedback";
 import { cn } from "@/lib/utils";
 

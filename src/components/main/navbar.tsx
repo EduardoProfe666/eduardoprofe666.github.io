@@ -13,11 +13,10 @@ import {
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import { FileText, Search } from "lucide-react";
-import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LanguageSwitcher } from "@/components/main/language-switcher";
 import { openSpotlight } from "@/components/main/spotlight";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import { useSyncExternalStore } from "react";
 
 /** `false` during SSR and the hydration pass, `true` afterwards. */
@@ -52,9 +51,6 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              {/* A plain <a>, not next/link: the router prefetched this static
-                  PDF as if it were a route and requested
-                  `/resume.pdf/__next._tree.txt`, which 404s in the console. */}
               <a
                 href="/resume.pdf"
                 target="_blank"
@@ -77,7 +73,7 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link
+              <a
                 href="https://github.com/EduardoProfe666"
                 aria-label={t("nav.github")}
                 className={cn(
@@ -86,7 +82,7 @@ export default function Navbar() {
                 )}
               >
                 <GitHubLogoIcon className="size-4" />
-              </Link>
+              </a>
             </TooltipTrigger>
             <TooltipContent>
               <p>{t("nav.github")}</p>
@@ -98,7 +94,7 @@ export default function Navbar() {
           <DockIcon key={name}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link
+                <a
                   href={social.url}
                   aria-label={name}
                   className={cn(
@@ -107,7 +103,7 @@ export default function Navbar() {
                   )}
                 >
                   <social.icon className="size-4" />
-                </Link>
+                </a>
               </TooltipTrigger>
               <TooltipContent>
                 <p>{name}</p>

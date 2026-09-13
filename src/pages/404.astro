@@ -1,0 +1,11 @@
+---
+import Base from "@/layouts/Base.astro";
+import NotFound from "@/sections/not-found";
+import Chrome from "@/components/main/chrome";
+import { TITLE } from "@/lib/seo";
+---
+
+<Base title={`404 | ${TITLE.split(" — ")[0]}`} noindex>
+  <NotFound client:load />
+  <Chrome client:only="react" />
+</Base>

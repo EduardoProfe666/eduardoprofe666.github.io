@@ -1,14 +1,14 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { useTheme } from "@/lib/theme";
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import { buttonVariants } from "@/components/common/button";
 import { feedbackPop } from "@/lib/feedback";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import { cn } from "@/lib/utils";
 
 /**
- * Wires magicui's animated toggler to `next-themes` in controlled mode, so the
+ * Wires magicui's animated toggler to the theme store in controlled mode, so the
  * library stays the single owner of persistence and system-preference syncing
  * while the component owns the View Transition wipe.
  */

@@ -44,7 +44,7 @@ const KNOWS_ABOUT = [
   "MongoDB",
 ];
 
-export function JsonLd() {
+export function buildJsonLd(): string {
   const [city, country] = DATA.location.split(", ");
 
   const person = {
@@ -145,14 +145,7 @@ export function JsonLd() {
     "@graph": [person, website, profilePage, ...projects],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      // `<` is escaped so a stray sequence in the data can never close the
-      // script element early.
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(graph).replace(/</g, "\\u003c"),
-      }}
-    />
-  );
+  // `<` is escaped so a stray sequence in the data can never close the
+  // script element early.
+  return JSON.stringify(graph).replace(/</g, "\\u003c");
 }

@@ -14,7 +14,7 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/lib/theme";
 import {
   useCallback,
   useEffect,
@@ -25,7 +25,7 @@ import {
 } from "react";
 import { DATA } from "@/data/resume";
 import { locales } from "@/i18n/index";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import type { Locale } from "@/i18n/types";
 import {
   feedbackHover,

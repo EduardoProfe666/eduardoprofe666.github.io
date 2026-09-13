@@ -20,7 +20,7 @@ import {
   setVolume,
   subscribeToSound,
 } from "@/lib/feedback";
-import { useTranslation } from "@/i18n/provider";
+import { useTranslation } from "@/i18n/store";
 import { cn } from "@/lib/utils";
 
 /** Pixels. Tall enough to aim at, short enough to sit above the dock. */

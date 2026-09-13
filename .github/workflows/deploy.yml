@@ -1,0 +1,78 @@
+# Builds the Astro site and publishes it to GitHub Pages.
+#
+# Replaces three files: `nextjs.yml`, `publish.yml` and the `setup-node`
+# composite action. `publish.yml` triggered on pushes to `master`, a branch
+# this repository does not have, so it had never run; the other two did the
+# same job twice, both installing Node purely so that Next.js could find it.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time. Queued runs are dropped rather than cancelled:
+# a half-finished production deploy is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # Bun runs the whole pipeline — install, typecheck, lint and build.
+      # Node is not installed at all any more: it was only ever there because
+      # `next build` shelled out to it.
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Astro keeps subset fonts and resolved assets here. Keyed on the
+      # lockfile and the config that produces them, so a dependency bump or a
+      # font change invalidates it instead of serving a stale copy.
+      - name: Restore Astro cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('bun.lock', 'astro.config.mjs') }}
+          restore-keys: ${{ runner.os }}-astro-
+
+      # Deploying a site that does not typecheck is a failure the old workflow
+      # would have published. This costs a few seconds and stops it.
+      - name: Typecheck and lint
+        run: bun run check
+
+      - name: Build
+        run: bun run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

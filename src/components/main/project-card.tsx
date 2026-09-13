@@ -11,8 +11,7 @@ import { TimeAgo } from "@/components/common/time-ago";
 import type { YearMonth } from "@/lib/duration";
 import { cn } from "@/lib/utils";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import Markdown from "react-markdown";
+import Markdown from "@/components/common/markdown";
 import React from "react";
 import { OptimizedImage } from "@/components/common/optimized-image";
 
@@ -67,7 +66,7 @@ export const ProjectCard = React.memo(function ProjectCard({
       )}
     >
       {/* Image area */}
-      <Link
+      <a
         href={href || "#"}
         className="relative block h-48 overflow-hidden"
         target="_blank"
@@ -104,7 +103,7 @@ export const ProjectCard = React.memo(function ProjectCard({
         <div className="material absolute top-3 right-3 flex size-8 scale-75 items-center justify-center rounded-full opacity-0 transition-all duration-400 ease-spring group-hover:scale-100 group-hover:opacity-100">
           <ArrowUpRight className="size-4 text-foreground transition-transform duration-240 ease-state group-hover:rotate-45" />
         </div>
-      </Link>
+      </a>
 
       {/* Content */}
       <CardHeader className="px-4 pt-4 pb-0 space-y-2">
@@ -153,7 +152,7 @@ export const ProjectCard = React.memo(function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1.5">
             {links.map((linkItem, idx) => (
-              <Link href={linkItem.href} key={idx} target="_blank" rel="noopener noreferrer">
+              <a href={linkItem.href} key={idx} target="_blank" rel="noopener noreferrer">
                 <Badge
                   className={cn(
                     "flex gap-1.5 px-2.5 py-1 text-2xs rounded-full",
@@ -166,7 +165,7 @@ export const ProjectCard = React.memo(function ProjectCard({
                   {linkItem.type}
                   <ExternalLink className="size-2.5 -translate-x-1 opacity-0 transition-all duration-240 ease-state group-hover:translate-x-0 group-hover:opacity-40" />
                 </Badge>
-              </Link>
+              </a>
             ))}
           </div>
         )}

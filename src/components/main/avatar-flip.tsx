@@ -217,8 +217,6 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
                 >
                   {fallback}
                 </span>
-                {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
-                    serves unoptimized images, so next/image would add nothing here. */}
                 <img
                   alt={alt}
                   src={src}
