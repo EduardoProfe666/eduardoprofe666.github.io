@@ -385,7 +385,20 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
 }
 
 .animate-blur-in {
-  animation: blur-in 0.4s var(--ease-glide) both;
+  /*
+   * `--ease-soft`, deliberately, not `--ease-glide`.
+   *
+   * Glide is a deceleration curve: it covers 85% of the distance in the first
+   * 90ms. That is right for something travelling across the screen, and wrong
+   * here — it pulls the blur out almost instantly and the element arrives
+   * already in focus, which is the one thing this animation exists to avoid.
+   *
+   * It is also the curve framer-motion uses for the reveals further down the
+   * page, so the opening sequence and the scroll reveals now come into focus
+   * at the same rate instead of the top of the page snapping while the rest
+   * settles.
+   */
+  animation: blur-in 0.4s var(--ease-soft) both;
 }
 
 /*
