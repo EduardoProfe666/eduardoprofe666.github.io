@@ -67,13 +67,13 @@ export function EventCard({
 
         <div className="flex items-center gap-3 flex-wrap transition-transform duration-240 ease-state delay-75 group-hover:translate-x-0.5">
           {dates && (
-            <span className="flex items-center gap-1 text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-240 ease-state">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-240 ease-state">
               <Calendar className="size-3" />
               {dates}
             </span>
           )}
           {location && (
-            <span className="flex items-center gap-1 text-xs text-muted-foreground/70 group-hover:text-muted-foreground transition-colors duration-240 ease-state">
+            <span className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors duration-240 ease-state">
               <MapPin className="size-3" />
               {location}
             </span>
@@ -81,7 +81,7 @@ export function EventCard({
         </div>
 
         {description && (
-          <p className="text-sm text-pretty hyphenate text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
+          <p className="text-sm text-pretty hyphenate text-muted-foreground leading-relaxed transition-colors duration-240 ease-state">
             {description}
           </p>
         )}

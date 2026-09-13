@@ -1,16 +1,27 @@
 /**
- * Builds `public/og.png`, the 1200x630 social card, from the site screenshot in
- * `public/portfolio.png`.
+ * Builds `public/og.png`, the 1200x630 social card, from `public/portfolio.png`.
  *
  *   node scripts/generate-og-image.mjs
  *
- * The metadata used to point straight at `portfolio.png` while declaring it as
- * 1200x630; the file is actually 2301x1588, so every preview was cropping it
- * unpredictably. The screenshot is letterboxed rather than cropped so the hero
- * stays visible, and the declared dimensions are finally true.
+ * The source has to be captured at the card's own 1.91:1, which is the ratio
+ * Open Graph, Twitter, LinkedIn and Slack all expect:
  *
- * Uses macOS `sips`, so it adds no npm dependency. Re-run it after replacing
- * the screenshot.
+ *   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+ *     --headless --hide-scrollbars --force-device-scale-factor=2 \
+ *     --window-size=1200,630 --virtual-time-budget=12000 \
+ *     --screenshot=public/portfolio.png http://localhost:3000/
+ *
+ * Captured that way the resample below lands exactly on 1200x630 and the pad is
+ * a no-op, so the card is full bleed. Give it a taller screenshot and it still
+ * works — it letterboxes onto white rather than cropping, so the hero survives
+ * — but you lose a quarter of the card to empty margins, which is what the
+ * previous 2301x1588 source did.
+ *
+ * `portfolio.png` is also the banner at the top of README.md, so one capture
+ * serves both.
+ *
+ * Uses macOS `sips`, so it adds no npm dependency. Re-run it whenever the page
+ * changes enough that the card would be lying.
  */
 import { execFile } from "node:child_process";
 import { mkdtemp, rm } from "node:fs/promises";

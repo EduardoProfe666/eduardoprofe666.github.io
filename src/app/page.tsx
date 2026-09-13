@@ -49,7 +49,7 @@ export default function Page() {
                 />
               </BlurFade>
               <BlurFade eager delay={entrance(ENTRANCE.heroDescription)}>
-                <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-240 ease-state">
+                <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed transition-colors duration-240 ease-state">
                   {t("hero.description")}
                 </p>
               </BlurFade>

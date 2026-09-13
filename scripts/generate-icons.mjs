@@ -7,7 +7,8 @@
  * Uses macOS `sips` plus a hand-rolled ICO container, so it adds no npm
  * dependency. The mark itself is unchanged — this only fixes the packaging:
  * the site used to point every `rel="icon"` and the web manifest at
- * `portfolio.png`, a 2301x1588 screenshot. Google Search only accepts a square
+ * `portfolio.png`, which is a screenshot of the page. Google Search only
+ * accepts a square
  * favicon, so it was showing the default globe.
  */
 import { execFile } from "node:child_process";

@@ -29,7 +29,7 @@ export function ModeToggle() {
       title={t("nav.theme")}
       className={cn(
         buttonVariants({ variant: "ghost", size: "icon" }),
-        "px-2 cursor-pointer text-neutral-800 dark:text-neutral-200"
+        "px-2 cursor-pointer text-foreground"
       )}
     />
   );

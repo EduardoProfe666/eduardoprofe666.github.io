@@ -237,7 +237,7 @@ export function SoundControl() {
         onClick={toggle}
         className={cn(
           buttonVariants({ variant: "ghost", size: "icon" }),
-          "px-2 cursor-pointer text-neutral-800 dark:text-neutral-200"
+          "px-2 cursor-pointer text-foreground"
         )}
       >
         {/* Keyed on the bucket, so the icon springs when it changes rather than

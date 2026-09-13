@@ -96,13 +96,13 @@ export const ResumeCard = ({
               </h3>
               {subtitle && (
                 <div className="flex items-center gap-1.5 mt-1 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-240 ease-state">
-                  <Briefcase className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-240 ease-state" />
+                  <Briefcase className="size-3 text-muted-foreground flex-shrink-0 group-hover:text-foreground transition-colors duration-240 ease-state" />
                   <span className="text-xs text-muted-foreground font-medium">{subtitle}</span>
                 </div>
               )}
               {location && (
                 <div className="flex items-center gap-1.5 mt-0.5 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-240 ease-state delay-75">
-                  <MapPin className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-240 ease-state" />
+                  <MapPin className="size-3 text-muted-foreground flex-shrink-0 group-hover:text-foreground transition-colors duration-240 ease-state" />
                   <span className="text-xs text-muted-foreground">{location}</span>
                 </div>
               )}
@@ -125,7 +125,7 @@ export const ResumeCard = ({
           </div>
         </CardHeader>
         {description && (
-          <CardContent className="text-xs sm:text-sm text-pretty hyphenate leading-relaxed text-muted-foreground group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
+          <CardContent className="text-xs sm:text-sm text-pretty hyphenate leading-relaxed text-muted-foreground transition-colors duration-240 ease-state">
             {description}
           </CardContent>
         )}

@@ -39,8 +39,11 @@ export const cloudProps: Omit<ICloud, "children"> = {
 };
 
 export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
+  // These feed the contrast maths inside `renderSimpleIcon`, so they have to
+  // be the background the icons are actually drawn on. #f3f2ef and #080510 were
+  // a warm grey and a purple-black — neither is a colour this site uses.
+  const bgHex = theme === "light" ? "#ffffff" : "#08090a";
+  const fallbackHex = theme === "light" ? "#737373" : "#fafafa";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
 
   return renderSimpleIcon({
