@@ -7,7 +7,7 @@ const badgeVariants = cva(
   // `focus:` never fired here — a <div> is not focusable — so the ring it asked
   // for was dead weight. Interactive badges are wrapped in a link, which the
   // page's own focus style already covers.
-  "inline-flex select-none items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-[transform,background-color,color,box-shadow] duration-300 ease-glide",
+  "inline-flex select-none items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-[transform,background-color,color,box-shadow] duration-240 ease-state",
   {
     variants: {
       variant: {

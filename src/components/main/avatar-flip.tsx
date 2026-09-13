@@ -161,9 +161,11 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
       onPointerMove={handlePointerMove}
       onPointerLeave={resetTilt}
     >
-      {/* Glow */}
+      {/* Glow. Deliberately outside the duration scale: at 700ms it lags the
+          hover instead of tracking it, which is what makes it read as light
+          bleeding out of the portrait rather than as another hover state. */}
       <div
-        className={`absolute -inset-3 rounded-full transition-all duration-700 ${
+        className={`absolute -inset-3 rounded-full transition-all duration-700 ease-soft ${
           spinning
             ? "opacity-100 blur-2xl bg-gradient-to-br from-violet-500/20 via-rose-500/15 to-amber-500/20"
             : showHat
@@ -208,7 +210,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
                   initial HTML and waited 3.2s after hydration before even
                   requesting it — which made this the Largest Contentful Paint.
                   The initials sit behind it as a no-JS fallback. */}
-              <span className="relative flex size-28 shrink-0 overflow-hidden rounded-full border-2 border-border shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-500">
+              <span className="relative flex size-28 shrink-0 overflow-hidden rounded-full border-2 border-border shadow-xl ring-4 ring-border/20 group-hover/avatar:ring-foreground/15 group-hover/avatar:shadow-2xl group-hover/avatar:scale-[1.03] transition-all duration-400 ease-state">
                 <span
                   aria-hidden="true"
                   className="absolute inset-0 grid place-items-center bg-muted text-sm font-medium"
@@ -224,7 +226,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
                   height={256}
                   fetchPriority="high"
                   decoding="async"
-                  className="relative aspect-square h-full w-full object-cover group-hover/avatar:brightness-105 transition-[filter] duration-500"
+                  className="relative aspect-square h-full w-full object-cover group-hover/avatar:brightness-105 transition-[filter] duration-240 ease-state"
                 />
               </span>
             </div>
@@ -246,7 +248,7 @@ export function AvatarFlip({ src, alt, fallback }: AvatarFlipProps) {
                 room and not to the object. */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 z-10 rounded-full opacity-0 transition-opacity duration-500 ease-soft group-hover/avatar:opacity-100"
+              className="pointer-events-none absolute inset-0 z-10 rounded-full opacity-0 transition-opacity duration-240 ease-state group-hover/avatar:opacity-100"
               style={{
                 background:
                   "radial-gradient(circle at var(--sheen-x, 50%) var(--sheen-y, 50%), hsl(0 0% 100% / 0.45), transparent 58%)",

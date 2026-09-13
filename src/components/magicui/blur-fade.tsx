@@ -2,6 +2,7 @@
 
 import { m, useInView, Variants, UseInViewOptions } from "framer-motion";
 import { useRef } from "react";
+import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 type MarginType = UseInViewOptions["margin"];
@@ -75,7 +76,7 @@ const BlurFade = ({
       transition={{
         delay,
         duration,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: EASE.soft,
       }}
       className={className}
     >

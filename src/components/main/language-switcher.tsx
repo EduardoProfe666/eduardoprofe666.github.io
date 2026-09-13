@@ -55,7 +55,7 @@ export function LanguageSwitcher() {
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
-    }, 150);
+    }, 200);
   }
 
   function handleSelect(code: Locale) {
@@ -105,7 +105,7 @@ export function LanguageSwitcher() {
             "transition-all duration-200 ease-glide",
             isClosing
               ? "translate-y-1 scale-95 opacity-0"
-              : "animate-in fade-in slide-in-from-bottom-2 zoom-in-95 duration-200 ease-glide"
+              : "animate-in fade-in slide-in-from-bottom-2 zoom-in-95 duration-400 ease-glide"
           )}
           role="listbox"
           aria-label="Select language"
@@ -122,11 +122,11 @@ export function LanguageSwitcher() {
                   onClick={() => handleSelect(loc.code as Locale)}
                   className={cn(
                     "w-full flex items-center gap-3 px-3 py-2 rounded-lg",
-                    "transition-[transform,background-color,color] duration-300 ease-glide active:scale-[0.98] active:duration-100",
+                    "transition-[transform,background-color,color] duration-240 ease-state active:scale-[0.98] active:duration-100",
                     "group cursor-pointer",
                     // The rows cascade in behind the panel. The delay was
                     // already here but had no animation to delay.
-                    !isClosing && "animate-in fade-in slide-in-from-bottom-1 duration-300 ease-glide",
+                    !isClosing && "animate-in fade-in slide-in-from-bottom-1 duration-400 ease-glide",
                     isActive
                       ? "bg-accent text-accent-foreground"
                       : "hover:bg-muted/60 active:bg-muted/80"
@@ -139,7 +139,7 @@ export function LanguageSwitcher() {
                   {FlagIcon && (
                     <FlagIcon className="size-5 flex-shrink-0 rounded-[2px] shadow-sm transition-transform duration-400 ease-spring group-hover:scale-110" />
                   )}
-                  <div className="flex-1 text-left transition-transform duration-400 ease-glide group-hover:translate-x-0.5">
+                  <div className="flex-1 text-left transition-transform duration-240 ease-state group-hover:translate-x-0.5">
                     <span className="text-sm font-semibold leading-tight">
                       {loc.nativeName}
                     </span>

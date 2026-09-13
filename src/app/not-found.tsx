@@ -4,6 +4,7 @@ import Link from "next/link";
 import { m } from "framer-motion";
 import { Home } from "lucide-react";
 import { useTranslation } from "@/i18n/provider";
+import { EASE } from "@/lib/motion";
 
 export default function NotFound() {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export default function NotFound() {
         <m.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: EASE.soft }}
         >
           <span className="block text-[11rem] sm:text-[15rem] font-black leading-none tracking-tighter text-foreground/[0.04]">
             404
@@ -28,7 +29,7 @@ export default function NotFound() {
           transition={{
             delay: 0.25,
             duration: 0.5,
-            ease: [0.34, 1.56, 0.64, 1],
+            ease: EASE.spring,
           }}
         >
           <m.span
@@ -37,7 +38,7 @@ export default function NotFound() {
             transition={{
               delay: 1,
               duration: 0.6,
-              ease: "easeInOut",
+              ease: EASE.soft,
             }}
           >
             🫠
@@ -49,7 +50,7 @@ export default function NotFound() {
       <m.div
         initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.2, duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ delay: 0.2, duration: 0.4, ease: EASE.soft }}
         className="space-y-2 max-w-md -mt-6"
       >
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-balance">
@@ -64,13 +65,13 @@ export default function NotFound() {
       <m.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ delay: 0.4, duration: 0.4, ease: EASE.soft }}
       >
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+          className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-3 text-sm font-medium hover:bg-foreground/90 hover:shadow-xl hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-240 ease-state"
         >
-          <Home className="size-4 group-hover:scale-110 transition-transform duration-300" />
+          <Home className="size-4 group-hover:scale-110 transition-transform duration-240 ease-state" />
           {t("notFound.cta")}
         </Link>
       </m.div>

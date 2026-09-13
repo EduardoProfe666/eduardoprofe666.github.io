@@ -24,7 +24,7 @@ const TooltipContent = React.forwardRef<
       // hands back a transform origin. Scaling from there makes the label look
       // like it grew out of the icon rather than appearing next to it.
       "[transform-origin:var(--radix-tooltip-content-transform-origin)]",
-      "duration-200 ease-glide animate-in fade-in-0 zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-90 data-[state=closed]:duration-150",
+      "duration-240 ease-glide animate-in fade-in-0 zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-90 data-[state=closed]:duration-200",
       "data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1",
       className
     )}

@@ -420,7 +420,7 @@ export function Spotlight() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
+          transition={{ duration: 0.2 }}
           onClick={close}
           className="fixed inset-0 z-[60] flex items-start justify-center bg-foreground/10 px-4 pt-[14vh] backdrop-blur-[3px]"
         >
@@ -489,7 +489,7 @@ export function Spotlight() {
                           onPointerEnter={() => setActive(index)}
                           onClick={() => run(item)}
                           className={cn(
-                            "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors duration-150 ease-soft",
+                            "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors duration-100 ease-soft",
                             index === activeIndex
                               ? "bg-accent text-accent-foreground"
                               : "text-foreground/80"
@@ -518,7 +518,7 @@ export function Spotlight() {
                   {SHORTCUTS.map((row) => (
                     <li
                       key={row.keys.join("+")}
-                      className="flex items-center justify-between gap-4 rounded-lg px-2 py-1.5 text-sm transition-colors duration-200 ease-soft hover:bg-accent/50"
+                      className="flex items-center justify-between gap-4 rounded-lg px-2 py-1.5 text-sm transition-colors duration-240 ease-state hover:bg-accent/50"
                     >
                       <span className="text-foreground/80">{row.label}</span>
                       <span className="flex shrink-0 items-center gap-1">

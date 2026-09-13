@@ -26,7 +26,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
         </span>
         {children}
       </span>
-      <span className="absolute -bottom-1 left-0 h-0.5 w-0 origin-left rounded-full bg-foreground/25 transition-[width] duration-500 ease-glide group-hover/heading:w-full" />
+      <span className="absolute -bottom-1 left-0 h-0.5 w-0 origin-left rounded-full bg-foreground/25 transition-[width] duration-240 ease-state group-hover/heading:w-full" />
     </h2>
   );
 }
@@ -49,7 +49,7 @@ export default function Page() {
                 />
               </BlurFade>
               <BlurFade eager delay={entrance(ENTRANCE.heroDescription)}>
-                <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-500">
+                <p className="max-w-[600px] text-pretty text-muted-foreground md:text-lg leading-relaxed hover:text-muted-foreground/80 transition-colors duration-240 ease-state">
                   {t("hero.description")}
                 </p>
               </BlurFade>
@@ -71,7 +71,7 @@ export default function Page() {
           <SectionHeading>{t("about.title")}</SectionHeading>
         </BlurFade>
         <BlurFade eager delay={entrance(ENTRANCE.aboutBody)}>
-          <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-300 [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-all [&_a]:after:duration-300 [&_a]:after:ease-out [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-300 [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
+          <div className="mt-2 prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert leading-relaxed [&_a]:text-foreground/70 [&_a]:no-underline [&_a]:font-medium [&_a]:relative [&_a]:transition-colors [&_a]:duration-240 [&_a]:ease-state [&_a:hover]:text-foreground [&_a]:after:absolute [&_a]:after:bottom-0 [&_a]:after:left-0 [&_a]:after:h-[1px] [&_a]:after:w-0 [&_a]:after:bg-foreground/30 [&_a]:after:transition-[width] [&_a]:after:duration-240 [&_a]:after:ease-state [&_a:hover]:after:w-full [&_strong]:text-foreground/80 [&_strong]:transition-all [&_strong]:duration-240 [&_strong]:ease-state [&_strong]:hover:text-foreground [&_strong]:hover:drop-shadow-sm">
             <Markdown>{t("about.summary")}</Markdown>
           </div>
         </BlurFade>
@@ -133,7 +133,7 @@ export default function Page() {
                           href={education.thesis.repository}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
+                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-[width] after:duration-240 after:ease-state hover:after:w-full hover:text-foreground transition-colors duration-240 ease-state"
                         >
                           {t("thesis.repository")}
                         </a>
@@ -142,7 +142,7 @@ export default function Page() {
                           href={education.thesis.download}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
+                          className="text-foreground/70 font-medium relative z-10 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-[width] after:duration-240 after:ease-state hover:after:w-full hover:text-foreground transition-colors duration-240 ease-state"
                         >
                           {t("thesis.download")}
                         </a>
@@ -190,7 +190,7 @@ export default function Page() {
             <p className="text-pretty text-sm text-muted-foreground">
               {t("projects.subtitle").split("{github}")[0]}
               <a
-                className="text-foreground/70 font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-all after:duration-300 after:ease-out hover:after:w-full hover:text-foreground transition-colors duration-300"
+                className="text-foreground/70 font-medium relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground/30 after:transition-[width] after:duration-240 after:ease-state hover:after:w-full hover:text-foreground transition-colors duration-240 ease-state"
                 href="https://github.com/EduardoProfe666"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -281,10 +281,10 @@ export default function Page() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-400 ease-glide hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
+                      className="group/social flex size-11 items-center justify-center rounded-full border border-border bg-background transition-all duration-240 ease-state hover:bg-muted hover:border-foreground/20 hover:shadow-lg hover:scale-110 hover:-translate-y-1 active:scale-95 active:duration-100"
                       aria-label={name}
                     >
-                      <social.icon className="size-4 transition-transform duration-500 ease-spring group-hover/social:scale-110" />
+                      <social.icon className="size-4 transition-transform duration-400 ease-spring group-hover/social:scale-110" />
                     </Link>
                   </BlurFade>
                 ))}

@@ -4,6 +4,7 @@ import { AnimatePresence, m } from "framer-motion";
 import { Check } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DATA } from "@/data/resume";
+import { EASE } from "@/lib/motion";
 import { feedbackPop } from "@/lib/feedback";
 import { useTranslation } from "@/i18n/provider";
 
@@ -85,7 +86,7 @@ export function ContactCta() {
       data-sfx="none"
       onClick={copy}
       title={DATA.contact.email}
-      className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-glide hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
+      className="group/cta inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3.5 text-sm font-medium text-background transition-all duration-400 ease-state hover:bg-foreground/90 hover:shadow-xl hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 active:duration-100"
     >
       <span className="relative grid size-4 place-items-center">
         <AnimatePresence initial={false}>
@@ -100,7 +101,7 @@ export function ContactCta() {
             {copied ? (
               <Check className="size-4" />
             ) : (
-              <MailIcon className="size-4 transition-transform duration-500 ease-spring group-hover/cta:rotate-12 group-hover/cta:scale-110" />
+              <MailIcon className="size-4 transition-transform duration-400 ease-spring group-hover/cta:rotate-12 group-hover/cta:scale-110" />
             )}
           </m.span>
         </AnimatePresence>
@@ -124,7 +125,7 @@ export function ContactCta() {
             initial={{ y: 8, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -8, opacity: 0 }}
-            transition={{ duration: 0.18, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.24, ease: EASE.state }}
             className="col-start-1 row-start-1 whitespace-nowrap"
           >
             {copied ? t("contact.copied") : t("contact.cta")}

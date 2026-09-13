@@ -87,34 +87,34 @@ export const ProjectCard = React.memo(function ProjectCard({
               muted
               playsInline
               preload="none"
-              className="pointer-events-none h-full w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
+              className="pointer-events-none h-full w-full object-cover object-top transition-transform duration-400 ease-state group-hover:scale-[1.06]"
             />
           )}
           {image && (
             <OptimizedImage
               src={image}
               alt={title}
-              className="h-full w-full object-cover object-top transition-transform duration-700 ease-glide group-hover:scale-[1.06]"
+              className="h-full w-full object-cover object-top transition-transform duration-400 ease-state group-hover:scale-[1.06]"
             />
           )}
         </div>
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-240 ease-state" />
         {/* Arrow indicator */}
         <div className="material absolute top-3 right-3 flex size-8 scale-75 items-center justify-center rounded-full opacity-0 transition-all duration-400 ease-spring group-hover:scale-100 group-hover:opacity-100">
-          <ArrowUpRight className="size-4 text-foreground transition-transform duration-500 ease-glide group-hover:rotate-45" />
+          <ArrowUpRight className="size-4 text-foreground transition-transform duration-240 ease-state group-hover:rotate-45" />
         </div>
       </Link>
 
       {/* Content */}
       <CardHeader className="px-4 pt-4 pb-0 space-y-2">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-base font-semibold leading-tight group-hover:translate-x-0.5 transition-transform duration-300">
+          <CardTitle className="text-base font-semibold leading-tight group-hover:translate-x-0.5 transition-transform duration-240 ease-state">
             {title}
           </CardTitle>
           {githubRepo && <GitHubStars repo={githubRepo} />}
         </div>
-        <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-240 ease-state">
           <TimeAgo date={date} />
         </div>
         <div className="hidden font-sans text-xs underline print:visible">
@@ -138,7 +138,8 @@ export const ProjectCard = React.memo(function ProjectCard({
                 )}
                 variant="secondary"
                 key={tag}
-                style={{ transitionDelay: `${i * 30}ms` }}
+                // Capped, so a card with many tags still finishes its hover in one go.
+                style={{ transitionDelay: `${Math.min(i, 4) * 25}ms` }}
               >
                 {tag}
               </Badge>
@@ -159,11 +160,11 @@ export const ProjectCard = React.memo(function ProjectCard({
                     "hover:scale-105 hover:shadow-md hover:-translate-y-0.5 active:scale-95 active:duration-100",
                     "opacity-80 group-hover:opacity-100"
                   )}
-                  style={{ transitionDelay: `${idx * 50}ms` }}
+                  style={{ transitionDelay: `${Math.min(idx, 4) * 25}ms` }}
                 >
                   {linkItem.icon}
                   {linkItem.type}
-                  <ExternalLink className="size-2.5 -translate-x-1 opacity-0 transition-all duration-500 ease-glide group-hover:translate-x-0 group-hover:opacity-40" />
+                  <ExternalLink className="size-2.5 -translate-x-1 opacity-0 transition-all duration-240 ease-state group-hover:translate-x-0 group-hover:opacity-40" />
                 </Badge>
               </Link>
             ))}

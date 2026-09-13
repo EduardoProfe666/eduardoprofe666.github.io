@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { flushSync } from "react-dom";
 
+import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -52,6 +53,8 @@ function polygonCollapsed(point: string, vertexCount: number): string {
 // absolute px clip-path coordinates on ::view-transition-new(root) unscaled on
 // fractional display scales for the first transition after load, so px values
 // would land at the wrong position.
+const GLIDE = `cubic-bezier(${EASE.glide.join(", ")})`;
+
 function getThemeTransitionClipPaths(
   variant: TransitionVariant,
   cx: number,
@@ -305,8 +308,11 @@ export function AnimatedThemeToggler({
             { clipPath },
             {
               duration,
-              // Star: linear avoids easing overshoot at t -> 1.
-              easing: variant === "star" ? "linear" : "ease-in-out",
+              // Star: linear avoids easing overshoot at t -> 1. Everything
+              // else is a shape travelling across the screen, which is what
+              // the glide curve is for — and it is the same curve the rest of
+              // the page moves on, rather than a second opinion.
+              easing: variant === "star" ? "linear" : GLIDE,
               fill: "forwards",
               pseudoElement: "::view-transition-new(root)",
             }

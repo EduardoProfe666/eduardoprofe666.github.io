@@ -48,7 +48,7 @@ export default function Navbar() {
       {/* The dock can only render once the theme and locale are known, so it
           arrives after the page does. Sliding it up turns that into an entrance
           instead of a pop. */}
-      <Dock className="material z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 transform-gpu animate-in fade-in slide-in-from-bottom-6 duration-500 ease-glide">
+      <Dock className="material z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-1 transform-gpu animate-in fade-in slide-in-from-bottom-6 duration-400 ease-glide">
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>

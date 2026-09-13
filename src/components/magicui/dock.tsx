@@ -103,7 +103,7 @@ const DockIcon = ({ className, children }: DockIconProps) => {
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         // The press lands on the icon you actually touched: `:active` reaches
         // this wrapper from the button inside it.
-        "transition-transform duration-200 ease-glide active:scale-[0.88] active:duration-100",
+        "transition-transform duration-240 ease-state active:scale-[0.88] active:duration-100",
         className
       )}
     >

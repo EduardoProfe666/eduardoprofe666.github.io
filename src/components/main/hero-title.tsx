@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { EASE } from "@/lib/motion";
 import { feedbackPop } from "@/lib/feedback";
 import { m, AnimatePresence } from "framer-motion";
 
@@ -43,7 +44,7 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
           initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
-          transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.3, ease: EASE.soft }}
           className="inline-block"
         >
           {displayName}
@@ -56,8 +57,8 @@ export function HeroTitle({ greeting, name, alias }: HeroTitleProps) {
           initial={{ opacity: 0, scale: 0.5, rotate: -30 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           exit={{ opacity: 0, scale: 0.5, rotate: 30 }}
-          transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-          className={`inline-block ${!showAlias ? "origin-[70%_70%] hover:animate-wave" : "hover:rotate-12 transition-transform duration-300"}`}
+          transition={{ duration: 0.3, ease: EASE.spring }}
+          className={`inline-block ${!showAlias ? "origin-[70%_70%] hover:animate-wave" : "hover:rotate-12 transition-transform duration-240 ease-state"}`}
         >
           {emoji}
         </m.span>

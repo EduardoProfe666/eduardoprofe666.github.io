@@ -58,9 +58,35 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-soft: cubic-bezier(0.25, 0.4, 0.25, 1);
 
+  /*
+   *   state — hover, focus, and anything else the pointer toggles.
+   *
+   * Glide is an entrance curve: it spends 46% of the distance in the first 15%
+   * of the time and is visually finished at 48%. Over a long arrival that reads
+   * as momentum. Over a 6px hover it reads as a snap followed by 350ms of
+   * creeping, which is exactly what the project cards felt like.
+   *
+   * A hover is also reciprocal — you arrive and you leave — so it wants a curve
+   * that behaves the same in both directions instead of one built to land. This
+   * one leaves gently (15% of the distance in the first 15% of the time) and is
+   * done at 74%, so it uses its duration instead of hiding in it.
+   */
+  --ease-state: cubic-bezier(0.28, 0.11, 0.32, 1);
+
+  /*
+   * Durations. Three, so that one gesture is one gesture:
+   *
+   *   100ms  press — has to feel like contact, not like a transition
+   *   240ms  state — hover and focus; small changes, colour, a few pixels
+   *   400ms  enter — panels arriving, images zooming, anything springy
+   *   200ms  exit  — leaving. Half of arriving: getting out of the way should
+   *                  never take as long as showing up did.
+   *
+   * Anything outside these is deliberate and says so where it is written: the
+   * portrait's glow, its tilt, and the coin toss.
+   */
+
   --animate-wave: wave 1.5s infinite;
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes wave {
     0% {
@@ -83,24 +109,6 @@
     }
     100% {
       transform: rotate(0deg);
-    }
-  }
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
     }
   }
 }
@@ -292,9 +300,9 @@
       0 0 0 0.5px hsl(var(--foreground) / 0.07),
       0 1px 2px hsl(var(--foreground) / 0.03);
     transition:
-      box-shadow 0.5s var(--ease-glide),
-      transform 0.5s var(--ease-glide),
-      background-color 0.4s var(--ease-soft);
+      box-shadow 240ms var(--ease-state),
+      transform 240ms var(--ease-state),
+      background-color 240ms var(--ease-state);
   }
 
   .surface:hover {
@@ -481,17 +489,30 @@ html[data-magicui-theme-vt="active"]::view-transition-group(root) {
  * inside the first screen, and holding them at `opacity: 0` until `load` fires
  * would push Largest Contentful Paint out by the length of the fade.
  */
+@keyframes image-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * An animation, not a transition, and opacity only.
+ *
+ * This rule is unlayered, so it beat the `transition-*` utility on the project
+ * stills: their hover zoom was silently running on this rule's 0.7s instead of
+ * its own. An animation does not share the `transition` property with anything,
+ * so the two stop competing. It cannot touch `transform` either — a filled
+ * animation outranks a transition, and would pin the hover zoom at none.
+ */
 img[data-reveal] {
   opacity: 0;
-  transform: scale(1.015);
-  transition:
-    opacity 0.5s var(--ease-soft),
-    transform 0.7s var(--ease-glide);
 }
 
 img[data-reveal][data-loaded="true"] {
-  opacity: 1;
-  transform: none;
+  animation: image-reveal 400ms var(--ease-soft) both;
 }
 
 img,

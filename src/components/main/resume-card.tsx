@@ -45,7 +45,7 @@ export const ResumeCard = ({
             No initial behind the image: Radix unmounted its fallback once the
             logo loaded, and these logos have transparent backgrounds, so a
             permanent one showed through. `alt` still covers a failed load. */}
-        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm transition-[transform,box-shadow] duration-500 ease-glide group-hover:shadow-md group-hover:scale-[1.06]">
+        <span className="relative flex size-12 shrink-0 overflow-hidden rounded-full border bg-muted dark:bg-foreground shadow-sm transition-[transform,box-shadow] duration-400 ease-state group-hover:shadow-md group-hover:scale-[1.06]">
           {/* eslint-disable-next-line @next/next/no-img-element -- `output: export`
               serves unoptimized images, so next/image would add nothing here. */}
           <img
@@ -64,7 +64,7 @@ export const ResumeCard = ({
         <CardHeader>
           <div className="flex items-start justify-between gap-x-2">
             <div className="min-w-0">
-              <h3 className="inline-flex items-center font-semibold text-sm leading-tight group-hover:text-foreground transition-colors duration-300">
+              <h3 className="inline-flex items-center font-semibold text-sm leading-tight group-hover:text-foreground transition-colors duration-240 ease-state">
                 {href ? (
                   <a
                     href={href}
@@ -91,24 +91,24 @@ export const ResumeCard = ({
                   </span>
                 )}
                 {href && (
-                  <ChevronRight className="size-4 ml-1 -translate-x-1 opacity-0 transition-all duration-500 ease-glide group-hover:translate-x-0 group-hover:opacity-100" />
+                  <ChevronRight className="size-4 ml-1 -translate-x-1 opacity-0 transition-all duration-240 ease-state group-hover:translate-x-0 group-hover:opacity-100" />
                 )}
               </h3>
               {subtitle && (
-                <div className="flex items-center gap-1.5 mt-1 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300">
-                  <Briefcase className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-300" />
+                <div className="flex items-center gap-1.5 mt-1 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-240 ease-state">
+                  <Briefcase className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-240 ease-state" />
                   <span className="text-xs text-muted-foreground font-medium">{subtitle}</span>
                 </div>
               )}
               {location && (
-                <div className="flex items-center gap-1.5 mt-0.5 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-300 delay-75">
-                  <MapPin className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-300" />
+                <div className="flex items-center gap-1.5 mt-0.5 translate-x-0 group-hover:translate-x-0.5 transition-transform duration-240 ease-state delay-75">
+                  <MapPin className="size-3 text-muted-foreground/70 flex-shrink-0 group-hover:text-muted-foreground transition-colors duration-240 ease-state" />
                   <span className="text-xs text-muted-foreground">{location}</span>
                 </div>
               )}
             </div>
             <div className="flex-shrink-0 mt-0.5 h-[18px] overflow-hidden">
-              <div className="flex flex-col transition-transform duration-500 ease-spring group-hover:-translate-y-[18px]">
+              <div className="flex flex-col transition-transform duration-400 ease-spring group-hover:-translate-y-[18px]">
                 <div className="h-[18px] flex items-center justify-end text-[11px] tabular-nums text-muted-foreground whitespace-nowrap">
                   {period}
                 </div>
@@ -125,7 +125,7 @@ export const ResumeCard = ({
           </div>
         </CardHeader>
         {description && (
-          <CardContent className="text-xs sm:text-sm text-pretty leading-relaxed text-muted-foreground group-hover:text-muted-foreground/90 transition-colors duration-300">
+          <CardContent className="text-xs sm:text-sm text-pretty leading-relaxed text-muted-foreground group-hover:text-muted-foreground/90 transition-colors duration-240 ease-state">
             {description}
           </CardContent>
         )}

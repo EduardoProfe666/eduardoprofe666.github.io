@@ -191,7 +191,7 @@ export function SoundControl() {
               aria-valuenow={percent}
               aria-valuetext={`${percent}%`}
               style={{ height: TRACK }}
-              className="relative w-6 cursor-pointer touch-none overflow-hidden rounded-full bg-foreground/10 transition-colors duration-300 ease-soft hover:bg-foreground/15"
+              className="relative w-6 cursor-pointer touch-none overflow-hidden rounded-full bg-foreground/10 transition-colors duration-240 ease-state hover:bg-foreground/15"
               onPointerDown={(event) => {
                 dragging.current = true;
                 lastStep.current = -1;

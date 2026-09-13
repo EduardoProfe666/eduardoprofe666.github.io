@@ -39,7 +39,7 @@ export function TimeAgo({ date }: { date: YearMonth }) {
 
   return (
     <div className="h-4 overflow-hidden clip-content">
-      <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-4">
+      <div className="flex flex-col transition-transform duration-400 ease-spring group-hover:-translate-y-4">
         <div className="h-4 flex items-center gap-1.5">
           <Calendar className="size-3 text-muted-foreground" />
           <time dateTime={date} className="text-xs text-muted-foreground">

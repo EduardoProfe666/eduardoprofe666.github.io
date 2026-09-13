@@ -12,7 +12,7 @@ const buttonVariants = cva(
   //
   // No `focus-visible:ring` override: the page has a single focus style, set
   // once in globals.css, and a second one here would only be inconsistent.
-  "inline-flex select-none items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-[transform,background-color,color,box-shadow,opacity] duration-300 ease-glide active:scale-[0.94] active:duration-100 disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100",
+  "inline-flex select-none items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-[transform,background-color,color,box-shadow,opacity] duration-240 ease-state active:scale-[0.94] active:duration-100 disabled:pointer-events-none disabled:opacity-50 disabled:active:scale-100",
   {
     variants: {
       variant: {
